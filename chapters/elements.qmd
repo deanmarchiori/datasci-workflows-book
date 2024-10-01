@@ -1,0 +1,53 @@
+# Elements of Production Deployed R Code  
+
+- Workflow Orchestration  
+- CI/CD Automation  
+- Reproducibility  
+- Versioning of data, model, code  
+- ML metadata tracking  
+- Monitoring & Feedback  
+
+https://ieeexplore.ieee.org/document/10081336
+
+Adaptation  
+
+- Orchestration  
+- Automation  
+- Reproducibility  
+- Version Control  
+- Metadata and Documentation  
+- Testing  
+
+## Orchestration    
+
+How you structure your code  
+
+## Automation   
+
+How your code is pushed/pulled  
+
+## Reproducibility   
+
+### Code dependencies 
+
+### Packages dependencies
+
+### System dependencies
+
+### OS dependencies  
+
+### Hardware dependencies  
+
+## Version Control  
+
+Which is the current code?  
+
+## Metadata and Documentation   
+
+### Roxygen  
+
+### R Package  
+ 
+## Testing  
+
+### Testthat

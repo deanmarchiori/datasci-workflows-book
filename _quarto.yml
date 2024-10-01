@@ -1,0 +1,29 @@
+project:
+  type: book
+
+book:
+  title: "Data Science Worklows in R"
+  subtitle: "An introduction to deploying production quality R code"
+  author: "Dean Marchiori"
+  date: "2024"
+  cover-image: img/cover.png
+  chapters:
+    - index.qmd
+    - chapters/setup.qmd
+    - chapters/workflows.qmd
+    - chapters/production.qmd
+    - chapters/elements.qmd  
+    - chapters/references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt  
+  epub: 
+    toc: true
+
+editor: source
+

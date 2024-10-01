@@ -1,0 +1,192 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Worklows in R",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html",
+    "href": "chapters/setup.html",
+    "title": "1  Setup",
+    "section": "",
+    "text": "1.1 Install R\nWickham et al. (2019)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html#install-r",
+    "href": "chapters/setup.html#install-r",
+    "title": "1  Setup",
+    "section": "",
+    "text": "1.1.1 Install R\n\n\n1.1.2 Install RStudio\n\n\n1.1.3 Posit Cloud",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/setup.html#course-code",
+    "href": "chapters/setup.html#course-code",
+    "title": "1  Setup",
+    "section": "1.2 Course Code",
+    "text": "1.2 Course Code\n\n1.2.1 Download from Github\nCourse materials can be downloaded by using the following command from the usethis package:\n\nusethis::use_course(\"tbc/tbc\")\n\n\n\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/workflows.html",
+    "href": "chapters/workflows.html",
+    "title": "2  Workflows",
+    "section": "",
+    "text": "2.1 Data Analysis Workflows",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/workflows.html#data-analysis-workflows",
+    "href": "chapters/workflows.html#data-analysis-workflows",
+    "title": "2  Workflows",
+    "section": "",
+    "text": "2.1.1 CRISP-DM\nCRISP-DM is a traditional framework for approaching data mining/data science/analytics projects. Developed in the 1990’s it has stood the test of time and remains to popular choice today for several reasons.\nFirstly, it has a strong focus on understanding the business problem and guiding the exploration of the data with subject matter experts.\nSecondly, the framework provides for strict evaluation of solutions with business experts before deployment effort.\nFinally, the ethos of iterative, continual improvement is built it, which aligns well with modern agile philiophies.\nThe key components of CRISP-DM are:\n\nBusiness Understanding\nData Understanding\nData Preparation\nModelling\nEvaluation\nDeployment\n\nA drawback of this framework is the way in which deployment is handled in modern use-cases. The need to manage the provide, hosting and monitoring of cloud or server resources has resulted in extensions to CRISP-DM.\n\n\n\nKenneth Jensen, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n2.1.2 Inner Loop vs Outer Loop\nIf we ignore the Deployment step in the CRISP-DM framework we have a nice workflow for completing ‘experimental’ development and modelling work.\nAt some point the analyst will want to deploy their work. A useful abstraction that separates the analytical work and the engineering tasks associated with deployment is through the inner loop vs outer loop concept.\nThe inner loop is the above mentioned CRISP-DM framework right up until deployment.\nThe outer loop involves the provision of computing infrastructure for model inference, model registration and versioning, deployment and endpoint provisioning, and finally monitoring and evaluation of the deployed model.\nWhile this framework is commonly applied to deploying predictice models, adaptations can be made in the case of a dashboard, web-app or dynamic report output.\n\nOuter Loop\n\nInfrastructure Deployment\n\nInner Loop\n\nBusiness Understanding\n\nData Understanding\n\nData Preparation\n\nModelling\n\nEvaluation\n\n\nModel Registration and Deployment\n\nMonitoring",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/workflows.html#r-code-workflows",
+    "href": "chapters/workflows.html#r-code-workflows",
+    "title": "2  Workflows",
+    "section": "2.2 R Code Workflows",
+    "text": "2.2 R Code Workflows\nWe have introduced two frameworks to think about the steps required for a successful data science project. However, these frameworks are just conceptual abstractions of course. Next we will explore commonly used R code workflows that are authored to orchestrate the end-to-end running of analysis or modelling projects - at least the inner loop components.\nOnce we have compared the most common approaches to translating these frameworks into code, we can evaluate how to improve strengthen our coding practices.\n\n2.2.1 R Scripts\nThe most basic workflow is to colocate all code into a single R script. This is a common starting place for beginners or when completing small basic tasks in R. An obvious limitation is the ability to separate out logical components for testing, debugging and control flow.\n\n\n\n\n\ngraph TB\n    a1[Load Dependencies, Data Prep, \\nTest/Train Split, Train Model\\nEvaluate Model, Diagnostics]\n    a7[(Data)]--&gt;a1;\n\n\n\n\n\n\n\n\n2.2.2 Monolithic Markdown\nA commonly adopted tool to promote more literate programming is RMarkdown or more recently quarto. These tools allow users to write plain english commentary in a markdown or visual editor and splice in ‘code-chunks’. Typically this notebook style of document is then sequentially rendered in-order and knitted into some for of output like HTML, PDF or Word etc.\nThis is a great way to make code more readble and self-contained while managing complexity. Obvious drawbacks exist around the execution order, control flow and caching. These can also get very long!\n\n\n\n\n\ngraph TB\n    subgraph id1 [Monolithic Notebook]\n    a1[Load Dependencies]  \n    a2[Data Prep]  \n    a3[Test/Train Split]  \n    a4[Train Model]  \n    a5[Evaluate Model]  \n    a6[Diagnostics]\n    end\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.3 Control Scripts\nAnalysts who prefer a more scripted workflow will often attemp to break down the complexity of their project into smaller chunks, often placing parts of the analysis into their own R script.\nThe next question is, how do we orchestrate the running of all these R scripts? This is usually solved with a ‘control’ or ‘run’ script, which source()’s the relevant scripts in the right order.\nThis is a step in the right direction, but requires lots of overhead in managing state and data flows between scripts, often by manually ‘caching’ results. The scripts are often not self-contained and this can quickly be a recipe for disaster for more complex projects.\n\n\n\n\n\ngraph TB\n  b1[[Control Script]]--&gt;a1[[Load Dependencies]]\n  b1[[Control Script]]--&gt;a2[[Data Prep]]\n  b1[[Control Script]]--&gt;a3[[Test/Train Split]]\n  b1[[Control Script]]--&gt;a4[[Train Model]]\n  b1[[Control Script]]--&gt;a5[[Evaluate Model]]\n  b1[[Control Script]]--&gt;a6[[Diagnostics]]\n  style b1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.4 {targets}\n{targets} is an R package that allows users to adopt a make-like pipeline philosophy for their R code. This has the advantage of more sophisticated handling of computationally-intensive workflows and provides a more opinionated structure to follow. With this are the drawbacks or forcing your collaborators to adopt the same framework and dealing with the initial learning curve.\n\n\n\n\n\ngraph LR\n    subgraph id1 [Targets Pipeline]\n    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]\n    end\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.5 R Package\nAn R Package is the canonical way to organise and ‘package’ R code for use and sharing. It provides easy means to share, install, document, test and run code.\nThis also follows a very opinionated structure, but unlike a third party library, it is expected knowledge for R users. This doesn’t mean its easy to do! R Package’s struggle to deal with the flexibility of ‘doing’ data analysis and are more focussed on a way to build the tools required for performing the analysis.\n\n\n\n\n\ngraph TB\n    subgraph id1 [R Package]\n    b1[Declare Dependencies]  \n    b2[Source Code]  \n    b3[Documentation]  \n    b4[Testing]\n    end\n    subgraph id2 [targets pipeline]\n    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]\n    end\n    id1--&gt;a1\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n    style id2 fill:lightgreen;",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/workflows.html#choosing-the-right-workflow",
+    "href": "chapters/workflows.html#choosing-the-right-workflow",
+    "title": "2  Workflows",
+    "section": "2.3 Choosing the right workflow",
+    "text": "2.3 Choosing the right workflow\nSo which workflow should you use?\nUnfortunately this is not a straightforward decision. For quick experimental code you are unlikely to create a new R package. For a complex production deployed model, you really dont want all your code in one giant R script.\nPicking the correct workflow needs to align the project goals and scope. Often this choice can evolve throughout the project.\n\n2.3.1 An evolution\nA concept or idea might be tested in a single R script, like how you would use the back of a napkin for an idea. Next you might break this down into chunks and add some prose, heading and plots so you can share and have other understand it. Next you might refactor the messy code into functions to better control the flow and the improve development practices. These functions can be documented and unit tested once you know you want to rely on them. To orchestrate the running and dependency structure to avoid re-running slow and complex code you may use the {targets} package. Finally to re-use, share and improve on the functions you might spin these out into their own R package!\n\n\n2.3.2 Repro-retro\nI talked a little about how you might want to weight and prioritise the elements of reproducibility in an rtudio::global talk in 2019. Feel free to conduct your own reproducibility-retrospective (repro-retro).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/production.html",
+    "href": "chapters/production.html",
+    "title": "3  What is Production",
+    "section": "",
+    "text": "3.1 Definition",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What is Production</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/production.html#definition",
+    "href": "chapters/production.html#definition",
+    "title": "3  What is Production",
+    "section": "",
+    "text": "Hadley talks\n\nPut R in prod",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What is Production</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/production.html#principles-of-production",
+    "href": "chapters/production.html#principles-of-production",
+    "title": "3  What is Production",
+    "section": "3.2 Principles of Production",
+    "text": "3.2 Principles of Production",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What is Production</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/production.html#patterns-for-r-code",
+    "href": "chapters/production.html#patterns-for-r-code",
+    "title": "3  What is Production",
+    "section": "3.3 Patterns for R Code",
+    "text": "3.3 Patterns for R Code\n\n3.3.1 Run Script\n\n\n3.3.2 Run Shiny App\n\n\n3.3.3 Run API\n\n\n3.3.4 Run dashboard",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What is Production</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html",
+    "href": "chapters/elements.html",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "",
+    "text": "4.1 Orchestration\nHow you structure your code",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html#automation",
+    "href": "chapters/elements.html#automation",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "4.2 Automation",
+    "text": "4.2 Automation\nHow your code is pushed/pulled",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html#reproducibility",
+    "href": "chapters/elements.html#reproducibility",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "4.3 Reproducibility",
+    "text": "4.3 Reproducibility\n\n4.3.1 Code dependencies\n\n\n4.3.2 Packages dependencies\n\n\n4.3.3 System dependencies\n\n\n4.3.4 OS dependencies\n\n\n4.3.5 Hardware dependencies",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html#version-control",
+    "href": "chapters/elements.html#version-control",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "4.4 Version Control",
+    "text": "4.4 Version Control\nWhich is the current code?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html#metadata-and-documentation",
+    "href": "chapters/elements.html#metadata-and-documentation",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "4.5 Metadata and Documentation",
+    "text": "4.5 Metadata and Documentation\n\n4.5.1 Roxygen\n\n\n4.5.2 R Package",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/elements.html#testing",
+    "href": "chapters/elements.html#testing",
+    "title": "4  Elements of Production Deployed R Code",
+    "section": "4.6 Testing",
+    "text": "4.6 Testing\n\n4.6.1 Testthat",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/references.html",
+    "href": "chapters/references.html",
+    "title": "References",
+    "section": "",
+    "text": "Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

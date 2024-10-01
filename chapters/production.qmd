@@ -1,0 +1,18 @@
+# What is Production   
+
+## Definition    
+
+- Hadley talks  
+- Put R in prod  
+
+## Principles of Production  
+
+## Patterns for R Code  
+
+### Run Script  
+
+### Run Shiny App  
+
+### Run API   
+
+### Run dashboard  

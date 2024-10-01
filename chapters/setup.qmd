@@ -1,0 +1,27 @@
+# Setup
+
+This is a book created from markdown and executable code.
+
+## Install R   
+
+@tidyverse
+
+### Install R  
+
+### Install RStudio  
+
+### Posit Cloud   
+
+## Course Code  
+
+### Download from Github  
+
+Course materials can be downloaded by using the following command from the `usethis` package:
+
+```{r}
+#| label: use-course
+#| echo: true
+#| eval: false
+usethis::use_course("tbc/tbc")
+```  
+
