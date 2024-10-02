@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 3&nbsp; What is Production</title>
+<title>Data Science Worklows in R - 2&nbsp; Data Analysis Workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/elements.html" rel="next">
-<link href="../chapters/workflows.html" rel="prev">
+<link href="../chapters/03-experimentation.html" rel="next">
+<link href="../chapters/01-setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,6 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -81,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/production.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is Production</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-data_analysis_workflows.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Analysis Workflows</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,26 +117,56 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/01-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span></a>
+  <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Analysis Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/production.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is Production</span></span></a>
+  <a href="../chapters/03-experimentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/elements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
+  <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What is Production</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -152,14 +185,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">3.1</span> Definition</a></li>
-  <li><a href="#principles-of-production" id="toc-principles-of-production" class="nav-link" data-scroll-target="#principles-of-production"><span class="header-section-number">3.2</span> Principles of Production</a></li>
-  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">3.3</span> Patterns for R Code</a>
+  <li><a href="#analysis-frameworks" id="toc-analysis-frameworks" class="nav-link active" data-scroll-target="#analysis-frameworks"><span class="header-section-number">2.1</span> Analysis Frameworks</a>
   <ul class="collapse">
-  <li><a href="#run-script" id="toc-run-script" class="nav-link" data-scroll-target="#run-script"><span class="header-section-number">3.3.1</span> Run Script</a></li>
-  <li><a href="#run-shiny-app" id="toc-run-shiny-app" class="nav-link" data-scroll-target="#run-shiny-app"><span class="header-section-number">3.3.2</span> Run Shiny App</a></li>
-  <li><a href="#run-api" id="toc-run-api" class="nav-link" data-scroll-target="#run-api"><span class="header-section-number">3.3.3</span> Run API</a></li>
-  <li><a href="#run-dashboard" id="toc-run-dashboard" class="nav-link" data-scroll-target="#run-dashboard"><span class="header-section-number">3.3.4</span> Run dashboard</a></li>
+  <li><a href="#crisp-dm" id="toc-crisp-dm" class="nav-link" data-scroll-target="#crisp-dm"><span class="header-section-number">2.1.1</span> CRISP-DM</a></li>
+  <li><a href="#inner-loop-vs-outer-loop" id="toc-inner-loop-vs-outer-loop" class="nav-link" data-scroll-target="#inner-loop-vs-outer-loop"><span class="header-section-number">2.1.2</span> Inner Loop vs Outer Loop</a></li>
+  </ul></li>
+  <li><a href="#r-code-workflows" id="toc-r-code-workflows" class="nav-link" data-scroll-target="#r-code-workflows"><span class="header-section-number">2.2</span> R Code Workflows</a>
+  <ul class="collapse">
+  <li><a href="#r-scripts" id="toc-r-scripts" class="nav-link" data-scroll-target="#r-scripts"><span class="header-section-number">2.2.1</span> R Scripts</a></li>
+  <li><a href="#monolithic-markdown" id="toc-monolithic-markdown" class="nav-link" data-scroll-target="#monolithic-markdown"><span class="header-section-number">2.2.2</span> Monolithic Markdown</a></li>
+  <li><a href="#control-scripts" id="toc-control-scripts" class="nav-link" data-scroll-target="#control-scripts"><span class="header-section-number">2.2.3</span> Control Scripts</a></li>
+  <li><a href="#targets" id="toc-targets" class="nav-link" data-scroll-target="#targets"><span class="header-section-number">2.2.4</span> {targets}</a></li>
+  <li><a href="#r-package" id="toc-r-package" class="nav-link" data-scroll-target="#r-package"><span class="header-section-number">2.2.5</span> R Package</a></li>
+  </ul></li>
+  <li><a href="#choosing-the-right-workflow" id="toc-choosing-the-right-workflow" class="nav-link" data-scroll-target="#choosing-the-right-workflow"><span class="header-section-number">2.3</span> Choosing the right workflow</a>
+  <ul class="collapse">
+  <li><a href="#an-evolution" id="toc-an-evolution" class="nav-link" data-scroll-target="#an-evolution"><span class="header-section-number">2.3.1</span> An evolution</a></li>
+  <li><a href="#repro-retro" id="toc-repro-retro" class="nav-link" data-scroll-target="#repro-retro"><span class="header-section-number">2.3.2</span> Repro-retro</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -169,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is Production</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Analysis Workflows</span></h1>
 </div>
 
 
@@ -186,30 +228,203 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="definition" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">3.1</span> Definition</h2>
+<p>There are many approaches to tackling a data science project. Following a framework for data science workflows is important to ensuring successful delivery. The key benefits of using a data science workflow is not only ensuring the work gets done right, but it can provide a useful means for engaging stakeholders and supporters, providing project management updates and ensuring everyone is focussed on the right areas.</p>
+<section id="analysis-frameworks" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="analysis-frameworks"><span class="header-section-number">2.1</span> Analysis Frameworks</h2>
+<section id="crisp-dm" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="crisp-dm"><span class="header-section-number">2.1.1</span> CRISP-DM</h3>
+<p><a href="https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining">CRISP-DM</a> is a traditional framework for approaching data mining/data science/analytics projects. Developed in the 1990’s it has stood the test of time and remains to popular choice today for several reasons.</p>
+<p>Firstly, it has a strong focus on understanding the business problem and guiding the exploration of the data with subject matter experts.</p>
+<p>Secondly, the framework provides for strict evaluation of solutions with business experts before deployment effort.</p>
+<p>Finally, the ethos of iterative, continual improvement is built it, which aligns well with modern agile philiophies.</p>
+<p>The key components of CRISP-DM are:</p>
 <ul>
-<li>Hadley talks<br>
+<li>Business Understanding</li>
+<li>Data Understanding</li>
+<li>Data Preparation</li>
+<li>Modelling</li>
+<li>Evaluation</li>
+<li>Deployment</li>
+</ul>
+<p>A drawback of this framework is the way in which deployment is handled in modern use-cases. The need to manage the provide, hosting and monitoring of cloud or server resources has resulted in extensions to CRISP-DM.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/crispdm.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Kenneth Jensen, CC BY-SA 3.0, via Wikimedia Commons</figcaption>
+</figure>
+</div>
+</section>
+<section id="inner-loop-vs-outer-loop" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="inner-loop-vs-outer-loop"><span class="header-section-number">2.1.2</span> Inner Loop vs Outer Loop</h3>
+<p>If we ignore the Deployment step in the CRISP-DM framework we have a nice workflow for completing ‘experimental’ development and modelling work.</p>
+<p>At some point the analyst will want to deploy their work. A useful abstraction that separates the analytical work and the engineering tasks associated with deployment is through the inner loop vs outer loop concept.</p>
+<p>The inner loop is the above mentioned CRISP-DM framework right up until deployment.</p>
+<p>The outer loop involves the provision of computing infrastructure for model inference, model registration and versioning, deployment and endpoint provisioning, and finally monitoring and evaluation of the deployed model.</p>
+<p>While this framework is commonly applied to deploying predictice models, adaptations can be made in the case of a dashboard, web-app or dynamic report output.</p>
+<ul>
+<li><strong>Outer Loop</strong><br>
 </li>
-<li>Put R in prod</li>
+<li>Infrastructure Deployment
+<ul>
+<li><p><strong>Inner Loop</strong></p>
+<ul>
+<li>Business Understanding<br>
+</li>
+<li>Data Understanding<br>
+</li>
+<li>Data Preparation<br>
+</li>
+<li>Modelling<br>
+</li>
+<li>Evaluation</li>
+</ul></li>
+</ul></li>
+<li>Model Registration and Deployment<br>
+</li>
+<li>Monitoring</li>
 </ul>
 </section>
-<section id="principles-of-production" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="principles-of-production"><span class="header-section-number">3.2</span> Principles of Production</h2>
 </section>
-<section id="patterns-for-r-code" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">3.3</span> Patterns for R Code</h2>
-<section id="run-script" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="run-script"><span class="header-section-number">3.3.1</span> Run Script</h3>
+<section id="r-code-workflows" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="r-code-workflows"><span class="header-section-number">2.2</span> R Code Workflows</h2>
+<p>We have introduced two frameworks to think about the steps required for a successful data science project. However, these frameworks are just conceptual abstractions of course. Next we will explore commonly used R code workflows that are authored to orchestrate the end-to-end running of analysis or modelling projects - at least the inner loop components.</p>
+<p>Once we have compared the most common approaches to translating these frameworks into code, we can evaluate how to improve strengthen our coding practices.</p>
+<section id="r-scripts" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="r-scripts"><span class="header-section-number">2.2.1</span> R Scripts</h3>
+<p>The most basic workflow is to colocate all code into a single R script. This is a common starting place for beginners or when completing small basic tasks in R. An obvious limitation is the ability to separate out logical components for testing, debugging and control flow.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    a1[Load Dependencies, Data Prep, \nTest/Train Split, Train Model\nEvaluate Model, Diagnostics]
+    a7[(Data)]--&gt;a1;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="run-shiny-app" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="run-shiny-app"><span class="header-section-number">3.3.2</span> Run Shiny App</h3>
+<section id="monolithic-markdown" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="monolithic-markdown"><span class="header-section-number">2.2.2</span> Monolithic Markdown</h3>
+<p>A commonly adopted tool to promote more <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> is RMarkdown or more recently <a href="https://quarto.org/">quarto</a>. These tools allow users to write plain english commentary in a markdown or visual editor and splice in ‘code-chunks’. Typically this notebook style of document is then sequentially rendered in-order and knitted into some for of output like HTML, PDF or Word etc.</p>
+<p>This is a great way to make code more readble and self-contained while managing complexity. Obvious drawbacks exist around the execution order, control flow and caching. These can also get very long!</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    subgraph id1 [Monolithic Notebook]
+    a1[Load Dependencies]  
+    a2[Data Prep]  
+    a3[Test/Train Split]  
+    a4[Train Model]  
+    a5[Evaluate Model]  
+    a6[Diagnostics]
+    end
+    a7[(Data)]--&gt;a2
+    style id1 fill:lightblue;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="run-api" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="run-api"><span class="header-section-number">3.3.3</span> Run API</h3>
+<section id="control-scripts" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="control-scripts"><span class="header-section-number">2.2.3</span> Control Scripts</h3>
+<p>Analysts who prefer a more scripted workflow will often attemp to break down the complexity of their project into smaller chunks, often placing parts of the analysis into their own R script.</p>
+<p>The next question is, how do we orchestrate the running of all these R scripts? This is usually solved with a ‘control’ or ‘run’ script, which <code>source()</code>’s the relevant scripts in the right order.</p>
+<p>This is a step in the right direction, but requires lots of overhead in managing state and data flows between scripts, often by manually ‘caching’ results. The scripts are often not self-contained and this can quickly be a recipe for disaster for more complex projects.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+  b1[[Control Script]]--&gt;a1[[Load Dependencies]]
+  b1[[Control Script]]--&gt;a2[[Data Prep]]
+  b1[[Control Script]]--&gt;a3[[Test/Train Split]]
+  b1[[Control Script]]--&gt;a4[[Train Model]]
+  b1[[Control Script]]--&gt;a5[[Evaluate Model]]
+  b1[[Control Script]]--&gt;a6[[Diagnostics]]
+  style b1 fill:lightblue;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
-<section id="run-dashboard" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="run-dashboard"><span class="header-section-number">3.3.4</span> Run dashboard</h3>
+<section id="targets" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="targets"><span class="header-section-number">2.2.4</span> {targets}</h3>
+<p><a href="https://github.com/ropensci/targets"><code>{targets}</code></a> is an R package that allows users to adopt a make-like pipeline philosophy for their R code. This has the advantage of more sophisticated handling of computationally-intensive workflows and provides a more opinionated structure to follow. With this are the drawbacks or forcing your collaborators to adopt the same framework and dealing with the initial learning curve.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    subgraph id1 [Targets Pipeline]
+    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]
+    end
+    a7[(Data)]--&gt;a2
+    style id1 fill:lightblue;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="r-package" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="r-package"><span class="header-section-number">2.2.5</span> R Package</h3>
+<p>An R Package is the canonical way to organise and ‘package’ R code for use and sharing. It provides easy means to share, install, document, test and run code.<br>
+This also follows a very opinionated structure, but unlike a third party library, it is expected knowledge for R users. This doesn’t mean its easy to do! R Package’s struggle to deal with the flexibility of ‘doing’ data analysis and are more focussed on a way to build the tools required for performing the analysis.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    subgraph id1 [R Package]
+    b1[Declare Dependencies]  
+    b2[Source Code]  
+    b3[Documentation]  
+    b4[Testing]
+    end
+    subgraph id2 [targets pipeline]
+    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]
+    end
+    id1--&gt;a1
+    a7[(Data)]--&gt;a2
+    style id1 fill:lightblue;
+    style id2 fill:lightgreen;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="choosing-the-right-workflow" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="choosing-the-right-workflow"><span class="header-section-number">2.3</span> Choosing the right workflow</h2>
+<p>So which workflow should you use?</p>
+<p>Unfortunately this is not a straightforward decision. For quick experimental code you are unlikely to create a new R package. For a complex production deployed model, you really dont want all your code in one giant R script.</p>
+<p>Picking the correct workflow needs to align the project goals and scope. Often this choice can evolve throughout the project.</p>
+<section id="an-evolution" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="an-evolution"><span class="header-section-number">2.3.1</span> An evolution</h3>
+<p>A concept or idea might be tested in a single R script, like how you would use the back of a napkin for an idea. Next you might break this down into chunks and add some prose, heading and plots so you can share and have other understand it. Next you might refactor the messy code into functions to better control the flow and the improve development practices. These functions can be documented and unit tested once you know you want to rely on them. To orchestrate the running and dependency structure to avoid re-running slow and complex code you may use the <code>{targets}</code> package. Finally to re-use, share and improve on the functions you might spin these out into their own R package!</p>
+</section>
+<section id="repro-retro" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="repro-retro"><span class="header-section-number">2.3.2</span> Repro-retro</h3>
+<p>I talked a little about how you might want to weight and prioritise the elements of reproducibility in an rtudio::global talk in 2019. Feel free to conduct your own reproducibility-retrospective (repro-retro).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4T8gz9AmNOA?si=8rGopHO-9r0iwh_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
 
 
 </section>
@@ -627,13 +842,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/workflows.html" class="pagination-link" aria-label="Workflows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workflows</span></span>
+      <a href="../chapters/01-setup.html" class="pagination-link" aria-label="Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/elements.html" class="pagination-link" aria-label="Elements of Production Deployed R Code">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/03-experimentation.html" class="pagination-link" aria-label="Experimentation">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

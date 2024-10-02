@@ -1,4 +1,4 @@
-# Workflows
+# Data Analysis Workflows
 
 There are many approaches to tackling a data science project. Following a framework
 for data science workflows is important to ensuring successful delivery. The key
@@ -6,7 +6,7 @@ benefits of using a data science workflow is not only ensuring the work gets don
 but it can provide a useful means for engaging stakeholders and supporters, providing
 project management updates and ensuring everyone is focussed on the right areas.    
 
-## Data Analysis Workflows  
+## Analysis Frameworks  
 
 ### CRISP-DM   
 

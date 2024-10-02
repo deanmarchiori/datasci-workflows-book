@@ -5,7 +5,7 @@
 - Hadley talks  
 - Put R in prod  
 
-## Principles of Production  
+## Principles  
 
 ## Patterns for R Code  
 

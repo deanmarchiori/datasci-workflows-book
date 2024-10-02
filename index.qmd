@@ -28,6 +28,9 @@ considered interchangable and represent the application of advanced data analysi
 and statistical techniques to data to achieve an outcome. The word 'analyst' will 
 be adopted as the primary role for someone completing these tasks. 
 
+## Contact Me  
+If you would like to get in touch head over to [deanmarchiori.com](https://www.deanmarchiori.com/)
+
 
 ## Contributing  
 

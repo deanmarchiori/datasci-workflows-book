@@ -2,7 +2,7 @@
 
 This is a book created from markdown and executable code.
 
-## Install R   
+## Software  
 
 @tidyverse
 
@@ -12,11 +12,11 @@ This is a book created from markdown and executable code.
 
 ### Posit Cloud   
 
-## Course Code  
+## Code  
 
 ### Download from Github  
 
-Course materials can be downloaded by using the following command from the `usethis` package:
+Materials can be downloaded by using the following command from the `usethis` package:
 
 ```{r}
 #| label: use-course

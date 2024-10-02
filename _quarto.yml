@@ -9,10 +9,15 @@ book:
   cover-image: img/cover.png
   chapters:
     - index.qmd
-    - chapters/setup.qmd
-    - chapters/workflows.qmd
-    - chapters/production.qmd
-    - chapters/elements.qmd  
+    - chapters/01-setup.qmd  
+    - chapters/02-data_analysis_workflows.qmd  
+    - chapters/03-experimentation.qmd  
+    - chapters/04-what_is_production.qmd   
+    - chapters/05-elements_of_prod_code.qmd
+    - chapters/06-practical_considerations.qmd
+    - chapters/07-case_study.qmd  
+    - chapters/resources.qmd  
+    - chapters/acknowledgements.qmd  
     - chapters/references.qmd
 
 bibliography: references.bib
