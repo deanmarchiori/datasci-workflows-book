@@ -1,9 +1,42 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+This book is a resource for data analysts and data scientists looking to improve
+the way the way they write R code. While R remains a popular choice for 
+statistical modelling and data analysis, its rapid development has enabled users
+to progress their work right through to being deployed into Production. However 
+the type of work done when conducting experiments and developing models is very
+different to packaging up this work so it can reliably drive decisions in an 
+organisation. This book will provide readers with an overview of contemporary
+frameworks for how data analysis is done in practice. It will cover how R projects
+are usually structures and how this can evolve based on project complexity. It will
+examine what is meant by experimental vs production analysis code and which principles
+need to be adopted. Finally it will show current tools and frameworks for taking
+experimental R code and strengthening it to align with best practice for reliable
+production grade software. Readers can step through a case study and download
+code to follow along.  
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Who is this for?  
 
-```{r}
-1 + 1
-```
+This book is intended as an introductory guide for R users who have experience 
+writing code and fitting models, but want to improve their practices for translating
+these models into robust code that is reliable and used to make real-world decisions. 
+
+
+## Terminology  
+Throughout this book the terms 'data science' and 'data analysis' should be 
+considered interchangable and represent the application of advanced data analysis
+and statistical techniques to data to achieve an outcome. The word 'analyst' will 
+be adopted as the primary role for someone completing these tasks. 
+
+
+## Contributing  
+
+Contributions to this work are welcomed via Issues on the Github page.  
+
+Please note that this project uses a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/). By contributing to this book, you agree to abide by its terms.  
+
+## Licence  
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+
+
