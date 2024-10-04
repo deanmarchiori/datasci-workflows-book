@@ -1,7 +1,19 @@
 # Practical Considerations  
 
 ## Working with IT teams    
+- Install 
+- Admin
+- Maintainence
+- Debugging 
 
 ## Open Source vs Commerical Software    
 
 ## Network Security  
+
+## Authentication 
+
+## Changes  
+
+- Model drift  
+- New features 
+

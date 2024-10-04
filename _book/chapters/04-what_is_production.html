@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/05-elements_of_prod_code.html" rel="next">
-<link href="../chapters/03-experimentation.html" rel="prev">
+<link href="../chapters/03-development.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -68,6 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -126,8 +129,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-experimentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span></a>
+  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,13 +187,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">4.1</span> Definition</a></li>
   <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles"><span class="header-section-number">4.2</span> Principles</a></li>
-  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">4.3</span> Patterns for R Code</a>
-  <ul class="collapse">
-  <li><a href="#run-script" id="toc-run-script" class="nav-link" data-scroll-target="#run-script"><span class="header-section-number">4.3.1</span> Run Script</a></li>
-  <li><a href="#run-shiny-app" id="toc-run-shiny-app" class="nav-link" data-scroll-target="#run-shiny-app"><span class="header-section-number">4.3.2</span> Run Shiny App</a></li>
-  <li><a href="#run-api" id="toc-run-api" class="nav-link" data-scroll-target="#run-api"><span class="header-section-number">4.3.3</span> Run API</a></li>
-  <li><a href="#run-dashboard" id="toc-run-dashboard" class="nav-link" data-scroll-target="#run-dashboard"><span class="header-section-number">4.3.4</span> Run dashboard</a></li>
-  </ul></li>
+  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">4.3</span> Patterns for R Code</a></li>
   </ul>
 </nav>
     </div>
@@ -218,31 +215,92 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="definition" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">4.1</span> Definition</h2>
+<p>Production is a conceptual place where your work is being used by the intended users to make real-world decisions.</p>
 <ul>
-<li>Hadley talks<br>
+<li>Predictive Model integrating with front line business system via API<br>
 </li>
-<li>Put R in prod</li>
+<li>Dashboard available to support user’s making decisions<br>
+</li>
+<li>A monthly report that informs management meetings<br>
+</li>
+<li>An insight from a statistical model that has changed policy</li>
 </ul>
+<p>Note how not all of the above involve a technology implementation like an API.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work checklists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.</p>
+<p>This change is hardcoded in a paper form, but is still a data-science driven model in production.</p>
+</div>
+</div>
 </section>
 <section id="principles" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="principles"><span class="header-section-number">4.2</span> Principles</h2>
+<p>For a data science project to be successully relied upon in production it should follow some key characteristics.</p>
+<ul>
+<li>Available to end users directly<br>
+</li>
+<li>Running on stable infrastructure<br>
+</li>
+<li>Used to make real-world decisions<br>
+</li>
+<li>Can be replicated<br>
+</li>
+<li>Can be reproduced safely</li>
+<li>Is documented sufficiently<br>
+</li>
+<li>Can be maintained by others</li>
+</ul>
+<p>In the NYR10 Conference Hadley Wickham summarises his views as:</p>
+<ul>
+<li>Not just once</li>
+<li>Not just my computer<br>
+</li>
+<li>Not just me</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BQk2-3inViM?si=kb1e7D7kwrdJCBnq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
 </section>
 <section id="patterns-for-r-code" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">4.3</span> Patterns for R Code</h2>
-<section id="run-script" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="run-script"><span class="header-section-number">4.3.1</span> Run Script</h3>
-</section>
-<section id="run-shiny-app" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="run-shiny-app"><span class="header-section-number">4.3.2</span> Run Shiny App</h3>
-</section>
-<section id="run-api" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="run-api"><span class="header-section-number">4.3.3</span> Run API</h3>
-</section>
-<section id="run-dashboard" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="run-dashboard"><span class="header-section-number">4.3.4</span> Run dashboard</h3>
+<p>In terms of R specific outputs, what does a data science output look like from an R perspective.</p>
+<ul>
+<li>An R script that is run on a server on a schedule<br>
+</li>
+<li>A <code>{shiny}</code> app hosted using on a server<br>
+</li>
+<li>A <code>{plumber}</code> API service serving model predictions<br>
+</li>
+<li>A hosted <code>{quarto}</code> dashboard<br>
+</li>
+<li>An <code>{rmarkdown}</code> report<br>
+</li>
+<li>An R package on CRAN or Github</li>
+</ul>
+<p>Regardless of the solution, the fundamental concept is to get it off the developers laptop and have it be reliably available to an end user.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR 
+A[Developer PC]--&gt;B[Remote Server]--&gt;C[User]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>We will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -657,8 +715,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/03-experimentation.html" class="pagination-link" aria-label="Experimentation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span>
+      <a href="../chapters/03-development.html" class="pagination-link" aria-label="Development">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -130,33 +130,33 @@
     ]
   },
   {
-    "objectID": "chapters/03-experimentation.html",
-    "href": "chapters/03-experimentation.html",
-    "title": "3  Experimentation",
+    "objectID": "chapters/03-development.html",
+    "href": "chapters/03-development.html",
+    "title": "3  Development",
     "section": "",
-    "text": "3.1 Definition",
+    "text": "3.1 Definition\nA development. Is a way of working, but it is also a technical term for A hardware and software environment in many Enterprise. Data science. Organisations. Development is usually. Logical or physical separation of tools, hardware and software. That allow analysts to perform work, that is not to be relied upon.\nIn live decision, making Or critical infrastructure. This type of environment is prone to running. Experimental workloads tests. And day-to-day development of projects and ideas by a data science team.\nA key defining feature of development code is the colocation of ‘what’ the code does and ‘how’ the code is run. That is, the functional elements of the code and the orchestration of those elements are not separated.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Experimentation</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
-    "objectID": "chapters/03-experimentation.html#roles",
-    "href": "chapters/03-experimentation.html#roles",
-    "title": "3  Experimentation",
+    "objectID": "chapters/03-development.html#roles",
+    "href": "chapters/03-development.html#roles",
+    "title": "3  Development",
     "section": "3.2 Roles",
-    "text": "3.2 Roles",
+    "text": "3.2 Roles\nIt can assess the various roles that take place in the development workflow. Cross-Sectionly. But looking at the full life cycle, From raw data through to a production deployed system.\nIn many organisations. Not all roles will be present. In some organisations, there may even be more specialised roles. For example. And ml Ops engineer May handle the deployment of machine learning workloads. While a data engineer May focus entirely on data operations, In addition a data scientist may or may not be present.\nAnalytical work may be done. But more generally, skilled analysts. Or even. Certain types of end users. Who were very close to the Business applications. And also have skills in data analysis.\n\n3.2.1 Customer\nInitially. A customer is a key role. Customer should be involved throughout the entire process. But in particular is active in projects at the raw data and production stage.\nTo contextualize and understand. And provide understanding of the raw data. And as the end user of production systems,\n\n\n3.2.2 Data Engineer\nIn many organisations in enrichment process from raw data into some kind of data warehouse, environment is conducted by data Engineers. A data engineer may also be responsible. For provisioning infrastructure and assisting with production deployments.\n\n\n3.2.3 Data Analyst\nOnce data is landed in a place where It is outside of front-end systems analysts can typically typically use this data to perform analysis. Business intelligence report generation. And dashboard building.\n\n\n3.2.4 Data Scientist\nThe role of the data scientist can take many shapes. Typically it is viewed as being of most value in the stage after basic data analysis.\nWhen more advanced modelling statistical analysis, And AI ml applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. And this aligns with, Earlier data analysis Frameworks mentioned such as crisp, DM. Where an iterative and collaborative approach is required from across all stages of the process.\n[image]",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Experimentation</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
-    "objectID": "chapters/03-experimentation.html#tools",
-    "href": "chapters/03-experimentation.html#tools",
-    "title": "3  Experimentation",
+    "objectID": "chapters/03-development.html#tools",
+    "href": "chapters/03-development.html#tools",
+    "title": "3  Development",
     "section": "3.3 Tools",
-    "text": "3.3 Tools\n\n3.3.1 Solution Development\n\n\n3.3.2 Project on a page",
+    "text": "3.3 Tools\nThe tools used in a development context. Often a subset of tools used in a wider production context. These include. Commonly thought of items such as And interactive development environment for data science such as rstudio or vs code.\nProgramming languages such as R or python. Version Control software. Such as git.\nHowever, however, there are other tools. Or methodologies that can be used outside of the data, domain that are useful at this stage. These tools, facilitate the development of ideas and use cases from stakeholders. And are often of great benefit to more technically minded analysts. To ensure that the right problem is being solved.\nOne example of this is the Double Diamond approach.\nThe Double Diamond approach is a design thinking methodology. That focuses on two key aspects first. Doing the right things. And secondly, doing the things, right? Both phases have. Two stages, the Divergence and convergence stages. In the first phase. The objective is to correctly, identify the right problem to be solved.\nThe Divergent stage. Can use a number of tools and facilitation techniques.\nElicit all critical business problems. And understand. Key pain points. From end users. The convergence phase is a prioritisation of these problems. To identify. The most ideal problem to be solved. This can sometimes be filtered through the lens of tools, such as desirability feasibility and viability. Once an appropriate problem has been identified to be solved similar.\nMethodology can be used. To ideate Solutions. Again, it starts with a Divergence phase. Where research is conducted on available tools. And in parallel, Exploratory, data analysis is conducted.\nNext, a convergence of those ideas. Is done to refine the solution. And design. The implementation. From a technical perspective.\nProject on a page. Another useful technique. For engaging. With data analysis projects. Early in the life cycle, with business stakeholders is to use Frameworks such as a project on a page. This is a brief summarisation. Of the problem being solved. Some key Milestones for development. And identification of risks dependencies and other notes.\nAn identification for who is leading and sponsoring the project. As well as some financial analysis. If the project requires financial return on investment, As it does in many organisations. These tools while not data science Frameworks are important considerations. And are only lightly explored in this book. These will form a strong basis.\nFor further development, work in the right areas. Which will hopefully lead to strong business acceptance. And eventual production deployment.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Experimentation</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
@@ -164,7 +164,7 @@
     "href": "chapters/04-what_is_production.html",
     "title": "4  What is Production",
     "section": "",
-    "text": "4.1 Definition",
+    "text": "4.1 Definition\nProduction is a conceptual place where your work is being used by the intended users to make real-world decisions.\nNote how not all of the above involve a technology implementation like an API.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
     ]
@@ -174,7 +174,7 @@
     "href": "chapters/04-what_is_production.html#definition",
     "title": "4  What is Production",
     "section": "",
-    "text": "Hadley talks\n\nPut R in prod",
+    "text": "Predictive Model integrating with front line business system via API\n\nDashboard available to support user’s making decisions\n\nA monthly report that informs management meetings\n\nAn insight from a statistical model that has changed policy\n\n\n\n\n\n\n\n\nExample\n\n\n\nJenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work checklists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.\nThis change is hardcoded in a paper form, but is still a data-science driven model in production.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "chapters/04-what_is_production.html#principles",
     "title": "4  What is Production",
     "section": "4.2 Principles",
-    "text": "4.2 Principles",
+    "text": "4.2 Principles\nFor a data science project to be successully relied upon in production it should follow some key characteristics.\n\nAvailable to end users directly\n\nRunning on stable infrastructure\n\nUsed to make real-world decisions\n\nCan be replicated\n\nCan be reproduced safely\nIs documented sufficiently\n\nCan be maintained by others\n\nIn the NYR10 Conference Hadley Wickham summarises his views as:\n\nNot just once\nNot just my computer\n\nNot just me",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
     ]
@@ -194,7 +194,7 @@
     "href": "chapters/04-what_is_production.html#patterns-for-r-code",
     "title": "4  What is Production",
     "section": "4.3 Patterns for R Code",
-    "text": "4.3 Patterns for R Code\n\n4.3.1 Run Script\n\n\n4.3.2 Run Shiny App\n\n\n4.3.3 Run API\n\n\n4.3.4 Run dashboard",
+    "text": "4.3 Patterns for R Code\nIn terms of R specific outputs, what does a data science output look like from an R perspective.\n\nAn R script that is run on a server on a schedule\n\nA {shiny} app hosted using on a server\n\nA {plumber} API service serving model predictions\n\nA hosted {quarto} dashboard\n\nAn {rmarkdown} report\n\nAn R package on CRAN or Github\n\nRegardless of the solution, the fundamental concept is to get it off the developers laptop and have it be reliably available to an end user.\n\n\n\n\n\nflowchart LR \nA[Developer PC]--&gt;B[Remote Server]--&gt;C[User]\n\n\n\n\n\n\nWe will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
     ]
@@ -204,7 +204,7 @@
     "href": "chapters/05-elements_of_prod_code.html",
     "title": "5  Elements of Production Deployed R Code",
     "section": "",
-    "text": "5.1 Orchestration\nHow you structure your code",
+    "text": "5.1 Orchestration\nOrchestration, refers to how your code is structured and run. We explored various ways of structuring our code for data science. Workflows. In chapter two, There are two key facets to code orchestration. The first is separating the functional components. Of your project. And the orchestration of those functional components. As R is a functional programming language.\nThe canonical way to structure, our code is to use well-defined functions. These functions are best orchestrated as an R package. In our package. The standardised way of organising collections of R functions. As it provides a convenient means for building testing and documenting code and sharing with others. Once the functional elements of your project, Uh, stored and documented and tested appropriately.\nThey need to be run in the correct order. This can be achieved using a number of Frameworks in this guide. We’ll be exploring the targets framework. This provides a make-like pipeline for running R code. And automatically handles aspects such as identifying dependencies in our code. An intermediate casing of results.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -214,7 +214,7 @@
     "href": "chapters/05-elements_of_prod_code.html#automation",
     "title": "5  Elements of Production Deployed R Code",
     "section": "5.2 Automation",
-    "text": "5.2 Automation\nHow your code is pushed/pulled",
+    "text": "5.2 Automation\nAutomation. Automation refers to how your project is pushed and pulled from your local development environment. Into a remote environment where users can access the results. Again, many options exist. Automation and there are varying levels of automation. Manual approaches such as click button deployment. From your IDE. Or manually copying files across to a remote server or one option.\nMore contemporary approaches. Involve. Continuous integration and continuous deployment practises. This is a devops style workflow. That will automatically build test. And deploy code. That has been pushed to a remote version control repository. A thorough exploration of CI, CD Solutions is beyond the scope of this book. And is now a clearly defined subspecialty known as ml Ops.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -224,7 +224,7 @@
     "href": "chapters/05-elements_of_prod_code.html#reproducibility",
     "title": "5  Elements of Production Deployed R Code",
     "section": "5.3 Reproducibility",
-    "text": "5.3 Reproducibility\n\n5.3.1 Code dependencies\n\n\n5.3.2 Packages dependencies\n\n\n5.3.3 System dependencies\n\n\n5.3.4 OS dependencies\n\n\n5.3.5 Hardware dependencies",
+    "text": "5.3 Reproducibility\n\n5.3.1 Code dependencies\nWe talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.\nIs that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.\n\n\n5.3.2 Packages dependencies\nA key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?\n\n\n5.3.3 System dependencies\nSystem dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.\nAnother solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they’re using, for example, Windows versus Linux versus Mac OS.\n\n\n5.3.4 OS dependencies\nIt is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies.\n\n\n5.3.5 Hardware dependencies\nHardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -234,7 +234,7 @@
     "href": "chapters/05-elements_of_prod_code.html#version-control",
     "title": "5  Elements of Production Deployed R Code",
     "section": "5.4 Version Control",
-    "text": "5.4 Version Control\nWhich is the current code?",
+    "text": "5.4 Version Control\nVersion Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.\nGit is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -244,7 +244,7 @@
     "href": "chapters/05-elements_of_prod_code.html#metadata-and-documentation",
     "title": "5  Elements of Production Deployed R Code",
     "section": "5.5 Metadata and Documentation",
-    "text": "5.5 Metadata and Documentation\n\n5.5.1 Roxygen\n\n\n5.5.2 R Package",
+    "text": "5.5 Metadata and Documentation\nMetadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We’ll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.\nBased on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.\nAlso how to contribute and get help? Low form documentation.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -254,7 +254,7 @@
     "href": "chapters/05-elements_of_prod_code.html#testing",
     "title": "5  Elements of Production Deployed R Code",
     "section": "5.6 Testing",
-    "text": "5.6 Testing\n\n5.6.1 Testthat",
+    "text": "5.6 Testing\nTesting. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.\nUsing the L Studio IDE. Testing can also be performed on a directory. Using this function.\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
@@ -265,6 +265,16 @@
     "title": "6  Practical Considerations",
     "section": "",
     "text": "6.1 Working with IT teams",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-practical_considerations.html#working-with-it-teams",
+    "href": "chapters/06-practical_considerations.html#working-with-it-teams",
+    "title": "6  Practical Considerations",
+    "section": "",
+    "text": "Install\nAdmin\nMaintainence\nDebugging",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
@@ -290,11 +300,41 @@
     ]
   },
   {
+    "objectID": "chapters/06-practical_considerations.html#authentication",
+    "href": "chapters/06-practical_considerations.html#authentication",
+    "title": "6  Practical Considerations",
+    "section": "6.4 Authentication",
+    "text": "6.4 Authentication",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/06-practical_considerations.html#changes",
+    "href": "chapters/06-practical_considerations.html#changes",
+    "title": "6  Practical Considerations",
+    "section": "6.5 Changes",
+    "text": "6.5 Changes\n\nModel drift\n\nNew features",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/resources.html",
+    "href": "chapters/resources.html",
+    "title": "8  Resources",
+    "section": "",
+    "text": "Link to github",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Resources</span>"
+    ]
+  },
+  {
     "objectID": "chapters/references.html",
     "href": "chapters/references.html",
     "title": "References",
     "section": "",
-    "text": "Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "text": "Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023.\n“Machine Learning Operations (MLOps): Overview, Definition, and\nArchitecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
     "crumbs": [
       "References"
     ]

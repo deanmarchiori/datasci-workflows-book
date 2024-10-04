@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -126,8 +146,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-experimentation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span></a>
+  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -193,15 +213,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#hardware-dependencies" id="toc-hardware-dependencies" class="nav-link" data-scroll-target="#hardware-dependencies"><span class="header-section-number">5.3.5</span> Hardware dependencies</a></li>
   </ul></li>
   <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">5.4</span> Version Control</a></li>
-  <li><a href="#metadata-and-documentation" id="toc-metadata-and-documentation" class="nav-link" data-scroll-target="#metadata-and-documentation"><span class="header-section-number">5.5</span> Metadata and Documentation</a>
-  <ul class="collapse">
-  <li><a href="#roxygen" id="toc-roxygen" class="nav-link" data-scroll-target="#roxygen"><span class="header-section-number">5.5.1</span> Roxygen</a></li>
-  <li><a href="#r-package" id="toc-r-package" class="nav-link" data-scroll-target="#r-package"><span class="header-section-number">5.5.2</span> R Package</a></li>
-  </ul></li>
-  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing"><span class="header-section-number">5.6</span> Testing</a>
-  <ul class="collapse">
-  <li><a href="#testthat" id="toc-testthat" class="nav-link" data-scroll-target="#testthat"><span class="header-section-number">5.6.1</span> Testthat</a></li>
-  </ul></li>
+  <li><a href="#metadata-and-documentation" id="toc-metadata-and-documentation" class="nav-link" data-scroll-target="#metadata-and-documentation"><span class="header-section-number">5.5</span> Metadata and Documentation</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing"><span class="header-section-number">5.6</span> Testing</a></li>
   </ul>
 </nav>
     </div>
@@ -227,21 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<ul>
-<li>Workflow Orchestration<br>
-</li>
-<li>CI/CD Automation<br>
-</li>
-<li>Reproducibility<br>
-</li>
-<li>Versioning of data, model, code<br>
-</li>
-<li>ML metadata tracking<br>
-</li>
-<li>Monitoring &amp; Feedback</li>
-</ul>
-<p>https://ieeexplore.ieee.org/document/10081336</p>
-<p>Adaptation</p>
+<p>R has a tricky historical reputation as a programming language. With its origins in academia and commonly used in research or analysis settings it was often argued that it was not fit for production deployment. The recent development of tools to support the ‘non-experimental’ aspects of R coding have changed this. Below we will explore some key technical elements that should be included into any stable deployment of a data science worklow adapted from <span class="citation" data-cites="mlops">Kreuzberger, Kühl, and Hirschl (<a href="references.html#ref-mlops" role="doc-biblioref">2023</a>)</span>.</p>
 <ul>
 <li>Orchestration<br>
 </li>
@@ -253,54 +252,66 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Metadata and Documentation<br>
 </li>
-<li>Testing</li>
+<li>Testing &amp; Monitoring</li>
 </ul>
 <section id="orchestration" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="orchestration"><span class="header-section-number">5.1</span> Orchestration</h2>
-<p>How you structure your code</p>
+<p>Orchestration, refers to how your code is structured and run. We explored various ways of structuring our code for data science. Workflows. In chapter two, There are two key facets to code orchestration. The first is separating the functional components. Of your project. And the orchestration of those functional components. As R is a functional programming language.</p>
+<p>The canonical way to structure, our code is to use well-defined functions. These functions are best orchestrated as an R package. In our package. The standardised way of organising collections of R functions. As it provides a convenient means for building testing and documenting code and sharing with others. Once the functional elements of your project, Uh, stored and documented and tested appropriately.</p>
+<p>They need to be run in the correct order. This can be achieved using a number of Frameworks in this guide. We’ll be exploring the targets framework. This provides a make-like pipeline for running R code. And automatically handles aspects such as identifying dependencies in our code. An intermediate casing of results.</p>
 </section>
 <section id="automation" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="automation"><span class="header-section-number">5.2</span> Automation</h2>
-<p>How your code is pushed/pulled</p>
+<p>Automation. Automation refers to how your project is pushed and pulled from your local development environment. Into a remote environment where users can access the results. Again, many options exist. Automation and there are varying levels of automation. Manual approaches such as click button deployment. From your IDE. Or manually copying files across to a remote server or one option.</p>
+<p>More contemporary approaches. Involve. Continuous integration and continuous deployment practises. This is a devops style workflow. That will automatically build test. And deploy code. That has been pushed to a remote version control repository. A thorough exploration of CI, CD Solutions is beyond the scope of this book. And is now a clearly defined subspecialty known as ml Ops.</p>
 </section>
 <section id="reproducibility" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="reproducibility"><span class="header-section-number">5.3</span> Reproducibility</h2>
 <section id="code-dependencies" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="code-dependencies"><span class="header-section-number">5.3.1</span> Code dependencies</h3>
+<p>We talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.</p>
+<p>Is that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.</p>
 </section>
 <section id="packages-dependencies" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="packages-dependencies"><span class="header-section-number">5.3.2</span> Packages dependencies</h3>
+<p>A key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?</p>
 </section>
 <section id="system-dependencies" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="system-dependencies"><span class="header-section-number">5.3.3</span> System dependencies</h3>
+<p>System dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.</p>
+<p>Another solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they’re using, for example, Windows versus Linux versus Mac OS.</p>
 </section>
 <section id="os-dependencies" class="level3" data-number="5.3.4">
 <h3 data-number="5.3.4" class="anchored" data-anchor-id="os-dependencies"><span class="header-section-number">5.3.4</span> OS dependencies</h3>
+<p>It is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies.</p>
 </section>
 <section id="hardware-dependencies" class="level3" data-number="5.3.5">
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="hardware-dependencies"><span class="header-section-number">5.3.5</span> Hardware dependencies</h3>
+<p>Hardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.</p>
 </section>
 </section>
 <section id="version-control" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="version-control"><span class="header-section-number">5.4</span> Version Control</h2>
-<p>Which is the current code?</p>
+<p>Version Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.</p>
+<p>Git is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.</p>
 </section>
 <section id="metadata-and-documentation" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="metadata-and-documentation"><span class="header-section-number">5.5</span> Metadata and Documentation</h2>
-<section id="roxygen" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="roxygen"><span class="header-section-number">5.5.1</span> Roxygen</h3>
-</section>
-<section id="r-package" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="r-package"><span class="header-section-number">5.5.2</span> R Package</h3>
-</section>
+<p>Metadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We’ll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.</p>
+<p>Based on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.</p>
+<p>Also how to contribute and get help? Low form documentation.</p>
 </section>
 <section id="testing" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="testing"><span class="header-section-number">5.6</span> Testing</h2>
-<section id="testthat" class="level3" data-number="5.6.1">
-<h3 data-number="5.6.1" class="anchored" data-anchor-id="testthat"><span class="header-section-number">5.6.1</span> Testthat</h3>
+<p>Testing. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.</p>
+<p>Using the L Studio IDE. Testing can also be performed on a directory. Using this function.</p>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-mlops" class="csl-entry" role="listitem">
+Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

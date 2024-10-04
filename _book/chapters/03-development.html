@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 3&nbsp; Experimentation</title>
+<title>Data Science Worklows in R - 3&nbsp; Development</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-experimentation.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-development.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,8 +126,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-experimentation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></span></a>
+  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,12 +183,14 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">3.1</span> Definition</a></li>
-  <li><a href="#roles" id="toc-roles" class="nav-link" data-scroll-target="#roles"><span class="header-section-number">3.2</span> Roles</a></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">3.3</span> Tools</a>
+  <li><a href="#roles" id="toc-roles" class="nav-link" data-scroll-target="#roles"><span class="header-section-number">3.2</span> Roles</a>
   <ul class="collapse">
-  <li><a href="#solution-development" id="toc-solution-development" class="nav-link" data-scroll-target="#solution-development"><span class="header-section-number">3.3.1</span> Solution Development</a></li>
-  <li><a href="#project-on-a-page" id="toc-project-on-a-page" class="nav-link" data-scroll-target="#project-on-a-page"><span class="header-section-number">3.3.2</span> Project on a page</a></li>
+  <li><a href="#customer" id="toc-customer" class="nav-link" data-scroll-target="#customer"><span class="header-section-number">3.2.1</span> Customer</a></li>
+  <li><a href="#data-engineer" id="toc-data-engineer" class="nav-link" data-scroll-target="#data-engineer"><span class="header-section-number">3.2.2</span> Data Engineer</a></li>
+  <li><a href="#data-analyst" id="toc-data-analyst" class="nav-link" data-scroll-target="#data-analyst"><span class="header-section-number">3.2.3</span> Data Analyst</a></li>
+  <li><a href="#data-scientist" id="toc-data-scientist" class="nav-link" data-scroll-target="#data-scientist"><span class="header-section-number">3.2.4</span> Data Scientist</a></li>
   </ul></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">3.3</span> Tools</a></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimentation</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></h1>
 </div>
 
 
@@ -214,22 +216,54 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>When data science projects start, often the outcome is unknown. The work is inherently exploratory and experimental. In many cases. This results in a more, informal way of working. And, Frameworks and workflow choices to support this work. Also need to be designed differently. Definition.</p>
 <section id="definition" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">3.1</span> Definition</h2>
+<p>A development. Is a way of working, but it is also a technical term for A hardware and software environment in many Enterprise. Data science. Organisations. Development is usually. Logical or physical separation of tools, hardware and software. That allow analysts to perform work, that is not to be relied upon.</p>
+<p>In live decision, making Or critical infrastructure. This type of environment is prone to running. Experimental workloads tests. And day-to-day development of projects and ideas by a data science team.</p>
+<p>A key defining feature of development code is the colocation of ‘what’ the code does and ‘how’ the code is run. That is, the functional elements of the code and the orchestration of those elements are not separated.</p>
 </section>
 <section id="roles" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="roles"><span class="header-section-number">3.2</span> Roles</h2>
+<p>It can assess the various roles that take place in the development workflow. Cross-Sectionly. But looking at the full life cycle, From raw data through to a production deployed system.</p>
+<p>In many organisations. Not all roles will be present. In some organisations, there may even be more specialised roles. For example. And ml Ops engineer May handle the deployment of machine learning workloads. While a data engineer May focus entirely on data operations, In addition a data scientist may or may not be present.</p>
+<p>Analytical work may be done. But more generally, skilled analysts. Or even. Certain types of end users. Who were very close to the Business applications. And also have skills in data analysis.</p>
+<section id="customer" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="customer"><span class="header-section-number">3.2.1</span> Customer</h3>
+<p>Initially. A customer is a key role. Customer should be involved throughout the entire process. But in particular is active in projects at the raw data and production stage.</p>
+<p>To contextualize and understand. And provide understanding of the raw data. And as the end user of production systems,</p>
+</section>
+<section id="data-engineer" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="data-engineer"><span class="header-section-number">3.2.2</span> Data Engineer</h3>
+<p>In many organisations in enrichment process from raw data into some kind of data warehouse, environment is conducted by data Engineers. A data engineer may also be responsible. For provisioning infrastructure and assisting with production deployments.</p>
+</section>
+<section id="data-analyst" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="data-analyst"><span class="header-section-number">3.2.3</span> Data Analyst</h3>
+<p>Once data is landed in a place where It is outside of front-end systems analysts can typically typically use this data to perform analysis. Business intelligence report generation. And dashboard building.</p>
+</section>
+<section id="data-scientist" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="data-scientist"><span class="header-section-number">3.2.4</span> Data Scientist</h3>
+<p>The role of the data scientist can take many shapes. Typically it is viewed as being of most value in the stage after basic data analysis.</p>
+<p>When more advanced modelling statistical analysis, And AI ml applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. And this aligns with, Earlier data analysis Frameworks mentioned such as crisp, DM. Where an iterative and collaborative approach is required from across all stages of the process.</p>
+<p>[image]</p>
+</section>
 </section>
 <section id="tools" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="tools"><span class="header-section-number">3.3</span> Tools</h2>
-<section id="solution-development" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="solution-development"><span class="header-section-number">3.3.1</span> Solution Development</h3>
-</section>
-<section id="project-on-a-page" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="project-on-a-page"><span class="header-section-number">3.3.2</span> Project on a page</h3>
+<p>The tools used in a development context. Often a subset of tools used in a wider production context. These include. Commonly thought of items such as And interactive development environment for data science such as rstudio or vs code.</p>
+<p>Programming languages such as R or python. Version Control software. Such as git.</p>
+<p>However, however, there are other tools. Or methodologies that can be used outside of the data, domain that are useful at this stage. These tools, facilitate the development of ideas and use cases from stakeholders. And are often of great benefit to more technically minded analysts. To ensure that the right problem is being solved.</p>
+<p>One example of this is the Double Diamond approach.</p>
+<p>The Double Diamond approach is a design thinking methodology. That focuses on two key aspects first. Doing the right things. And secondly, doing the things, right? Both phases have. Two stages, the Divergence and convergence stages. In the first phase. The objective is to correctly, identify the right problem to be solved.</p>
+<p>The Divergent stage. Can use a number of tools and facilitation techniques.</p>
+<p>Elicit all critical business problems. And understand. Key pain points. From end users. The convergence phase is a prioritisation of these problems. To identify. The most ideal problem to be solved. This can sometimes be filtered through the lens of tools, such as desirability feasibility and viability. Once an appropriate problem has been identified to be solved similar.</p>
+<p>Methodology can be used. To ideate Solutions. Again, it starts with a Divergence phase. Where research is conducted on available tools. And in parallel, Exploratory, data analysis is conducted.</p>
+<p>Next, a convergence of those ideas. Is done to refine the solution. And design. The implementation. From a technical perspective.</p>
+<p>Project on a page. Another useful technique. For engaging. With data analysis projects. Early in the life cycle, with business stakeholders is to use Frameworks such as a project on a page. This is a brief summarisation. Of the problem being solved. Some key Milestones for development. And identification of risks dependencies and other notes.</p>
+<p>An identification for who is leading and sponsoring the project. As well as some financial analysis. If the project requires financial return on investment, As it does in many organisations. These tools while not data science Frameworks are important considerations. And are only lightly explored in this book. These will form a strong basis.</p>
+<p>For further development, work in the right areas. Which will hopefully lead to strong business acceptance. And eventual production deployment.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

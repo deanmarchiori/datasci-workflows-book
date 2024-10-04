@@ -2,17 +2,71 @@
 
 ## Definition    
 
-- Hadley talks  
-- Put R in prod  
+Production is a conceptual place where your work is being used by the intended
+users to make real-world decisions.  
 
-## Principles  
+- Predictive Model integrating with front line business system via API  
+- Dashboard available to support user's making decisions  
+- A monthly report that informs management meetings  
+- An insight from a statistical model that has changed policy  
+
+Note how not all of the above involve a technology implementation like an API. 
+
+::: {.callout-tip}
+## Example  
+
+Jenny trained a statistical model to help predict safety related incidents at 
+worksites for her employer. One of the key factors that influenced and increase
+in safety incidents was significant rainfall in the previous 24 hours. The safety
+team has now adjusted their Safe Work checklists to include a check item for 
+the amount of recent rainfall at that site. If its >50mm then a mandatory inspection is performed. 
+
+This change is hardcoded in a paper form, but is still a data-science driven model 
+in production. 
+:::
+
+
+## Principles    
+
+For a data science project to be successully relied upon in production it should
+follow some key characteristics.  
+
+- Available to end users directly  
+- Running on stable infrastructure  
+- Used to make real-world decisions  
+- Can be replicated  
+- Can be reproduced safely 
+- Is documented sufficiently  
+- Can be maintained by others  
+
+In the NYR10 Conference Hadley Wickham summarises his views as: 
+
+- Not just once
+- Not just my computer  
+- Not just me  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BQk2-3inViM?si=kb1e7D7kwrdJCBnq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+
 
 ## Patterns for R Code  
 
-### Run Script  
+In terms of R specific outputs, what does a data science output look like from an R perspective. 
 
-### Run Shiny App  
+- An R script that is run on a server on a schedule  
+- A `{shiny}` app hosted using on a server  
+- A `{plumber}` API service serving model predictions  
+- A hosted `{quarto}` dashboard  
+- An `{rmarkdown}` report  
+- An R package on CRAN or Github
 
-### Run API   
+Regardless of the solution, the fundamental concept is to get it off the developers
+laptop and have it be reliably available to an end user. 
 
-### Run dashboard  
+```{mermaid}
+flowchart LR 
+A[Developer PC]-->B[Remote Server]-->C[User]
+```
+
+We will build this image up further in the next chapter when we examine more closely
+the elements of production deployed R code.  
+

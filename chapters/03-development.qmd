@@ -1,0 +1,68 @@
+# Development    
+
+When data science projects start, often the outcome is unknown. The work is inherently exploratory and experimental. In many cases. This results in a more, informal way of working. And, Frameworks and workflow choices to support this work. Also need to be designed differently. Definition.
+
+
+## Definition  
+
+A development. Is a way of working, but it is also a technical term for A hardware and software environment in many Enterprise. Data science. Organisations. Development is usually. Logical or physical separation of tools, hardware and software. That allow analysts to perform work, that is not to be relied upon.
+
+In live decision, making Or critical infrastructure. This type of environment is prone to running. Experimental workloads tests. And day-to-day development of projects and ideas by a data science team.  
+
+A key defining feature of development code is the colocation of 'what' the code
+does and 'how' the code is run. That is, the functional elements of the code and
+the orchestration of those elements are not separated. 
+
+## Roles    
+
+It can assess the various roles that take place in the development workflow. Cross-Sectionly. But looking at the full life cycle, From raw data through to a production deployed system.  
+
+In many organisations. Not all roles will be present. In some organisations, there may even be more specialised roles. For example. And ml Ops engineer May handle the deployment of machine learning workloads. While a data engineer May focus entirely on data operations, In addition a data scientist may or may not be present.
+
+Analytical work may be done. But more generally, skilled analysts. Or even. Certain types of end users. Who were very close to the Business applications. And also have skills in data analysis.
+
+
+### Customer  
+Initially. A customer is a key role. Customer should be involved throughout the entire process. But in particular is active in projects at the raw data and production stage.
+
+To contextualize and understand. And provide understanding of the raw data. And as the end user of production systems,
+
+### Data Engineer  
+In many organisations in enrichment process from raw data into some kind of data warehouse, environment is conducted by data Engineers. A data engineer may also be responsible. For provisioning infrastructure and assisting with production deployments.
+
+### Data Analyst  
+Once data is landed in a place where It is outside of front-end systems analysts can typically typically use this data to perform analysis. Business intelligence report generation. And dashboard building. 
+
+### Data Scientist  
+
+The role of the data scientist can take many shapes. Typically it is viewed as being of most value in the stage after basic data analysis.
+
+When more advanced modelling statistical analysis, And AI ml applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. And this aligns with, Earlier data analysis Frameworks mentioned such as crisp, DM. Where an iterative and collaborative approach is required from across all stages of the process.
+
+[image]
+
+## Tools  
+
+ The tools used in a development context. Often a subset of tools used in a wider production context. These include. Commonly thought of items such as And interactive development environment for data science such as rstudio or vs code.
+
+Programming languages such as R or python. Version Control software. Such as git.
+
+However, however, there are other tools. Or methodologies that can be used outside of the data, domain that are useful at this stage. These tools, facilitate the development of ideas and use cases from stakeholders. And are often of great benefit to more technically minded analysts. To ensure that the right problem is being solved.
+
+One example of this is the Double Diamond approach.
+
+The Double Diamond approach is a design thinking methodology. That focuses on two key aspects first. Doing the right things. And secondly, doing the things, right? Both phases have. Two stages, the Divergence and convergence stages. In the first phase. The objective is to correctly, identify the right problem to be solved.
+
+The Divergent stage. Can use a number of tools and facilitation techniques.
+
+Elicit all critical business problems. And understand. Key pain points. From end users. The convergence phase is a prioritisation of these problems. To identify. The most ideal problem to be solved. This can sometimes be filtered through the lens of tools, such as desirability feasibility and viability. Once an appropriate problem has been identified to be solved similar.
+
+Methodology can be used. To ideate Solutions. Again, it starts with a Divergence phase. Where research is conducted on available tools. And in parallel, Exploratory, data analysis is conducted.
+
+Next, a convergence of those ideas. Is done to refine the solution. And design. The implementation. From a technical perspective.
+
+Project on a page. Another useful technique. For engaging. With data analysis projects. Early in the life cycle, with business stakeholders is to use Frameworks such as a project on a page. This is a brief summarisation. Of the problem being solved. Some key Milestones for development. And identification of risks dependencies and other notes.
+
+An identification for who is leading and sponsoring the project. As well as some financial analysis. If the project requires financial return on investment, As it does in many organisations. These tools while not data science Frameworks are important considerations. And are only lightly explored in this book. These will form a strong basis.
+
+For further development, work in the right areas. Which will hopefully lead to strong business acceptance. And eventual production deployment.
