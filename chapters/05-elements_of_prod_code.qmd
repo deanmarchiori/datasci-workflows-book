@@ -1,10 +1,9 @@
 # Elements of Production Deployed R Code  
 
 R has a tricky historical reputation as a programming language. With its origins
-in academia and commonly used in research or analysis settings it was often argued that it was not fit for 
-production deployment.  The recent development of tools to support the 'non-experimental'
-aspects of R coding have changed this. Below we will explore some key technical
-elements that should be included into any stable deployment of a data science
+in academia it is often argued that it is not fit for production deployment.  
+The recent development of tools to support the deployment of R workloads are changing this. 
+Below we will explore some key technical elements that should be included into any stable deployment of a data science
 worklow adapted from @mlops. 
 
 - Orchestration  
@@ -16,18 +15,54 @@ worklow adapted from @mlops.
 
 ## Orchestration    
 
-Orchestration, refers to how your code is structured and run. We explored various ways of structuring our code for data science. Workflows. In chapter two, There are two key facets to code orchestration. The first is separating the functional components. Of your project. And the orchestration of those functional components. As R is a functional programming language.
+Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in chapter two. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.  
 
-The canonical way to structure, our code is to use well-defined functions. These functions are best orchestrated as an R package. In our package. The standardised way of organising collections of R functions. As it provides a convenient means for building testing and documenting code and sharing with others. Once the functional elements of your project, Uh, stored and documented and tested appropriately.
+As R is a functional programming language the canonical way to structure our code is to use functions. In a practical
+sense, functions are a convenient way to package, document, test and control the execution of code in a project. 
 
-They need to be run in the correct order. This can be achieved using a number of Frameworks in this guide. We'll be exploring the targets framework. This provides a make-like pipeline for running R code. And automatically handles aspects such as identifying dependencies in our code. An intermediate casing of results.
+Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks (see X) such as using notebooks, an R Package, targets 
+and more. 
 
 ## Automation   
 
-Automation. Automation refers to how your project is pushed and pulled from your local development environment. Into a remote environment where users can access the results. Again, many options exist. Automation and there are varying levels of automation. Manual approaches such as click button deployment. From your IDE. Or manually copying files across to a remote server or one option.
+Automation refers to how your project is 'built'. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation. Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option. 
 
-More contemporary approaches. Involve. Continuous integration and continuous deployment practises. This is a devops style workflow. That will automatically build test. And deploy code. That has been pushed to a remote version control repository. A thorough exploration of CI, CD Solutions is beyond the scope of this book. And is now a clearly defined subspecialty known as ml Ops.
+```{mermaid}
+graph LR
+a1[Local Compute]-->a2[Server]<-->a3[User]
+```
 
+A better approach would be to stage your code using a remote version control repository. This
+will act as a store or source code which can be more conveniently 'pulled' or synchronised with
+the server where your analysis is hosted for users. Often, accompanying model artefacts or data will
+also to stored somewhere remotely for the server to access.  
+
+```{mermaid}
+graph LR
+a1[Local Compute]-->a2[Code Repo]
+a1[Local Compute]-->a3[(Data Store)]
+a2[Code Repo]-->a4[Server]
+a3[(Data Store)]-->a4[Server]
+a4[Server]<-->a5[User]
+```
+
+
+More contemporary approaches involve Continuous Integration and Continuous Deployment (CI/CD) practices. This is a DevOps style workflow that will automatically build, test and deploy code that has been pushed to a remote version control repository. A thorough exploration of CI/CD Solutions is beyond the scope of this book and is now a clearly defined sub specialty known as MLOps.  
+
+```{mermaid}
+graph LR
+a1[Local Compute]-->a2[Code Repo]
+ subgraph id1 [DevOps Pipeline]
+  a2[[Code Repo]]-->b1[[Build]]
+  b1[[Build]]-->b2[[Test]]
+  b2[[Test]]-->b3[[Deploy to Container Registry]]
+  end
+a1[Local Compute]-->a3[(Data Store)]
+b3[[Deploy to Container Registry]]-->a4[Server/Serverless App]
+a3[(Data Store)]-->a4[Server]
+a4[Server]<-->a5[User]
+style id1 fill:lightblue;
+```
 
 ## Reproducibility   
 

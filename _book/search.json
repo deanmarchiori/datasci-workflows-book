@@ -74,7 +74,7 @@
     "href": "chapters/01-setup.html#software",
     "title": "1  Setup",
     "section": "",
-    "text": "1.1.1 Install R\nTo install R head to https://cran.rstudio.com/.\n\n\n1.1.2 Install RStudio\nNext, install RStudio Desktop IDE at https://posit.co/download/rstudio-desktop/\n\n\n1.1.3 Posit Cloud\nTBC",
+    "text": "1.1.1 Install R\nTo install R head to https://cran.rstudio.com/.\n\n\n1.1.2 Install RStudio\nNext, install RStudio Desktop IDE at https://posit.co/download/rstudio-desktop/\n\n\n1.1.3 Packages\nTo install the required packages, run:\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"mgcv\")\ninstall.packages(\"pins\")\ninstall.packages(\"vetiver\")\ninstall.packages(\"plumber\")\ninstall.packages(\"here\")\n\nYou should be able to now run the following commands:\n\nlibrary(tidyverse)\nlibrary(mgcv)\nlibrary(pins)\nlibrary(vetiver)\nlibrary(plumber)\nlibrary(here)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "chapters/01-setup.html#code",
     "title": "1  Setup",
     "section": "1.2 Code",
-    "text": "1.2 Code\n\n1.2.1 Download from Github\nMaterials can be downloaded by using the following command from the usethis package:\n\nusethis::use_course(\"tbc/tbc\")",
+    "text": "1.2 Code\n\n1.2.1 Download from Github\nMaterials for the case study can be cloned by using the following command from the usethis package:\nAlternatively visit: https://github.com/deanmarchiori/beachwatch\n\nusethis::create_from_github(\"deanmarchiori/beachwatch\", fork = FALSE)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
     ]
@@ -92,281 +92,291 @@
   {
     "objectID": "chapters/02-data_analysis_workflows.html",
     "href": "chapters/02-data_analysis_workflows.html",
-    "title": "2  Data Analysis Workflows",
+    "title": "2  Data Science Frameworks",
     "section": "",
-    "text": "2.1 Analysis Frameworks",
+    "text": "2.1 Popular Frameworks",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Analysis Workflows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Science Frameworks</span>"
     ]
   },
   {
-    "objectID": "chapters/02-data_analysis_workflows.html#analysis-frameworks",
-    "href": "chapters/02-data_analysis_workflows.html#analysis-frameworks",
-    "title": "2  Data Analysis Workflows",
+    "objectID": "chapters/02-data_analysis_workflows.html#popular-frameworks",
+    "href": "chapters/02-data_analysis_workflows.html#popular-frameworks",
+    "title": "2  Data Science Frameworks",
     "section": "",
     "text": "2.1.1 CRISP-DM\nCRISP-DM is a traditional framework for approaching data mining/data science/analytics projects. Developed in the 1990’s it has stood the test of time and remains to popular choice today for several reasons.\nFirstly, it has a strong focus on understanding the business problem and guiding the exploration of the data with subject matter experts.\nSecondly, the framework provides for strict evaluation of solutions with business experts before deployment effort.\nFinally, the ethos of iterative, continual improvement is built it, which aligns well with modern agile philiophies.\nThe key components of CRISP-DM are:\n\nBusiness Understanding\nData Understanding\nData Preparation\nModelling\nEvaluation\nDeployment\n\nA drawback of this framework is the way in which deployment is handled in modern use-cases. The need to manage the provide, hosting and monitoring of cloud or server resources has resulted in extensions to CRISP-DM.\n\n\n\nKenneth Jensen, CC BY-SA 3.0, via Wikimedia Commons\n\n\n\n\n2.1.2 Inner Loop vs Outer Loop\nIf we ignore the Deployment step in the CRISP-DM framework we have a nice workflow for completing ‘experimental’ development and modelling work.\nAt some point the analyst will want to deploy their work. A useful abstraction that separates the analytical work and the engineering tasks associated with deployment is through the inner loop vs outer loop concept.\nThe inner loop is the above mentioned CRISP-DM framework right up until deployment.\nThe outer loop involves the provision of computing infrastructure for model inference, model registration and versioning, deployment and endpoint provisioning, and finally monitoring and evaluation of the deployed model.\nWhile this framework is commonly applied to deploying predictice models, adaptations can be made in the case of a dashboard, web-app or dynamic report output.\n\nOuter Loop\n\nInfrastructure Deployment\n\nInner Loop\n\nBusiness Understanding\n\nData Understanding\n\nData Preparation\n\nModelling\n\nEvaluation\n\n\nModel Registration and Deployment\n\nMonitoring",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Analysis Workflows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Science Frameworks</span>"
     ]
   },
   {
-    "objectID": "chapters/02-data_analysis_workflows.html#r-code-workflows",
-    "href": "chapters/02-data_analysis_workflows.html#r-code-workflows",
-    "title": "2  Data Analysis Workflows",
-    "section": "2.2 R Code Workflows",
-    "text": "2.2 R Code Workflows\nWe have introduced two frameworks to think about the steps required for a successful data science project. However, these frameworks are just conceptual abstractions of course. Next we will explore commonly used R code workflows that are authored to orchestrate the end-to-end running of analysis or modelling projects - at least the inner loop components.\nOnce we have compared the most common approaches to translating these frameworks into code, we can evaluate how to improve strengthen our coding practices.\n\n2.2.1 R Scripts\nThe most basic workflow is to colocate all code into a single R script. This is a common starting place for beginners or when completing small basic tasks in R. An obvious limitation is the ability to separate out logical components for testing, debugging and control flow.\n\n\n\n\n\ngraph TB\n    a1[Load Dependencies, Data Prep, \\nTest/Train Split, Train Model\\nEvaluate Model, Diagnostics]\n    a7[(Data)]--&gt;a1;\n\n\n\n\n\n\n\n\n2.2.2 Monolithic Markdown\nA commonly adopted tool to promote more literate programming is RMarkdown or more recently quarto. These tools allow users to write plain english commentary in a markdown or visual editor and splice in ‘code-chunks’. Typically this notebook style of document is then sequentially rendered in-order and knitted into some for of output like HTML, PDF or Word etc.\nThis is a great way to make code more readble and self-contained while managing complexity. Obvious drawbacks exist around the execution order, control flow and caching. These can also get very long!\n\n\n\n\n\ngraph TB\n    subgraph id1 [Monolithic Notebook]\n    a1[Load Dependencies]  \n    a2[Data Prep]  \n    a3[Test/Train Split]  \n    a4[Train Model]  \n    a5[Evaluate Model]  \n    a6[Diagnostics]\n    end\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.3 Control Scripts\nAnalysts who prefer a more scripted workflow will often attemp to break down the complexity of their project into smaller chunks, often placing parts of the analysis into their own R script.\nThe next question is, how do we orchestrate the running of all these R scripts? This is usually solved with a ‘control’ or ‘run’ script, which source()’s the relevant scripts in the right order.\nThis is a step in the right direction, but requires lots of overhead in managing state and data flows between scripts, often by manually ‘caching’ results. The scripts are often not self-contained and this can quickly be a recipe for disaster for more complex projects.\n\n\n\n\n\ngraph TB\n  b1[[Control Script]]--&gt;a1[[Load Dependencies]]\n  b1[[Control Script]]--&gt;a2[[Data Prep]]\n  b1[[Control Script]]--&gt;a3[[Test/Train Split]]\n  b1[[Control Script]]--&gt;a4[[Train Model]]\n  b1[[Control Script]]--&gt;a5[[Evaluate Model]]\n  b1[[Control Script]]--&gt;a6[[Diagnostics]]\n  style b1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.4 {targets}\n{targets} is an R package that allows users to adopt a make-like pipeline philosophy for their R code. This has the advantage of more sophisticated handling of computationally-intensive workflows and provides a more opinionated structure to follow. With this are the drawbacks or forcing your collaborators to adopt the same framework and dealing with the initial learning curve.\n\n\n\n\n\ngraph LR\n    subgraph id1 [Targets Pipeline]\n    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]\n    end\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n\n\n\n\n\n\n\n\n2.2.5 R Package\nAn R Package is the canonical way to organise and ‘package’ R code for use and sharing. It provides easy means to share, install, document, test and run code.\nThis also follows a very opinionated structure, but unlike a third party library, it is expected knowledge for R users. This doesn’t mean its easy to do! R Package’s struggle to deal with the flexibility of ‘doing’ data analysis and are more focussed on a way to build the tools required for performing the analysis.\n\n\n\n\n\ngraph TB\n    subgraph id1 [R Package]\n    b1[Declare Dependencies]  \n    b2[Source Code]  \n    b3[Documentation]  \n    b4[Testing]\n    end\n    subgraph id2 [targets pipeline]\n    a1[Load Dependencies]--&gt;a2[Data Prep]--&gt;a3[Test/Train Split]--&gt;a4[Train Model]--&gt;a5[Evaluate Model]--&gt;a6[Diagnostics]\n    end\n    id1--&gt;a1\n    a7[(Data)]--&gt;a2\n    style id1 fill:lightblue;\n    style id2 fill:lightgreen;",
+    "objectID": "chapters/02-data_analysis_workflows.html#development-vs-production",
+    "href": "chapters/02-data_analysis_workflows.html#development-vs-production",
+    "title": "2  Data Science Frameworks",
+    "section": "2.2 Development vs Production",
+    "text": "2.2 Development vs Production\nA key distinction introduced above is the separation of development practices from production practices. The typical project will primarily involve development practices outlined in the ‘Inner Loop’. When we refer to production work, it typically refers to work to support the deployment of development work in a context where it used to facilitate decision making. We will explore this concept further and analyse the key elements of ‘production’ code.\n\n\n\n\n\n\nNote\n\n\n\nThe use of the terms development and production here represent the intent of the workflow and not specifically a computing environment. In many organisations there are dedicated computing and infrastructure environemnts (often called ‘development’, ‘dev’, ‘test’, ‘sandbox’, ‘prod’, uat’ etc.) to support the physical separation of these workflow paradigms. This will be explored later.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Analysis Workflows</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Science Frameworks</span>"
     ]
   },
   {
-    "objectID": "chapters/02-data_analysis_workflows.html#choosing-the-right-workflow",
-    "href": "chapters/02-data_analysis_workflows.html#choosing-the-right-workflow",
-    "title": "2  Data Analysis Workflows",
-    "section": "2.3 Choosing the right workflow",
-    "text": "2.3 Choosing the right workflow\nSo which workflow should you use?\nUnfortunately this is not a straightforward decision. For quick experimental code you are unlikely to create a new R package. For a complex production deployed model, you really dont want all your code in one giant R script.\nPicking the correct workflow needs to align the project goals and scope. Often this choice can evolve throughout the project.\n\n2.3.1 An evolution\nA concept or idea might be tested in a single R script, like how you would use the back of a napkin for an idea. Next you might break this down into chunks and add some prose, heading and plots so you can share and have other understand it. Next you might refactor the messy code into functions to better control the flow and the improve development practices. These functions can be documented and unit tested once you know you want to rely on them. To orchestrate the running and dependency structure to avoid re-running slow and complex code you may use the {targets} package. Finally to re-use, share and improve on the functions you might spin these out into their own R package!\n\n\n2.3.2 Repro-retro\nI talked a little about how you might want to weight and prioritise the elements of reproducibility in an rtudio::global talk in 2019. Feel free to conduct your own reproducibility-retrospective (repro-retro).",
+    "objectID": "chapters/03-r_code_workflows.html",
+    "href": "chapters/03-r_code_workflows.html",
+    "title": "3  R Code Workflows",
+    "section": "",
+    "text": "3.0.1 R Scripts\nThe most basic workflow is to colocate all code into a single R script. This is a common starting place for beginners or when completing small, basic tasks in R. An obvious limitation is the inability to separate out logical components for readability, testing, debugging and control flow.\ngraph TB\n    a1[Load Dependencies, Data Prep, \\nTest/Train Split, Train Model\\nEvaluate Model, Diagnostics]\n    a7[(Data)]--&gt;a1;",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Analysis Workflows</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>R Code Workflows</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/03-r_code_workflows.html#choosing-the-right-workflow",
+    "href": "chapters/03-r_code_workflows.html#choosing-the-right-workflow",
+    "title": "3  R Code Workflows",
+    "section": "3.1 Choosing the right workflow",
+    "text": "3.1 Choosing the right workflow\nSo which workflow should you use?\nUnfortunately this is not a straightforward decision. For quick experimental code you are unlikely to create a new R package. For a complex production deployed model, you really dont want all your code in one giant R script.\nPicking the correct workflow needs to align the project goals and scope. Often this choice can evolve throughout the project.\n\n3.1.1 An evolution\nA concept or idea might be tested in a single R script, like how you would use the back of a napkin for an idea. Next you might break this down into chunks and add some prose, heading and plots so you can share and have other understand it. Next you might refactor the messy code into functions to better control the flow and the improve development practices. These functions can be documented and unit tested once you know you want to rely on them. To orchestrate the running and dependency structure to avoid re-running slow and complex code you may use the {targets} package. Finally to re-use, share and improve on the functions you might spin these out into their own R package!\n\n\n3.1.2 Repro-retro\nI talked a little about how you might want to weight and prioritise the elements of reproducibility in an rtudio::global talk in 2019. Feel free to conduct your own reproducibility-retrospective (repro-retro).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>R Code Workflows</span>"
     ]
   },
   {
     "objectID": "chapters/03-development.html",
     "href": "chapters/03-development.html",
-    "title": "3  Development",
+    "title": "4  Development",
     "section": "",
-    "text": "3.1 Definition\nA development. Is a way of working, but it is also a technical term for A hardware and software environment in many Enterprise. Data science. Organisations. Development is usually. Logical or physical separation of tools, hardware and software. That allow analysts to perform work, that is not to be relied upon.\nIn live decision, making Or critical infrastructure. This type of environment is prone to running. Experimental workloads tests. And day-to-day development of projects and ideas by a data science team.\nA key defining feature of development code is the colocation of ‘what’ the code does and ‘how’ the code is run. That is, the functional elements of the code and the orchestration of those elements are not separated.",
+    "text": "4.1 Definition\ndevelopment is a way of working, but it is also a technical term for a hardware and software environment. In many data science organisations, development is usually a logical (and physical) separation of tools, hardware and software that allow analysts to perform work that is not to be directly relied upon for real-world decision making. This type of environment is prone to running experimental workloads, tests and day-to-day development of projects and ideas by a data science team.\nA key defining feature of development code is the colocation of ‘what’ the code does and ‘how’ the code is run. That is, the functional elements of the code and the orchestration of those elements are not separated.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
     "objectID": "chapters/03-development.html#roles",
     "href": "chapters/03-development.html#roles",
-    "title": "3  Development",
-    "section": "3.2 Roles",
-    "text": "3.2 Roles\nIt can assess the various roles that take place in the development workflow. Cross-Sectionly. But looking at the full life cycle, From raw data through to a production deployed system.\nIn many organisations. Not all roles will be present. In some organisations, there may even be more specialised roles. For example. And ml Ops engineer May handle the deployment of machine learning workloads. While a data engineer May focus entirely on data operations, In addition a data scientist may or may not be present.\nAnalytical work may be done. But more generally, skilled analysts. Or even. Certain types of end users. Who were very close to the Business applications. And also have skills in data analysis.\n\n3.2.1 Customer\nInitially. A customer is a key role. Customer should be involved throughout the entire process. But in particular is active in projects at the raw data and production stage.\nTo contextualize and understand. And provide understanding of the raw data. And as the end user of production systems,\n\n\n3.2.2 Data Engineer\nIn many organisations in enrichment process from raw data into some kind of data warehouse, environment is conducted by data Engineers. A data engineer may also be responsible. For provisioning infrastructure and assisting with production deployments.\n\n\n3.2.3 Data Analyst\nOnce data is landed in a place where It is outside of front-end systems analysts can typically typically use this data to perform analysis. Business intelligence report generation. And dashboard building.\n\n\n3.2.4 Data Scientist\nThe role of the data scientist can take many shapes. Typically it is viewed as being of most value in the stage after basic data analysis.\nWhen more advanced modelling statistical analysis, And AI ml applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. And this aligns with, Earlier data analysis Frameworks mentioned such as crisp, DM. Where an iterative and collaborative approach is required from across all stages of the process.\n[image]",
+    "title": "4  Development",
+    "section": "4.2 Roles",
+    "text": "4.2 Roles\nWe can assess the various roles that take place in the development workflow cross sectionally, but looking at the full life cycle from raw data through to a production deployed system.\nIn most organisations, not all roles will be present. In some organisations, there may even be more specialized roles. For example an ML Ops engineer may handle the deployment of machine learning workloads, while a data engineer May focus entirely on data operations. In addition a data scientist may or may not be present entirely.\n\n4.2.1 Customer\nA customer (end-user) is a key role. Customers should be involved throughout the entire process but in particular are active in projects at the raw data and production stage to contextualize, understand and provide understanding of the raw data in addition to being the end user of production systems.\n\n\n4.2.2 Data Engineer\nIn many organisations an enrichment process from raw data into some kind of data warehouse environment is conducted by data engineers. A data engineer may also be responsible for provisioning infrastructure and assisting with production deployments.\n\n\n4.2.3 Data Analyst\nOnce data is landed in a place where it is outside of front-end systems, analysts can typically use this data to perform analysis, Business intelligence (BI), report generation and dashboard building.\n\n\n4.2.4 Data Scientist\nThe role of the data scientist can take many shapes. Typically, it is viewed as being of most value in the stage after basic data analysis when more advanced modelling statistical analysis and AI/ML applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. This aligns with earlier data analysis frameworks mentioned such as CRISM-DM where an iterative and collaborative approach is required from across all stages of the process.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
     "objectID": "chapters/03-development.html#tools",
     "href": "chapters/03-development.html#tools",
-    "title": "3  Development",
-    "section": "3.3 Tools",
-    "text": "3.3 Tools\nThe tools used in a development context. Often a subset of tools used in a wider production context. These include. Commonly thought of items such as And interactive development environment for data science such as rstudio or vs code.\nProgramming languages such as R or python. Version Control software. Such as git.\nHowever, however, there are other tools. Or methodologies that can be used outside of the data, domain that are useful at this stage. These tools, facilitate the development of ideas and use cases from stakeholders. And are often of great benefit to more technically minded analysts. To ensure that the right problem is being solved.\nOne example of this is the Double Diamond approach.\nThe Double Diamond approach is a design thinking methodology. That focuses on two key aspects first. Doing the right things. And secondly, doing the things, right? Both phases have. Two stages, the Divergence and convergence stages. In the first phase. The objective is to correctly, identify the right problem to be solved.\nThe Divergent stage. Can use a number of tools and facilitation techniques.\nElicit all critical business problems. And understand. Key pain points. From end users. The convergence phase is a prioritisation of these problems. To identify. The most ideal problem to be solved. This can sometimes be filtered through the lens of tools, such as desirability feasibility and viability. Once an appropriate problem has been identified to be solved similar.\nMethodology can be used. To ideate Solutions. Again, it starts with a Divergence phase. Where research is conducted on available tools. And in parallel, Exploratory, data analysis is conducted.\nNext, a convergence of those ideas. Is done to refine the solution. And design. The implementation. From a technical perspective.\nProject on a page. Another useful technique. For engaging. With data analysis projects. Early in the life cycle, with business stakeholders is to use Frameworks such as a project on a page. This is a brief summarisation. Of the problem being solved. Some key Milestones for development. And identification of risks dependencies and other notes.\nAn identification for who is leading and sponsoring the project. As well as some financial analysis. If the project requires financial return on investment, As it does in many organisations. These tools while not data science Frameworks are important considerations. And are only lightly explored in this book. These will form a strong basis.\nFor further development, work in the right areas. Which will hopefully lead to strong business acceptance. And eventual production deployment.",
+    "title": "4  Development",
+    "section": "4.3 Tools",
+    "text": "4.3 Tools\nTechnical tools to support development workloads usually exist on the analysts local workstation. Most users will have an Integrated Development Environment (IDE) such as RStudio, VSCode or Positron. Some analysts prefer to have a Graphical User Interface (GUI) tool for analysis however this is not recommended when the intention is for the work to be relied upon for reasons we will explore later.\n\n\n\nBy cdhowe - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=101293607",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Development</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Development</span>"
     ]
   },
   {
     "objectID": "chapters/04-what_is_production.html",
     "href": "chapters/04-what_is_production.html",
-    "title": "4  What is Production",
+    "title": "5  Production",
     "section": "",
-    "text": "4.1 Definition\nProduction is a conceptual place where your work is being used by the intended users to make real-world decisions.\nNote how not all of the above involve a technology implementation like an API.",
+    "text": "5.1 Definition\nProduction is a conceptual place where your work is being used by the intended users to make real-world decisions.\nNote how not all of the above involve a technology implementation like an API.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Production</span>"
     ]
   },
   {
     "objectID": "chapters/04-what_is_production.html#definition",
     "href": "chapters/04-what_is_production.html#definition",
-    "title": "4  What is Production",
+    "title": "5  Production",
     "section": "",
     "text": "Predictive Model integrating with front line business system via API\n\nDashboard available to support user’s making decisions\n\nA monthly report that informs management meetings\n\nAn insight from a statistical model that has changed policy\n\n\n\n\n\n\n\n\nExample\n\n\n\nJenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work checklists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.\nThis change is hardcoded in a paper form, but is still a data-science driven model in production.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Production</span>"
     ]
   },
   {
     "objectID": "chapters/04-what_is_production.html#principles",
     "href": "chapters/04-what_is_production.html#principles",
-    "title": "4  What is Production",
-    "section": "4.2 Principles",
-    "text": "4.2 Principles\nFor a data science project to be successully relied upon in production it should follow some key characteristics.\n\nAvailable to end users directly\n\nRunning on stable infrastructure\n\nUsed to make real-world decisions\n\nCan be replicated\n\nCan be reproduced safely\nIs documented sufficiently\n\nCan be maintained by others\n\nIn the NYR10 Conference Hadley Wickham summarises his views as:\n\nNot just once\nNot just my computer\n\nNot just me",
+    "title": "5  Production",
+    "section": "5.2 Principles",
+    "text": "5.2 Principles\nFor a data science project to be successully relied upon in production it should follow some key characteristics.\n\nAvailable to end users directly\n\nRunning on stable infrastructure\n\nUsed to make real-world decisions\n\nCan be replicated\n\nCan be reproduced safely\nIs documented sufficiently\n\nCan be maintained by others\n\nIn the NYR10 Conference Hadley Wickham summarises his views as:\n\nNot just once\nNot just my computer\n\nNot just me",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Production</span>"
     ]
   },
   {
     "objectID": "chapters/04-what_is_production.html#patterns-for-r-code",
     "href": "chapters/04-what_is_production.html#patterns-for-r-code",
-    "title": "4  What is Production",
-    "section": "4.3 Patterns for R Code",
-    "text": "4.3 Patterns for R Code\nIn terms of R specific outputs, what does a data science output look like from an R perspective.\n\nAn R script that is run on a server on a schedule\n\nA {shiny} app hosted using on a server\n\nA {plumber} API service serving model predictions\n\nA hosted {quarto} dashboard\n\nAn {rmarkdown} report\n\nAn R package on CRAN or Github\n\nRegardless of the solution, the fundamental concept is to get it off the developers laptop and have it be reliably available to an end user.\n\n\n\n\n\nflowchart LR \nA[Developer PC]--&gt;B[Remote Server]--&gt;C[User]\n\n\n\n\n\n\nWe will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.",
+    "title": "5  Production",
+    "section": "5.3 Patterns for R Code",
+    "text": "5.3 Patterns for R Code\nIn terms of R specific outputs, what does a data science output look like from an R perspective.\n\nAn R script that is run on a server on a schedule\n\nA {shiny} app hosted using on a server\n\nA {plumber} API service serving model predictions\n\nA hosted {quarto} dashboard\n\nAn {rmarkdown} report\n\nAn R package on CRAN or Github\n\nRegardless of the solution, the fundamental concept is to get it off the developers laptop and have it be reliably available to an end user.\n\n\n\n\n\nflowchart LR \nA[Developer PC]--&gt;B[Remote Server]--&gt;C[User]\n\n\n\n\n\n\nWe will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>What is Production</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Production</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html",
     "href": "chapters/05-elements_of_prod_code.html",
-    "title": "5  Elements of Production Deployed R Code",
+    "title": "6  Elements of Production Deployed R Code",
     "section": "",
-    "text": "5.1 Orchestration\nOrchestration, refers to how your code is structured and run. We explored various ways of structuring our code for data science. Workflows. In chapter two, There are two key facets to code orchestration. The first is separating the functional components. Of your project. And the orchestration of those functional components. As R is a functional programming language.\nThe canonical way to structure, our code is to use well-defined functions. These functions are best orchestrated as an R package. In our package. The standardised way of organising collections of R functions. As it provides a convenient means for building testing and documenting code and sharing with others. Once the functional elements of your project, Uh, stored and documented and tested appropriately.\nThey need to be run in the correct order. This can be achieved using a number of Frameworks in this guide. We’ll be exploring the targets framework. This provides a make-like pipeline for running R code. And automatically handles aspects such as identifying dependencies in our code. An intermediate casing of results.",
+    "text": "6.1 Orchestration\nOrchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in chapter two. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.\nAs R is a functional programming language the canonical way to structure our code is to use functions. In a practical sense, functions are a convenient way to package, document, test and control the execution of code in a project.\nOnce the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks (see X) such as using notebooks, an R Package, targets and more.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html#automation",
     "href": "chapters/05-elements_of_prod_code.html#automation",
-    "title": "5  Elements of Production Deployed R Code",
-    "section": "5.2 Automation",
-    "text": "5.2 Automation\nAutomation. Automation refers to how your project is pushed and pulled from your local development environment. Into a remote environment where users can access the results. Again, many options exist. Automation and there are varying levels of automation. Manual approaches such as click button deployment. From your IDE. Or manually copying files across to a remote server or one option.\nMore contemporary approaches. Involve. Continuous integration and continuous deployment practises. This is a devops style workflow. That will automatically build test. And deploy code. That has been pushed to a remote version control repository. A thorough exploration of CI, CD Solutions is beyond the scope of this book. And is now a clearly defined subspecialty known as ml Ops.",
+    "title": "6  Elements of Production Deployed R Code",
+    "section": "6.2 Automation",
+    "text": "6.2 Automation\nAutomation refers to how your project is ‘built’. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation. Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option.\n\n\n\n\n\ngraph LR\na1[Local Compute]--&gt;a2[Server]&lt;--&gt;a3[User]\n\n\n\n\n\n\nA better approach would be to stage your code using a remote version control repository. This will act as a store or source code which can be more conveniently ‘pulled’ or synchronised with the server where your analysis is hosted for users. Often, accompanying model artefacts or data will also to stored somewhere remotely for the server to access.\n\n\n\n\n\ngraph LR\na1[Local Compute]--&gt;a2[Code Repo]\na1[Local Compute]--&gt;a3[(Data Store)]\na2[Code Repo]--&gt;a4[Server]\na3[(Data Store)]--&gt;a4[Server]\na4[Server]&lt;--&gt;a5[User]\n\n\n\n\n\n\nMore contemporary approaches involve Continuous Integration and Continuous Deployment (CI/CD) practices. This is a DevOps style workflow that will automatically build, test and deploy code that has been pushed to a remote version control repository. A thorough exploration of CI/CD Solutions is beyond the scope of this book and is now a clearly defined sub specialty known as MLOps.\n\n\n\n\n\ngraph LR\na1[Local Compute]--&gt;a2[Code Repo]\n subgraph id1 [DevOps Pipeline]\n  a2[[Code Repo]]--&gt;b1[[Build]]\n  b1[[Build]]--&gt;b2[[Test]]\n  b2[[Test]]--&gt;b3[[Deploy to Container Registry]]\n  end\na1[Local Compute]--&gt;a3[(Data Store)]\nb3[[Deploy to Container Registry]]--&gt;a4[Server/Serverless App]\na3[(Data Store)]--&gt;a4[Server]\na4[Server]&lt;--&gt;a5[User]\nstyle id1 fill:lightblue;",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html#reproducibility",
     "href": "chapters/05-elements_of_prod_code.html#reproducibility",
-    "title": "5  Elements of Production Deployed R Code",
-    "section": "5.3 Reproducibility",
-    "text": "5.3 Reproducibility\n\n5.3.1 Code dependencies\nWe talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.\nIs that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.\n\n\n5.3.2 Packages dependencies\nA key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?\n\n\n5.3.3 System dependencies\nSystem dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.\nAnother solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they’re using, for example, Windows versus Linux versus Mac OS.\n\n\n5.3.4 OS dependencies\nIt is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies.\n\n\n5.3.5 Hardware dependencies\nHardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.",
+    "title": "6  Elements of Production Deployed R Code",
+    "section": "6.3 Reproducibility",
+    "text": "6.3 Reproducibility\n\n6.3.1 Code dependencies\nWe talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.\nIs that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.\n\n\n6.3.2 Packages dependencies\nA key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?\n\n\n6.3.3 System dependencies\nSystem dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.\nAnother solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they’re using, for example, Windows versus Linux versus Mac OS.\n\n\n6.3.4 OS dependencies\nIt is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies.\n\n\n6.3.5 Hardware dependencies\nHardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html#version-control",
     "href": "chapters/05-elements_of_prod_code.html#version-control",
-    "title": "5  Elements of Production Deployed R Code",
-    "section": "5.4 Version Control",
-    "text": "5.4 Version Control\nVersion Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.\nGit is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.",
+    "title": "6  Elements of Production Deployed R Code",
+    "section": "6.4 Version Control",
+    "text": "6.4 Version Control\nVersion Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.\nGit is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html#metadata-and-documentation",
     "href": "chapters/05-elements_of_prod_code.html#metadata-and-documentation",
-    "title": "5  Elements of Production Deployed R Code",
-    "section": "5.5 Metadata and Documentation",
-    "text": "5.5 Metadata and Documentation\nMetadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We’ll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.\nBased on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.\nAlso how to contribute and get help? Low form documentation.",
+    "title": "6  Elements of Production Deployed R Code",
+    "section": "6.5 Metadata and Documentation",
+    "text": "6.5 Metadata and Documentation\nMetadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We’ll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.\nBased on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.\nAlso how to contribute and get help? Low form documentation.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/05-elements_of_prod_code.html#testing",
     "href": "chapters/05-elements_of_prod_code.html#testing",
-    "title": "5  Elements of Production Deployed R Code",
-    "section": "5.6 Testing",
-    "text": "5.6 Testing\nTesting. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.\nUsing the L Studio IDE. Testing can also be performed on a directory. Using this function.\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.",
+    "title": "6  Elements of Production Deployed R Code",
+    "section": "6.6 Testing",
+    "text": "6.6 Testing\nTesting. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.\nUsing the L Studio IDE. Testing can also be performed on a directory. Using this function.\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Elements of Production Deployed R Code</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html",
     "href": "chapters/06-practical_considerations.html",
-    "title": "6  Practical Considerations",
+    "title": "7  Practical Considerations",
     "section": "",
-    "text": "6.1 Working with IT teams",
+    "text": "7.1 Working with IT teams",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html#working-with-it-teams",
     "href": "chapters/06-practical_considerations.html#working-with-it-teams",
-    "title": "6  Practical Considerations",
+    "title": "7  Practical Considerations",
     "section": "",
     "text": "Install\nAdmin\nMaintainence\nDebugging",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html#open-source-vs-commerical-software",
     "href": "chapters/06-practical_considerations.html#open-source-vs-commerical-software",
-    "title": "6  Practical Considerations",
-    "section": "6.2 Open Source vs Commerical Software",
-    "text": "6.2 Open Source vs Commerical Software",
+    "title": "7  Practical Considerations",
+    "section": "7.2 Open Source vs Commerical Software",
+    "text": "7.2 Open Source vs Commerical Software",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html#network-security",
     "href": "chapters/06-practical_considerations.html#network-security",
-    "title": "6  Practical Considerations",
-    "section": "6.3 Network Security",
-    "text": "6.3 Network Security",
+    "title": "7  Practical Considerations",
+    "section": "7.3 Network Security",
+    "text": "7.3 Network Security",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html#authentication",
     "href": "chapters/06-practical_considerations.html#authentication",
-    "title": "6  Practical Considerations",
-    "section": "6.4 Authentication",
-    "text": "6.4 Authentication",
+    "title": "7  Practical Considerations",
+    "section": "7.4 Authentication",
+    "text": "7.4 Authentication",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/06-practical_considerations.html#changes",
     "href": "chapters/06-practical_considerations.html#changes",
-    "title": "6  Practical Considerations",
-    "section": "6.5 Changes",
-    "text": "6.5 Changes\n\nModel drift\n\nNew features",
+    "title": "7  Practical Considerations",
+    "section": "7.5 Changes",
+    "text": "7.5 Changes\n\nModel drift\n\nNew features",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Practical Considerations</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Practical Considerations</span>"
     ]
   },
   {
     "objectID": "chapters/07-case_study.html",
     "href": "chapters/07-case_study.html",
-    "title": "7  Case Study",
+    "title": "8  Case Study",
     "section": "",
-    "text": "7.1 About\nWe would like to build a predictive model to explain and predict water temperature at Sydney beaches. The codebase will have two branches.\nTo clone the codebase from Github:\nusethis::create_from_github(\"deanmarchiori/beachwatch\", fork = FALSE)",
+    "text": "8.1 About\nWe would like to build a predictive model to explain and predict water temperature at Sydney beaches. The codebase will have two branches.\nTo clone the codebase from Github:\nusethis::create_from_github(\"deanmarchiori/beachwatch\", fork = FALSE)",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Case Study</span>"
     ]
   },
   {
     "objectID": "chapters/07-case_study.html#about",
     "href": "chapters/07-case_study.html#about",
-    "title": "7  Case Study",
+    "title": "8  Case Study",
     "section": "",
     "text": "main: A demonstration of a typical monolithic notebook style analysis\n\nproduction-ready: A demonstration of a refactoring of the above to include elements of production-ready code.",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Case Study</span>"
     ]
   },
   {
     "objectID": "chapters/07-case_study.html#development-code",
     "href": "chapters/07-case_study.html#development-code",
-    "title": "7  Case Study",
-    "section": "7.2 Development Code",
-    "text": "7.2 Development Code\nEnsure you are on the main branch.\nLet’s take a look at the structure of the repository.\nWe have out raw data in the data directory and a Quarto notebook called model_notebook.qmd which contains the end-to-end workflow. This notebook also exports our final fitted model as an .rds object in the deploy directory.\n.\n├── beachwatch.Rproj\n├── data\n│   └── Water quality-1727670437021.csv\n├── deploy\n│   └── beachwatch_model.rds\n└── model_notebook.qmd\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd",
+    "title": "8  Case Study",
+    "section": "8.2 Development Code",
+    "text": "8.2 Development Code\nEnsure you are on the main branch.\nLet’s take a look at the structure of the repository.\nWe have out raw data in the data directory and a Quarto notebook called model_notebook.qmd which contains the end-to-end workflow. This notebook also exports our final fitted model as an .rds object in the deploy directory.\n.\n├── beachwatch.Rproj\n├── data\n│   └── Water quality-1727670437021.csv\n├── deploy\n│   └── beachwatch_model.rds\n└── model_notebook.qmd\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Case Study</span>"
     ]
   },
   {
     "objectID": "chapters/07-case_study.html#production-code",
     "href": "chapters/07-case_study.html#production-code",
-    "title": "7  Case Study",
-    "section": "7.3 Production Code",
-    "text": "7.3 Production Code\nNext we will make a number of changes to the above structure to implement the elements of production quality R code.\nSwitch to the production-ready branch.\nLet’s take a look at the structure of the repository. We will go through this step by step.\n.\n├── beachwatch.Rproj\n├── data\n│   └── sydney_water_temp.rda\n├── data-raw\n│   └── sydney_water_temp_raw.R\n├── DESCRIPTION\n├── Dockerfile\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n│   └── extdata\n│       └── Waterquality1727670437021.csv\n├── LICENSE\n├── LICENSE.md\n├── man\n│   ├── fit_water_temp_model.Rd\n│   └── sydney_water_temp.Rd\n├── NAMESPACE\n├── plumber.R\n├── R\n│   ├── data.R\n│   └── fit_water_temp_model.R\n├── tests\n│   ├── testthat\n│   │   └── test-gam-function.R\n│   └── testthat.R\n└── vetiver_renv.lock\n\n7.3.1 R Package\nThe most radical change was the adoption of an R Package framework. This is not strictly necessary, however it will help us adopt common features around how we document and test our code.\nTo create an R package you can use the RStudio IDE (File &gt; New Project) or use the {usethis} command below:\n\nusethis::create_package(path = here::here())\n\n&gt; usethis::create_package(path = here::here())\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating R/.\n✔ Writing DESCRIPTION.\nPackage: beachwatch\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to\n    pick a license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.0.0\n✔ Writing NAMESPACE.\n✔ Writing beachwatch.Rproj.\n✔ Adding \"^beachwatch\\\\.Rproj$\" to .Rbuildignore.\n✔ Adding \"^\\\\.Rproj\\\\.user$\" to .Rbuildignore.\n✔ Opening /home/deanmarchiori/workspace/beachwatch/ in new RStudio session.\n✔ Setting active project to \"&lt;no active project&gt;\".\nWe can see this sets up the package skeleton for us.\nWe can install the R package once we are in the Project by running\n\ndevtools::install(pkg = \".\")\n\n\n\n7.3.2 Metadata\nNext we should update and review the various metadata that are created.\n\nThe DESCRIPTION file is a useful way of including details on what your does and who the maintainers and developers are.\n\nLICENCE provides a way to convey the licence you are releasing the software under\n\nNAMESPACE is a special file that is automatically created for us.\n\n\n\n7.3.3 Data\nIn the development code we had an arbitrary directory with the data stashed in there as a csv file. We make the handling of data more formal here.\n\nThe raw data is placed in inst/extdata. The inst directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.\n\nA script to read in and clean the raw data is available in data-raw.\n\nThe above script ends with the code usethis::use_data which formally exports the clean data for use by your R package.\n\nThe below helper functions can assist here:\n\nusethis::use_data_raw(\"sydney_water_temp_raw\")\n\n&gt; usethis::use_data_raw(\"sydney_water_temp_raw\")\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating data-raw/.\n✔ Adding \"^data-raw$\" to .Rbuildignore.\n✔ Writing data-raw/sydney_water_temp_raw.R.\n☐ Modify data-raw/sydney_water_temp_raw.R.\n☐ Finish writing the data preparation script in data-raw/sydney_water_temp_raw.R.\n☐ Use `usethis::use_data()` to add prepared data to package.\n\nusethis::use_data(sydney_water_temp, overwrite = TRUE)\n\n&gt; usethis::use_data(sydney_water_temp, overwrite = TRUE)\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding R to Depends field in DESCRIPTION.\n✔ Setting LazyData to \"true\" in DESCRIPTION.\n✔ Saving \"sydney_water_temp\" to \"data/sydney_water_temp.rda\".\n☐ Document your data (see &lt;https://r-pkgs.org/data.html&gt;).\nNext we need to document our data set using the template seen in R/data.R.\n#' NSW Beachwatch Water Quality Data\n#'\n#' Water temperature and quality data collected under the NSW Government Beachwatch program.\n#'\n#' @format\n#' A data frame with 8947 rows and 7 columns:\n#' \\describe{\n#'   \\item{temp}{Water Temperature in C}\n#'   \\item{beach}{Water measurement site}\n#'   \\item{date}{Measurement date}\n#'   \\item{time}{Measurement time}\n#'   \\item{month}{Numeric label for month of measurement}\n#'   \\item{hour}{Numeric label for hour of measurement}\n#'   \\item{month_lab}{Factor label for month of measurement}\n#'   ...\n#' }\n#' @source &lt;https://beachwatch.nsw.gov.au/waterMonitoring/waterQualityData&gt;\n#' @source licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)\n\"sydney_water_temp\"\nOnce we build and install our package we can run the below code to load the clean, model ready data into our R session.\n\ndata(sydney_water_temp)\n\nWarning in data(sydney_water_temp): data set 'sydney_water_temp' not found\n\n\nIf we want to understand more about our data, we can read the documentation by running ??sydney_water_temp.\n\n\n7.3.4 R Functions\nWe can now refactor any R code in out notebook to be formal R Functions.\nEach function can occupy its own R Script in the R/ directory of the project. Properly documented with Roxygen tags, these will automatically generate help pages when the package is documented and built.\nIn any function, we should explicitly namespace the functions within using the pkg::foo() standard. To capture these dependencies we can run:\n\nusethis::use_package(package = \"pkg\")\n\n\n\n7.3.5 Tests\nUnit tests can be written using the {testthat} package.\n\nusethis::use_testthat()\n\n&gt; usethis::use_testthat()\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding testthat to Suggests field in DESCRIPTION.\n✔ Adding \"3\" to Config/testthat/edition.\n✔ Creating tests/testthat/.\n✔ Writing tests/testthat.R.\n☐ Call usethis::use_test() to initialize a basic test file and open it for editing.\n\n\n7.3.6 Analysis\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd\n\n\nWe can see the Quarto notebook containing our workflow still exists. We have moved it to inst/analysis for convenience. This is still the primary document that analysts will use to develop and iterate on their models. However, unlike before when all the functional and orchestration code was co-mingled, we now have the case where the key elements of our workflow have been decomposed into discrete functions.\n\n\n\n\n\n\nNote\n\n\n\nIt’s important here to note that this isn’t the only workflow choice possible. Users may prefer to implement a {targets} workflow for instance rather than persist with a notebook. This is fine, and in fact modularising the code as we have done is a common first step in this type of refactoring.\n\n\n\n\n7.3.7 Deployment artefacts\nAt the end of the analysis we need some way to get our model off our laptop. The framework we are using in this example are the tools from the {vetiver} package.\nThe first step is the save our fitted model somewhere. Rather than just save a serialised object in a folder, it would be ideal to capture some other details:\n\nModel Name\nModel Type\nMetadata such as\n\nModel Version\nMetric (e.g. AIC)\n\n\nPersisted versions\n\nThe use of the {pins} and the {vetiver} package can help us.\nFirst we configure a ‘board’ to ‘pin’ our model to. In this case we will just register a local directory as a board (called deploy_board), but you can configure this to save to multiple locations such as Posit Connect, Azure Storage, AWS S3, Dropbox, Github etc.\n\ndeploy_board &lt;- pins::board_folder(path = here(\"inst/deploy\"), versioned = TRUE)\n\nNext we save our model (called mod_gam) as a ‘vetiver model’ object.\nWe give it a nice name, some metadata and we can also include a sample of new data for testing purposes, which will be handy later.\n\nv &lt;- vetiver_model(\n  model = mod_gam,\n  model_name = \"sydney-beach-gam\",\n  metadata = list(aic = mod_gam$aic),\n  save_prototype = data.frame(\n    month = 12,\n    hour = 6,\n    beach = factor(\"Bondi Beach\", levels = levels(sydney_water_temp$beach))\n  )\n)\n\nThis can be written to our ‘pins’ board\n\nvetiver_pin_write(board = deploy_board, vetiver_model = v)\n\nWe can see this is saved a versioned object in inst/deploy\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n\nfile: sydney-beach-gam.rds\nfile_size: 416173\npin_hash: bb3f3af062cceea5\ntype: rds\ntitle: 'sydney-beach-gam: a pinned list'\ndescription: A generalized additive model (gaussian family, identity link)\ntags: ~\nurls: ~\ncreated: 20241007T015537Z\napi_version: 1\nuser:\n  aic: 29114.71767\n  required_pkgs: mgcv\n  renv_lock: ~\nWe can also use various functions to read our pins boards\n\npins::pin_list(board = deploy_board)\nvetiver::vetiver_pin_read(board = deploy_board, name = \"sydney-beach-gam\")\n\n\n\n7.3.8 Deploy\nNow we have saved and versioned our model appropriately, we need a way to deploy it as an API endpoint that users can supply new data to and get a model prediction.\nWhile there are other pathways (particularly for users of Posit Connect) we will focus on using Docker.\nveriver also has helper functions to create the deployment artifacts we need.\nFirstly, to test our deployment locally we can use\n\npr() %&gt;%\n  vetiver_api(v) |&gt; \n  pr_run(port = 8080)\n\nThis takes our ‘vetiver model’ object and uses the plumber package to rig up an API endpoint and documentation. It also helpfully creates other endpoints for health-checks and metadata.\nTo deploy as a Docker container we need to define a docker file and identify the system and package dependencies we need. You can do this manually, or we can rely on the helful function:\n\nvetiver_prepare_docker(board = deploy_board, \n                       name = \"sydney-beach-gam\", \n                       docker_args = list(port = 8080), \n                       path = here::here())\n\nThis will create three files:\n\nDockerfile\nrenv lockfile\n\nplumber.R\n\n\n\n\n\n\n\nTip with Title\n\n\n\nIf you have saved your model to a local folder, instead of a remote pin you will need to edit the Dockerfile to copy across this folder. It is generally recommended to remotely save your model object. Use e.g. COPY inst/deploy /opt/ml/inst/deploy\n\n\nTo build you docker image:\ndocker build -t beach .\nand to run it:\ndocker run -p 8080:8080 beach\nThe endpoint should now be live at http://127.0.0.1:8080",
+    "title": "8  Case Study",
+    "section": "8.3 Production Code",
+    "text": "8.3 Production Code\nNext we will make a number of changes to the above structure to implement the elements of production quality R code.\nSwitch to the production-ready branch.\nLet’s take a look at the structure of the repository. We will go through this step by step.\n.\n├── beachwatch.Rproj\n├── data\n│   └── sydney_water_temp.rda\n├── data-raw\n│   └── sydney_water_temp_raw.R\n├── DESCRIPTION\n├── Dockerfile\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n│   └── extdata\n│       └── Waterquality1727670437021.csv\n├── LICENSE\n├── LICENSE.md\n├── man\n│   ├── fit_water_temp_model.Rd\n│   └── sydney_water_temp.Rd\n├── NAMESPACE\n├── plumber.R\n├── R\n│   ├── data.R\n│   └── fit_water_temp_model.R\n├── tests\n│   ├── testthat\n│   │   └── test-gam-function.R\n│   └── testthat.R\n└── vetiver_renv.lock\n\n8.3.1 R Package\nThe most radical change was the adoption of an R Package framework. This is not strictly necessary, however it will help us adopt common features around how we document and test our code.\nTo create an R package you can use the RStudio IDE (File &gt; New Project) or use the {usethis} command below:\n\nusethis::create_package(path = here::here())\n\n&gt; usethis::create_package(path = here::here())\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating R/.\n✔ Writing DESCRIPTION.\nPackage: beachwatch\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to\n    pick a license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.0.0\n✔ Writing NAMESPACE.\n✔ Writing beachwatch.Rproj.\n✔ Adding \"^beachwatch\\\\.Rproj$\" to .Rbuildignore.\n✔ Adding \"^\\\\.Rproj\\\\.user$\" to .Rbuildignore.\n✔ Opening /home/deanmarchiori/workspace/beachwatch/ in new RStudio session.\n✔ Setting active project to \"&lt;no active project&gt;\".\nWe can see this sets up the package skeleton for us.\nWe can install the R package once we are in the Project by running\n\ndevtools::install(pkg = \".\")\n\n\n\n8.3.2 Metadata\nNext we should update and review the various metadata that are created.\n\nThe DESCRIPTION file is a useful way of including details on what your does and who the maintainers and developers are.\n\nLICENCE provides a way to convey the licence you are releasing the software under\n\nNAMESPACE is a special file that is automatically created for us.\n\n\n\n8.3.3 Data\nIn the development code we had an arbitrary directory with the data stashed in there as a csv file. We make the handling of data more formal here.\n\nThe raw data is placed in inst/extdata. The inst directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.\n\nA script to read in and clean the raw data is available in data-raw.\n\nThe above script ends with the code usethis::use_data which formally exports the clean data for use by your R package.\n\nThe below helper functions can assist here:\n\nusethis::use_data_raw(\"sydney_water_temp_raw\")\n\n&gt; usethis::use_data_raw(\"sydney_water_temp_raw\")\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating data-raw/.\n✔ Adding \"^data-raw$\" to .Rbuildignore.\n✔ Writing data-raw/sydney_water_temp_raw.R.\n☐ Modify data-raw/sydney_water_temp_raw.R.\n☐ Finish writing the data preparation script in data-raw/sydney_water_temp_raw.R.\n☐ Use `usethis::use_data()` to add prepared data to package.\n\nusethis::use_data(sydney_water_temp, overwrite = TRUE)\n\n&gt; usethis::use_data(sydney_water_temp, overwrite = TRUE)\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding R to Depends field in DESCRIPTION.\n✔ Setting LazyData to \"true\" in DESCRIPTION.\n✔ Saving \"sydney_water_temp\" to \"data/sydney_water_temp.rda\".\n☐ Document your data (see &lt;https://r-pkgs.org/data.html&gt;).\nNext we need to document our data set using the template seen in R/data.R.\n#' NSW Beachwatch Water Quality Data\n#'\n#' Water temperature and quality data collected under the NSW Government Beachwatch program.\n#'\n#' @format\n#' A data frame with 8947 rows and 7 columns:\n#' \\describe{\n#'   \\item{temp}{Water Temperature in C}\n#'   \\item{beach}{Water measurement site}\n#'   \\item{date}{Measurement date}\n#'   \\item{time}{Measurement time}\n#'   \\item{month}{Numeric label for month of measurement}\n#'   \\item{hour}{Numeric label for hour of measurement}\n#'   \\item{month_lab}{Factor label for month of measurement}\n#'   ...\n#' }\n#' @source &lt;https://beachwatch.nsw.gov.au/waterMonitoring/waterQualityData&gt;\n#' @source licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)\n\"sydney_water_temp\"\nOnce we build and install our package we can run the below code to load the clean, model ready data into our R session.\n\ndata(sydney_water_temp)\n\nWarning in data(sydney_water_temp): data set 'sydney_water_temp' not found\n\n\nIf we want to understand more about our data, we can read the documentation by running ??sydney_water_temp.\n\n\n8.3.4 R Functions\nWe can now refactor any R code in out notebook to be formal R Functions.\nEach function can occupy its own R Script in the R/ directory of the project. Properly documented with Roxygen tags, these will automatically generate help pages when the package is documented and built.\nIn any function, we should explicitly namespace the functions within using the pkg::foo() standard. To capture these dependencies we can run:\n\nusethis::use_package(package = \"pkg\")\n\n\n\n8.3.5 Tests\nUnit tests can be written using the {testthat} package.\n\nusethis::use_testthat()\n\n&gt; usethis::use_testthat()\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding testthat to Suggests field in DESCRIPTION.\n✔ Adding \"3\" to Config/testthat/edition.\n✔ Creating tests/testthat/.\n✔ Writing tests/testthat.R.\n☐ Call usethis::use_test() to initialize a basic test file and open it for editing.\n\n\n8.3.6 Analysis\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd\n\n\nWe can see the Quarto notebook containing our workflow still exists. We have moved it to inst/analysis for convenience. This is still the primary document that analysts will use to develop and iterate on their models. However, unlike before when all the functional and orchestration code was co-mingled, we now have the case where the key elements of our workflow have been decomposed into discrete functions.\n\n\n\n\n\n\nNote\n\n\n\nIt’s important here to note that this isn’t the only workflow choice possible. Users may prefer to implement a {targets} workflow for instance rather than persist with a notebook. This is fine, and in fact modularising the code as we have done is a common first step in this type of refactoring.\n\n\n\n\n8.3.7 Deployment artefacts\nAt the end of the analysis we need some way to get our model off our laptop. The framework we are using in this example are the tools from the {vetiver} package.\nThe first step is the save our fitted model somewhere. Rather than just save a serialised object in a folder, it would be ideal to capture some other details:\n\nModel Name\nModel Type\nMetadata such as\n\nModel Version\nMetric (e.g. AIC)\n\n\nPersisted versions\n\nThe use of the {pins} and the {vetiver} package can help us.\nFirst we configure a ‘board’ to ‘pin’ our model to. In this case we will just register a local directory as a board (called deploy_board), but you can configure this to save to multiple locations such as Posit Connect, Azure Storage, AWS S3, Dropbox, Github etc.\n\ndeploy_board &lt;- pins::board_folder(path = here(\"inst/deploy\"), versioned = TRUE)\n\nNext we save our model (called mod_gam) as a ‘vetiver model’ object.\nWe give it a nice name, some metadata and we can also include a sample of new data for testing purposes, which will be handy later.\n\nv &lt;- vetiver_model(\n  model = mod_gam,\n  model_name = \"sydney-beach-gam\",\n  metadata = list(aic = mod_gam$aic),\n  save_prototype = data.frame(\n    month = 12,\n    hour = 6,\n    beach = factor(\"Bondi Beach\", levels = levels(sydney_water_temp$beach))\n  )\n)\n\nThis can be written to our ‘pins’ board\n\nvetiver_pin_write(board = deploy_board, vetiver_model = v)\n\nWe can see this is saved a versioned object in inst/deploy\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n\nfile: sydney-beach-gam.rds\nfile_size: 416173\npin_hash: bb3f3af062cceea5\ntype: rds\ntitle: 'sydney-beach-gam: a pinned list'\ndescription: A generalized additive model (gaussian family, identity link)\ntags: ~\nurls: ~\ncreated: 20241007T015537Z\napi_version: 1\nuser:\n  aic: 29114.71767\n  required_pkgs: mgcv\n  renv_lock: ~\nWe can also use various functions to read our pins boards\n\npins::pin_list(board = deploy_board)\nvetiver::vetiver_pin_read(board = deploy_board, name = \"sydney-beach-gam\")\n\n\n\n8.3.8 Deploy\nNow we have saved and versioned our model appropriately, we need a way to deploy it as an API endpoint that users can supply new data to and get a model prediction.\nWhile there are other pathways (particularly for users of Posit Connect) we will focus on using Docker.\nveriver also has helper functions to create the deployment artifacts we need.\nFirstly, to test our deployment locally we can use\n\npr() %&gt;%\n  vetiver_api(v) |&gt; \n  pr_run(port = 8080)\n\nThis takes our ‘vetiver model’ object and uses the plumber package to rig up an API endpoint and documentation. It also helpfully creates other endpoints for health-checks and metadata.\nTo deploy as a Docker container we need to define a docker file and identify the system and package dependencies we need. You can do this manually, or we can rely on the helful function:\n\nvetiver_prepare_docker(board = deploy_board, \n                       name = \"sydney-beach-gam\", \n                       docker_args = list(port = 8080), \n                       path = here::here())\n\nThis will create three files:\n\nDockerfile\nrenv lockfile\n\nplumber.R\n\n\n\n\n\n\n\nTip with Title\n\n\n\nIf you have saved your model to a local folder, instead of a remote pin you will need to edit the Dockerfile to copy across this folder. It is generally recommended to remotely save your model object. Use e.g. COPY inst/deploy /opt/ml/inst/deploy\n\n\nTo build you docker image:\ndocker build -t beach .\nand to run it:\ndocker run -p 8080:8080 beach\nThe endpoint should now be live at http://127.0.0.1:8080",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Case Study</span>"
     ]
   },
   {
     "objectID": "chapters/resources.html",
     "href": "chapters/resources.html",
-    "title": "8  Resources",
+    "title": "9  Resources",
     "section": "",
-    "text": "Link to github",
+    "text": "Link to github analysis flow",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Resources</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Resources</span>"
     ]
   },
   {

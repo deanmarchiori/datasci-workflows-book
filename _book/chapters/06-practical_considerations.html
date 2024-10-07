@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 6&nbsp; Practical Considerations</title>
+<title>Data Science Worklows in R - 7&nbsp; Practical Considerations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-practical_considerations.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Practical Considerations</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/06-practical_considerations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -121,49 +121,55 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Analysis Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-r_code_workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What is Production</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/acknowledgements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,11 +188,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#working-with-it-teams" id="toc-working-with-it-teams" class="nav-link active" data-scroll-target="#working-with-it-teams"><span class="header-section-number">6.1</span> Working with IT teams</a></li>
-  <li><a href="#open-source-vs-commerical-software" id="toc-open-source-vs-commerical-software" class="nav-link" data-scroll-target="#open-source-vs-commerical-software"><span class="header-section-number">6.2</span> Open Source vs Commerical Software</a></li>
-  <li><a href="#network-security" id="toc-network-security" class="nav-link" data-scroll-target="#network-security"><span class="header-section-number">6.3</span> Network Security</a></li>
-  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">6.4</span> Authentication</a></li>
-  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes"><span class="header-section-number">6.5</span> Changes</a></li>
+  <li><a href="#working-with-it-teams" id="toc-working-with-it-teams" class="nav-link active" data-scroll-target="#working-with-it-teams"><span class="header-section-number">7.1</span> Working with IT teams</a></li>
+  <li><a href="#open-source-vs-commerical-software" id="toc-open-source-vs-commerical-software" class="nav-link" data-scroll-target="#open-source-vs-commerical-software"><span class="header-section-number">7.2</span> Open Source vs Commerical Software</a></li>
+  <li><a href="#network-security" id="toc-network-security" class="nav-link" data-scroll-target="#network-security"><span class="header-section-number">7.3</span> Network Security</a></li>
+  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">7.4</span> Authentication</a></li>
+  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes"><span class="header-section-number">7.5</span> Changes</a></li>
   </ul>
 </nav>
     </div>
@@ -195,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Practical Considerations</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></h1>
 </div>
 
 
@@ -212,8 +218,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="working-with-it-teams" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="working-with-it-teams"><span class="header-section-number">6.1</span> Working with IT teams</h2>
+<section id="working-with-it-teams" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="working-with-it-teams"><span class="header-section-number">7.1</span> Working with IT teams</h2>
 <ul>
 <li>Install</li>
 <li>Admin</li>
@@ -221,17 +227,17 @@ ul.task-list li input[type="checkbox"] {
 <li>Debugging</li>
 </ul>
 </section>
-<section id="open-source-vs-commerical-software" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="open-source-vs-commerical-software"><span class="header-section-number">6.2</span> Open Source vs Commerical Software</h2>
+<section id="open-source-vs-commerical-software" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="open-source-vs-commerical-software"><span class="header-section-number">7.2</span> Open Source vs Commerical Software</h2>
 </section>
-<section id="network-security" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="network-security"><span class="header-section-number">6.3</span> Network Security</h2>
+<section id="network-security" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="network-security"><span class="header-section-number">7.3</span> Network Security</h2>
 </section>
-<section id="authentication" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="authentication"><span class="header-section-number">6.4</span> Authentication</h2>
+<section id="authentication" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="authentication"><span class="header-section-number">7.4</span> Authentication</h2>
 </section>
-<section id="changes" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="changes"><span class="header-section-number">6.5</span> Changes</h2>
+<section id="changes" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="changes"><span class="header-section-number">7.5</span> Changes</h2>
 <ul>
 <li>Model drift<br>
 </li>
@@ -654,12 +660,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/05-elements_of_prod_code.html" class="pagination-link" aria-label="Elements of Production Deployed R Code">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/07-case_study.html" class="pagination-link" aria-label="Case Study">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Case Study</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

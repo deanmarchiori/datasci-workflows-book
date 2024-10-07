@@ -12,20 +12,41 @@ To install R head to [https://cran.rstudio.com/](https://cran.rstudio.com/).
 
 Next, install RStudio Desktop IDE at [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
 
-### Posit Cloud      
+### Packages  
 
-TBC
+To install the required packages, run:  
+```{r}
+#| eval: false
+install.packages("tidyverse")
+install.packages("mgcv")
+install.packages("pins")
+install.packages("vetiver")
+install.packages("plumber")
+install.packages("here")
+```
+
+You should be able to now run the following commands: 
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(mgcv)
+library(pins)
+library(vetiver)
+library(plumber)
+library(here)
+```
 
 ## Code  
 
 ### Download from Github  
 
-Materials can be downloaded by using the following command from the `usethis` package:
+Materials for the case study can be cloned by using the following command from the `usethis` package:
+
+Alternatively visit: [https://github.com/deanmarchiori/beachwatch](https://github.com/deanmarchiori/beachwatch)
 
 ```{r}
-#| label: use-course
-#| echo: true
 #| eval: false
-usethis::use_course("tbc/tbc")
-```  
+usethis::create_from_github("deanmarchiori/beachwatch", fork = FALSE)
+```
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 4&nbsp; What is Production</title>
+<title>Data Science Worklows in R - 5&nbsp; Production</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-what_is_production.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What is Production</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-what_is_production.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -124,49 +124,55 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Analysis Workflows</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-r_code_workflows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What is Production</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/acknowledgements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,9 +191,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">4.1</span> Definition</a></li>
-  <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles"><span class="header-section-number">4.2</span> Principles</a></li>
-  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">4.3</span> Patterns for R Code</a></li>
+  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">5.1</span> Definition</a></li>
+  <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles"><span class="header-section-number">5.2</span> Principles</a></li>
+  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">5.3</span> Patterns for R Code</a></li>
   </ul>
 </nav>
     </div>
@@ -196,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">What is Production</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></h1>
 </div>
 
 
@@ -213,8 +219,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="definition" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">4.1</span> Definition</h2>
+<section id="definition" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">5.1</span> Definition</h2>
 <p>Production is a conceptual place where your work is being used by the intended users to make real-world decisions.</p>
 <ul>
 <li>Predictive Model integrating with front line business system via API<br>
@@ -241,8 +247,8 @@ Example
 </div>
 </div>
 </section>
-<section id="principles" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="principles"><span class="header-section-number">4.2</span> Principles</h2>
+<section id="principles" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="principles"><span class="header-section-number">5.2</span> Principles</h2>
 <p>For a data science project to be successully relied upon in production it should follow some key characteristics.</p>
 <ul>
 <li>Available to end users directly<br>
@@ -268,8 +274,8 @@ Example
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BQk2-3inViM?si=kb1e7D7kwrdJCBnq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 </section>
-<section id="patterns-for-r-code" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">4.3</span> Patterns for R Code</h2>
+<section id="patterns-for-r-code" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">5.3</span> Patterns for R Code</h2>
 <p>In terms of R specific outputs, what does a data science output look like from an R perspective.</p>
 <ul>
 <li>An R script that is run on a server on a schedule<br>
@@ -716,12 +722,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/03-development.html" class="pagination-link" aria-label="Development">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Development</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/05-elements_of_prod_code.html" class="pagination-link" aria-label="Elements of Production Deployed R Code">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
