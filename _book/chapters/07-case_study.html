@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -178,7 +212,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about"><span class="header-section-number">7.1</span> About</a></li>
+  <li><a href="#development-code" id="toc-development-code" class="nav-link" data-scroll-target="#development-code"><span class="header-section-number">7.2</span> Development Code</a></li>
+  <li><a href="#production-code" id="toc-production-code" class="nav-link" data-scroll-target="#production-code"><span class="header-section-number">7.3</span> Production Code</a>
+  <ul class="collapse">
+  <li><a href="#r-package" id="toc-r-package" class="nav-link" data-scroll-target="#r-package"><span class="header-section-number">7.3.1</span> R Package</a></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata"><span class="header-section-number">7.3.2</span> Metadata</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">7.3.3</span> Data</a></li>
+  <li><a href="#r-functions" id="toc-r-functions" class="nav-link" data-scroll-target="#r-functions"><span class="header-section-number">7.3.4</span> R Functions</a></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="header-section-number">7.3.5</span> Tests</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis"><span class="header-section-number">7.3.6</span> Analysis</a></li>
+  <li><a href="#deployment-artefacts" id="toc-deployment-artefacts" class="nav-link" data-scroll-target="#deployment-artefacts"><span class="header-section-number">7.3.7</span> Deployment artefacts</a></li>
+  <li><a href="#deploy" id="toc-deploy" class="nav-link" data-scroll-target="#deploy"><span class="header-section-number">7.3.8</span> Deploy</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -202,8 +254,363 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="about" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="about"><span class="header-section-number">7.1</span> About</h2>
+<p>We would like to build a predictive model to explain and predict water temperature at Sydney beaches. The codebase will have two branches.</p>
+<ol type="1">
+<li><code>main</code>: A demonstration of a typical monolithic notebook style analysis<br>
+</li>
+<li><code>production-ready</code>: A demonstration of a refactoring of the above to include elements of production-ready code.</li>
+</ol>
+<p>To clone the codebase from Github:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_from_github</span>(<span class="st">"deanmarchiori/beachwatch"</span>, <span class="at">fork =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="development-code" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="development-code"><span class="header-section-number">7.2</span> Development Code</h2>
+<p>Ensure you are on the <code>main</code> branch.</p>
+<p>Let’s take a look at the structure of the repository.</p>
+<p>We have out raw data in the <code>data</code> directory and a Quarto notebook called <code>model_notebook.qmd</code> which contains the end-to-end workflow. This notebook also exports our final fitted model as an <code>.rds</code> object in the <code>deploy</code> directory.</p>
+<pre><code>.
+├── beachwatch.Rproj
+├── data
+│   └── Water quality-1727670437021.csv
+├── deploy
+│   └── beachwatch_model.rds
+└── model_notebook.qmd</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interactive Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore the contents of <code>model_notebook.qmd</code> locally or at <a href="https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd">https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd</a></p>
+</div>
+</div>
+</section>
+<section id="production-code" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="production-code"><span class="header-section-number">7.3</span> Production Code</h2>
+<p>Next we will make a number of changes to the above structure to implement the elements of production quality R code.</p>
+<p>Switch to the <code>production-ready</code> branch.</p>
+<p>Let’s take a look at the structure of the repository. We will go through this step by step.</p>
+<pre><code>.
+├── beachwatch.Rproj
+├── data
+│   └── sydney_water_temp.rda
+├── data-raw
+│   └── sydney_water_temp_raw.R
+├── DESCRIPTION
+├── Dockerfile
+├── inst
+│   ├── analysis
+│   │   └── model_notebook.qmd
+│   ├── deploy
+│   │   └── sydney-beach-gam
+│   │       ├── 20241007T015537Z-bb3f3
+│   │       │   ├── data.txt
+│   │       │   └── sydney-beach-gam.rds
+│   │       └── 20241007T021501Z-bb3f3
+│   │           ├── data.txt
+│   │           └── sydney-beach-gam.rds
+│   └── extdata
+│       └── Waterquality1727670437021.csv
+├── LICENSE
+├── LICENSE.md
+├── man
+│   ├── fit_water_temp_model.Rd
+│   └── sydney_water_temp.Rd
+├── NAMESPACE
+├── plumber.R
+├── R
+│   ├── data.R
+│   └── fit_water_temp_model.R
+├── tests
+│   ├── testthat
+│   │   └── test-gam-function.R
+│   └── testthat.R
+└── vetiver_renv.lock</code></pre>
+<section id="r-package" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="r-package"><span class="header-section-number">7.3.1</span> R Package</h3>
+<p>The most radical change was the adoption of an R Package framework. This is not strictly necessary, however it will help us adopt common features around how we document and test our code.</p>
+<p>To create an R package you can use the RStudio IDE (File &gt; New Project) or use the <code>{usethis}</code> command below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>&gt; usethis::create_package(path = here::here())
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Creating R/.
+✔ Writing DESCRIPTION.
+Package: beachwatch
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R (parsed):
+    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.0
+✔ Writing NAMESPACE.
+✔ Writing beachwatch.Rproj.
+✔ Adding "^beachwatch\\.Rproj$" to .Rbuildignore.
+✔ Adding "^\\.Rproj\\.user$" to .Rbuildignore.
+✔ Opening /home/deanmarchiori/workspace/beachwatch/ in new RStudio session.
+✔ Setting active project to "&lt;no active project&gt;".</code></pre>
+<p>We can see this sets up the package skeleton for us.</p>
+<p>We can install the R package once we are in the Project by running</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install</span>(<span class="at">pkg =</span> <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="metadata" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="metadata"><span class="header-section-number">7.3.2</span> Metadata</h3>
+<p>Next we should update and review the various metadata that are created.</p>
+<ul>
+<li>The DESCRIPTION file is a useful way of including details on what your does and who the maintainers and developers are.<br>
+</li>
+<li>LICENCE provides a way to convey the licence you are releasing the software under<br>
+</li>
+<li>NAMESPACE is a special file that is automatically created for us.</li>
+</ul>
+</section>
+<section id="data" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="data"><span class="header-section-number">7.3.3</span> Data</h3>
+<p>In the development code we had an arbitrary directory with the data stashed in there as a csv file. We make the handling of data more formal here.</p>
+<ol type="1">
+<li>The raw data is placed in <code>inst/extdata</code>. The <code>inst</code> directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.<br>
+</li>
+<li>A script to read in and clean the raw data is available in <code>data-raw</code>.<br>
+</li>
+<li>The above script ends with the code <code>usethis::use_data</code> which formally exports the clean data for use by your R package.</li>
+</ol>
+<p>The below helper functions can assist here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data_raw</span>(<span class="st">"sydney_water_temp_raw"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>&gt; usethis::use_data_raw("sydney_water_temp_raw")
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Creating data-raw/.
+✔ Adding "^data-raw$" to .Rbuildignore.
+✔ Writing data-raw/sydney_water_temp_raw.R.
+☐ Modify data-raw/sydney_water_temp_raw.R.
+☐ Finish writing the data preparation script in data-raw/sydney_water_temp_raw.R.
+☐ Use `usethis::use_data()` to add prepared data to package.</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_data</span>(sydney_water_temp, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>&gt; usethis::use_data(sydney_water_temp, overwrite = TRUE)
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Adding R to Depends field in DESCRIPTION.
+✔ Setting LazyData to "true" in DESCRIPTION.
+✔ Saving "sydney_water_temp" to "data/sydney_water_temp.rda".
+☐ Document your data (see &lt;https://r-pkgs.org/data.html&gt;).</code></pre>
+<p>Next we need to document our data set using the template seen in <code>R/data.R</code>.</p>
+<pre><code>#' NSW Beachwatch Water Quality Data
+#'
+#' Water temperature and quality data collected under the NSW Government Beachwatch program.
+#'
+#' @format
+#' A data frame with 8947 rows and 7 columns:
+#' \describe{
+#'   \item{temp}{Water Temperature in C}
+#'   \item{beach}{Water measurement site}
+#'   \item{date}{Measurement date}
+#'   \item{time}{Measurement time}
+#'   \item{month}{Numeric label for month of measurement}
+#'   \item{hour}{Numeric label for hour of measurement}
+#'   \item{month_lab}{Factor label for month of measurement}
+#'   ...
+#' }
+#' @source &lt;https://beachwatch.nsw.gov.au/waterMonitoring/waterQualityData&gt;
+#' @source licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)
+"sydney_water_temp"</code></pre>
+<p>Once we build and install our package we can run the below code to load the clean, model ready data into our R session.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(sydney_water_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in data(sydney_water_temp): data set 'sydney_water_temp' not found</code></pre>
+</div>
+</div>
+<p>If we want to understand more about our data, we can read the documentation by running <code>??sydney_water_temp</code>.</p>
+</section>
+<section id="r-functions" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="r-functions"><span class="header-section-number">7.3.4</span> R Functions</h3>
+<p>We can now refactor any R code in out notebook to be formal R Functions.</p>
+<p>Each function can occupy its own R Script in the <code>R/</code> directory of the project. Properly documented with Roxygen tags, these will automatically generate help pages when the package is documented and built.</p>
+<p>In any function, we should explicitly namespace the functions within using the <code>pkg::foo()</code> standard. To capture these dependencies we can run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="at">package =</span> <span class="st">"pkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tests" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="tests"><span class="header-section-number">7.3.5</span> Tests</h3>
+<p>Unit tests can be written using the <code>{testthat}</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>&gt; usethis::use_testthat()
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Adding testthat to Suggests field in DESCRIPTION.
+✔ Adding "3" to Config/testthat/edition.
+✔ Creating tests/testthat/.
+✔ Writing tests/testthat.R.
+☐ Call usethis::use_test() to initialize a basic test file and open it for editing.</code></pre>
+</section>
+<section id="analysis" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="analysis"><span class="header-section-number">7.3.6</span> Analysis</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interactive Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explore the contents of <code>model_notebook.qmd</code> locally or at <a href="https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd">https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd</a></p>
+</div>
+</div>
+<p>We can see the Quarto notebook containing our workflow still exists. We have moved it to <code>inst/analysis</code> for convenience. This is still the primary document that analysts will use to develop and iterate on their models. However, unlike before when all the functional and orchestration code was co-mingled, we now have the case where the key elements of our workflow have been decomposed into discrete functions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s important here to note that this isn’t the only workflow choice possible. Users may prefer to implement a {targets} workflow for instance rather than persist with a notebook. This is fine, and in fact modularising the code as we have done is a common first step in this type of refactoring.</p>
+</div>
+</div>
+</section>
+<section id="deployment-artefacts" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="deployment-artefacts"><span class="header-section-number">7.3.7</span> Deployment artefacts</h3>
+<p>At the end of the analysis we need some way to get our model off our laptop. The framework we are using in this example are the tools from the <code>{vetiver}</code> package.</p>
+<p>The first step is the save our fitted model somewhere. Rather than just save a serialised object in a folder, it would be ideal to capture some other details:</p>
+<ul>
+<li>Model Name</li>
+<li>Model Type</li>
+<li>Metadata such as
+<ul>
+<li>Model Version</li>
+<li>Metric (e.g.&nbsp;AIC)<br>
+</li>
+</ul></li>
+<li>Persisted versions</li>
+</ul>
+<p>The use of the <code>{pins}</code> and the <code>{vetiver}</code> package can help us.</p>
+<p>First we configure a ‘board’ to ‘pin’ our model to. In this case we will just register a local directory as a board (called <code>deploy_board</code>), but you can configure this to save to multiple locations such as Posit Connect, Azure Storage, AWS S3, Dropbox, Github etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>deploy_board <span class="ot">&lt;-</span> pins<span class="sc">::</span><span class="fu">board_folder</span>(<span class="at">path =</span> <span class="fu">here</span>(<span class="st">"inst/deploy"</span>), <span class="at">versioned =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we save our model (called <code>mod_gam</code>) as a ‘vetiver model’ object.</p>
+<p>We give it a nice name, some metadata and we can also include a sample of new data for testing purposes, which will be handy later.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">vetiver_model</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> mod_gam,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">model_name =</span> <span class="st">"sydney-beach-gam"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">metadata =</span> <span class="fu">list</span>(<span class="at">aic =</span> mod_gam<span class="sc">$</span>aic),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">save_prototype =</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="dv">12</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">hour =</span> <span class="dv">6</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">beach =</span> <span class="fu">factor</span>(<span class="st">"Bondi Beach"</span>, <span class="at">levels =</span> <span class="fu">levels</span>(sydney_water_temp<span class="sc">$</span>beach))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This can be written to our ‘pins’ board</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_pin_write</span>(<span class="at">board =</span> deploy_board, <span class="at">vetiver_model =</span> v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can see this is saved a versioned object in <code>inst/deploy</code></p>
+<pre><code>├── inst
+│   ├── analysis
+│   │   └── model_notebook.qmd
+│   ├── deploy
+│   │   └── sydney-beach-gam
+│   │       ├── 20241007T015537Z-bb3f3
+│   │       │   ├── data.txt
+│   │       │   └── sydney-beach-gam.rds
+│   │       └── 20241007T021501Z-bb3f3
+│   │           ├── data.txt
+│   │           └── sydney-beach-gam.rds
+</code></pre>
+<pre><code>file: sydney-beach-gam.rds
+file_size: 416173
+pin_hash: bb3f3af062cceea5
+type: rds
+title: 'sydney-beach-gam: a pinned list'
+description: A generalized additive model (gaussian family, identity link)
+tags: ~
+urls: ~
+created: 20241007T015537Z
+api_version: 1
+user:
+  aic: 29114.71767
+  required_pkgs: mgcv
+  renv_lock: ~</code></pre>
+<p>We can also use various functions to read our <code>pins</code> boards</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pins<span class="sc">::</span><span class="fu">pin_list</span>(<span class="at">board =</span> deploy_board)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>vetiver<span class="sc">::</span><span class="fu">vetiver_pin_read</span>(<span class="at">board =</span> deploy_board, <span class="at">name =</span> <span class="st">"sydney-beach-gam"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="deploy" class="level3" data-number="7.3.8">
+<h3 data-number="7.3.8" class="anchored" data-anchor-id="deploy"><span class="header-section-number">7.3.8</span> Deploy</h3>
+<p>Now we have saved and versioned our model appropriately, we need a way to deploy it as an API endpoint that users can supply new data to and get a model prediction.</p>
+<p>While there are other pathways (particularly for users of Posit Connect) we will focus on using Docker.</p>
+<p><code>veriver</code> also has helper functions to create the deployment artifacts we need.</p>
+<p>Firstly, to test our deployment locally we can use</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pr</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vetiver_api</span>(v) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pr_run</span>(<span class="at">port =</span> <span class="dv">8080</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This takes our ‘vetiver model’ object and uses the <code>plumber</code> package to rig up an API endpoint and documentation. It also helpfully creates other endpoints for health-checks and metadata.</p>
+<p>To deploy as a Docker container we need to define a docker file and identify the system and package dependencies we need. You can do this manually, or we can rely on the helful function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vetiver_prepare_docker</span>(<span class="at">board =</span> deploy_board, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">"sydney-beach-gam"</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">docker_args =</span> <span class="fu">list</span>(<span class="at">port =</span> <span class="dv">8080</span>), </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will create three files:</p>
+<ol type="1">
+<li>Dockerfile</li>
+<li>renv lockfile<br>
+</li>
+<li>plumber.R</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip with Title
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have saved your model to a local folder, instead of a remote pin you will need to edit the Dockerfile to copy across this folder. It is generally recommended to remotely save your model object. Use e.g.&nbsp;<code>COPY inst/deploy /opt/ml/inst/deploy</code></p>
+</div>
+</div>
+<p>To build you docker image:</p>
+<pre><code>docker build -t beach .</code></pre>
+<p>and to run it:</p>
+<pre><code>docker run -p 8080:8080 beach</code></pre>
+<p>The endpoint should now be live at <code>http://127.0.0.1:8080</code></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

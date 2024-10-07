@@ -14,7 +14,7 @@
     "href": "index.html#who-is-this-for",
     "title": "Data Science Worklows in R",
     "section": "Who is this for?",
-    "text": "Who is this for?\nThis book is intended as an introductory guide for R users who have experience writing code and fitting models, but want to improve their practices for translating these models into robust code that is reliable and used to make real-world decisions.",
+    "text": "Who is this for?\nThis book is intended as an introductory guide for R users who have experience writing code and fitting models, but want to improve their practices for translating these models into robust code that is reliable and used to make real-world decisions.\nThis was initially developed as course materials for the tutorial “Turning R code into production quality software” at the 2024 Workshop Organised by the Monash Business Analytics Team (WOMBAT).",
     "crumbs": [
       "Preface"
     ]
@@ -64,7 +64,7 @@
     "href": "chapters/01-setup.html",
     "title": "1  Setup",
     "section": "",
-    "text": "1.1 Software\nWickham et al. (2019)",
+    "text": "1.1 Software",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
     ]
@@ -74,7 +74,7 @@
     "href": "chapters/01-setup.html#software",
     "title": "1  Setup",
     "section": "",
-    "text": "1.1.1 Install R\n\n\n1.1.2 Install RStudio\n\n\n1.1.3 Posit Cloud",
+    "text": "1.1.1 Install R\nTo install R head to https://cran.rstudio.com/.\n\n\n1.1.2 Install RStudio\nNext, install RStudio Desktop IDE at https://posit.co/download/rstudio-desktop/\n\n\n1.1.3 Posit Cloud\nTBC",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "chapters/01-setup.html#code",
     "title": "1  Setup",
     "section": "1.2 Code",
-    "text": "1.2 Code\n\n1.2.1 Download from Github\nMaterials can be downloaded by using the following command from the usethis package:\n\nusethis::use_course(\"tbc/tbc\")\n\n\n\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "text": "1.2 Code\n\n1.2.1 Download from Github\nMaterials can be downloaded by using the following command from the usethis package:\n\nusethis::use_course(\"tbc/tbc\")",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setup</span>"
     ]
@@ -320,6 +320,46 @@
     ]
   },
   {
+    "objectID": "chapters/07-case_study.html",
+    "href": "chapters/07-case_study.html",
+    "title": "7  Case Study",
+    "section": "",
+    "text": "7.1 About\nWe would like to build a predictive model to explain and predict water temperature at Sydney beaches. The codebase will have two branches.\nTo clone the codebase from Github:\nusethis::create_from_github(\"deanmarchiori/beachwatch\", fork = FALSE)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-case_study.html#about",
+    "href": "chapters/07-case_study.html#about",
+    "title": "7  Case Study",
+    "section": "",
+    "text": "main: A demonstration of a typical monolithic notebook style analysis\n\nproduction-ready: A demonstration of a refactoring of the above to include elements of production-ready code.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-case_study.html#development-code",
+    "href": "chapters/07-case_study.html#development-code",
+    "title": "7  Case Study",
+    "section": "7.2 Development Code",
+    "text": "7.2 Development Code\nEnsure you are on the main branch.\nLet’s take a look at the structure of the repository.\nWe have out raw data in the data directory and a Quarto notebook called model_notebook.qmd which contains the end-to-end workflow. This notebook also exports our final fitted model as an .rds object in the deploy directory.\n.\n├── beachwatch.Rproj\n├── data\n│   └── Water quality-1727670437021.csv\n├── deploy\n│   └── beachwatch_model.rds\n└── model_notebook.qmd\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/07-case_study.html#production-code",
+    "href": "chapters/07-case_study.html#production-code",
+    "title": "7  Case Study",
+    "section": "7.3 Production Code",
+    "text": "7.3 Production Code\nNext we will make a number of changes to the above structure to implement the elements of production quality R code.\nSwitch to the production-ready branch.\nLet’s take a look at the structure of the repository. We will go through this step by step.\n.\n├── beachwatch.Rproj\n├── data\n│   └── sydney_water_temp.rda\n├── data-raw\n│   └── sydney_water_temp_raw.R\n├── DESCRIPTION\n├── Dockerfile\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n│   └── extdata\n│       └── Waterquality1727670437021.csv\n├── LICENSE\n├── LICENSE.md\n├── man\n│   ├── fit_water_temp_model.Rd\n│   └── sydney_water_temp.Rd\n├── NAMESPACE\n├── plumber.R\n├── R\n│   ├── data.R\n│   └── fit_water_temp_model.R\n├── tests\n│   ├── testthat\n│   │   └── test-gam-function.R\n│   └── testthat.R\n└── vetiver_renv.lock\n\n7.3.1 R Package\nThe most radical change was the adoption of an R Package framework. This is not strictly necessary, however it will help us adopt common features around how we document and test our code.\nTo create an R package you can use the RStudio IDE (File &gt; New Project) or use the {usethis} command below:\n\nusethis::create_package(path = here::here())\n\n&gt; usethis::create_package(path = here::here())\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating R/.\n✔ Writing DESCRIPTION.\nPackage: beachwatch\nTitle: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.9000\nAuthors@R (parsed):\n    * First Last &lt;first.last@example.com&gt; [aut, cre] (YOUR-ORCID-ID)\nDescription: What the package does (one paragraph).\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to\n    pick a license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.0.0\n✔ Writing NAMESPACE.\n✔ Writing beachwatch.Rproj.\n✔ Adding \"^beachwatch\\\\.Rproj$\" to .Rbuildignore.\n✔ Adding \"^\\\\.Rproj\\\\.user$\" to .Rbuildignore.\n✔ Opening /home/deanmarchiori/workspace/beachwatch/ in new RStudio session.\n✔ Setting active project to \"&lt;no active project&gt;\".\nWe can see this sets up the package skeleton for us.\nWe can install the R package once we are in the Project by running\n\ndevtools::install(pkg = \".\")\n\n\n\n7.3.2 Metadata\nNext we should update and review the various metadata that are created.\n\nThe DESCRIPTION file is a useful way of including details on what your does and who the maintainers and developers are.\n\nLICENCE provides a way to convey the licence you are releasing the software under\n\nNAMESPACE is a special file that is automatically created for us.\n\n\n\n7.3.3 Data\nIn the development code we had an arbitrary directory with the data stashed in there as a csv file. We make the handling of data more formal here.\n\nThe raw data is placed in inst/extdata. The inst directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.\n\nA script to read in and clean the raw data is available in data-raw.\n\nThe above script ends with the code usethis::use_data which formally exports the clean data for use by your R package.\n\nThe below helper functions can assist here:\n\nusethis::use_data_raw(\"sydney_water_temp_raw\")\n\n&gt; usethis::use_data_raw(\"sydney_water_temp_raw\")\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Creating data-raw/.\n✔ Adding \"^data-raw$\" to .Rbuildignore.\n✔ Writing data-raw/sydney_water_temp_raw.R.\n☐ Modify data-raw/sydney_water_temp_raw.R.\n☐ Finish writing the data preparation script in data-raw/sydney_water_temp_raw.R.\n☐ Use `usethis::use_data()` to add prepared data to package.\n\nusethis::use_data(sydney_water_temp, overwrite = TRUE)\n\n&gt; usethis::use_data(sydney_water_temp, overwrite = TRUE)\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding R to Depends field in DESCRIPTION.\n✔ Setting LazyData to \"true\" in DESCRIPTION.\n✔ Saving \"sydney_water_temp\" to \"data/sydney_water_temp.rda\".\n☐ Document your data (see &lt;https://r-pkgs.org/data.html&gt;).\nNext we need to document our data set using the template seen in R/data.R.\n#' NSW Beachwatch Water Quality Data\n#'\n#' Water temperature and quality data collected under the NSW Government Beachwatch program.\n#'\n#' @format\n#' A data frame with 8947 rows and 7 columns:\n#' \\describe{\n#'   \\item{temp}{Water Temperature in C}\n#'   \\item{beach}{Water measurement site}\n#'   \\item{date}{Measurement date}\n#'   \\item{time}{Measurement time}\n#'   \\item{month}{Numeric label for month of measurement}\n#'   \\item{hour}{Numeric label for hour of measurement}\n#'   \\item{month_lab}{Factor label for month of measurement}\n#'   ...\n#' }\n#' @source &lt;https://beachwatch.nsw.gov.au/waterMonitoring/waterQualityData&gt;\n#' @source licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)\n\"sydney_water_temp\"\nOnce we build and install our package we can run the below code to load the clean, model ready data into our R session.\n\ndata(sydney_water_temp)\n\nWarning in data(sydney_water_temp): data set 'sydney_water_temp' not found\n\n\nIf we want to understand more about our data, we can read the documentation by running ??sydney_water_temp.\n\n\n7.3.4 R Functions\nWe can now refactor any R code in out notebook to be formal R Functions.\nEach function can occupy its own R Script in the R/ directory of the project. Properly documented with Roxygen tags, these will automatically generate help pages when the package is documented and built.\nIn any function, we should explicitly namespace the functions within using the pkg::foo() standard. To capture these dependencies we can run:\n\nusethis::use_package(package = \"pkg\")\n\n\n\n7.3.5 Tests\nUnit tests can be written using the {testthat} package.\n\nusethis::use_testthat()\n\n&gt; usethis::use_testthat()\n✔ Setting active project to \"/home/deanmarchiori/workspace/beachwatch\".\n✔ Adding testthat to Suggests field in DESCRIPTION.\n✔ Adding \"3\" to Config/testthat/edition.\n✔ Creating tests/testthat/.\n✔ Writing tests/testthat.R.\n☐ Call usethis::use_test() to initialize a basic test file and open it for editing.\n\n\n7.3.6 Analysis\n\n\n\n\n\n\nInteractive Session\n\n\n\nExplore the contents of model_notebook.qmd locally or at https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd\n\n\nWe can see the Quarto notebook containing our workflow still exists. We have moved it to inst/analysis for convenience. This is still the primary document that analysts will use to develop and iterate on their models. However, unlike before when all the functional and orchestration code was co-mingled, we now have the case where the key elements of our workflow have been decomposed into discrete functions.\n\n\n\n\n\n\nNote\n\n\n\nIt’s important here to note that this isn’t the only workflow choice possible. Users may prefer to implement a {targets} workflow for instance rather than persist with a notebook. This is fine, and in fact modularising the code as we have done is a common first step in this type of refactoring.\n\n\n\n\n7.3.7 Deployment artefacts\nAt the end of the analysis we need some way to get our model off our laptop. The framework we are using in this example are the tools from the {vetiver} package.\nThe first step is the save our fitted model somewhere. Rather than just save a serialised object in a folder, it would be ideal to capture some other details:\n\nModel Name\nModel Type\nMetadata such as\n\nModel Version\nMetric (e.g. AIC)\n\n\nPersisted versions\n\nThe use of the {pins} and the {vetiver} package can help us.\nFirst we configure a ‘board’ to ‘pin’ our model to. In this case we will just register a local directory as a board (called deploy_board), but you can configure this to save to multiple locations such as Posit Connect, Azure Storage, AWS S3, Dropbox, Github etc.\n\ndeploy_board &lt;- pins::board_folder(path = here(\"inst/deploy\"), versioned = TRUE)\n\nNext we save our model (called mod_gam) as a ‘vetiver model’ object.\nWe give it a nice name, some metadata and we can also include a sample of new data for testing purposes, which will be handy later.\n\nv &lt;- vetiver_model(\n  model = mod_gam,\n  model_name = \"sydney-beach-gam\",\n  metadata = list(aic = mod_gam$aic),\n  save_prototype = data.frame(\n    month = 12,\n    hour = 6,\n    beach = factor(\"Bondi Beach\", levels = levels(sydney_water_temp$beach))\n  )\n)\n\nThis can be written to our ‘pins’ board\n\nvetiver_pin_write(board = deploy_board, vetiver_model = v)\n\nWe can see this is saved a versioned object in inst/deploy\n├── inst\n│   ├── analysis\n│   │   └── model_notebook.qmd\n│   ├── deploy\n│   │   └── sydney-beach-gam\n│   │       ├── 20241007T015537Z-bb3f3\n│   │       │   ├── data.txt\n│   │       │   └── sydney-beach-gam.rds\n│   │       └── 20241007T021501Z-bb3f3\n│   │           ├── data.txt\n│   │           └── sydney-beach-gam.rds\n\nfile: sydney-beach-gam.rds\nfile_size: 416173\npin_hash: bb3f3af062cceea5\ntype: rds\ntitle: 'sydney-beach-gam: a pinned list'\ndescription: A generalized additive model (gaussian family, identity link)\ntags: ~\nurls: ~\ncreated: 20241007T015537Z\napi_version: 1\nuser:\n  aic: 29114.71767\n  required_pkgs: mgcv\n  renv_lock: ~\nWe can also use various functions to read our pins boards\n\npins::pin_list(board = deploy_board)\nvetiver::vetiver_pin_read(board = deploy_board, name = \"sydney-beach-gam\")\n\n\n\n7.3.8 Deploy\nNow we have saved and versioned our model appropriately, we need a way to deploy it as an API endpoint that users can supply new data to and get a model prediction.\nWhile there are other pathways (particularly for users of Posit Connect) we will focus on using Docker.\nveriver also has helper functions to create the deployment artifacts we need.\nFirstly, to test our deployment locally we can use\n\npr() %&gt;%\n  vetiver_api(v) |&gt; \n  pr_run(port = 8080)\n\nThis takes our ‘vetiver model’ object and uses the plumber package to rig up an API endpoint and documentation. It also helpfully creates other endpoints for health-checks and metadata.\nTo deploy as a Docker container we need to define a docker file and identify the system and package dependencies we need. You can do this manually, or we can rely on the helful function:\n\nvetiver_prepare_docker(board = deploy_board, \n                       name = \"sydney-beach-gam\", \n                       docker_args = list(port = 8080), \n                       path = here::here())\n\nThis will create three files:\n\nDockerfile\nrenv lockfile\n\nplumber.R\n\n\n\n\n\n\n\nTip with Title\n\n\n\nIf you have saved your model to a local folder, instead of a remote pin you will need to edit the Dockerfile to copy across this folder. It is generally recommended to remotely save your model object. Use e.g. COPY inst/deploy /opt/ml/inst/deploy\n\n\nTo build you docker image:\ndocker build -t beach .\nand to run it:\ndocker run -p 8080:8080 beach\nThe endpoint should now be live at http://127.0.0.1:8080",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Case Study</span>"
+    ]
+  },
+  {
     "objectID": "chapters/resources.html",
     "href": "chapters/resources.html",
     "title": "8  Resources",
@@ -334,7 +374,7 @@
     "href": "chapters/references.html",
     "title": "References",
     "section": "",
-    "text": "Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023.\n“Machine Learning Operations (MLOps): Overview, Definition, and\nArchitecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy\nD’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.\n“Welcome to the tidyverse.”\nJournal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.",
+    "text": "Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023.\n“Machine Learning Operations (MLOps): Overview, Definition, and\nArchitecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.",
     "crumbs": [
       "References"
     ]

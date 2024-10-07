@@ -1,16 +1,20 @@
 # Setup
 
-This is a book created from markdown and executable code.
+To get started, ensure you have a recent verison or R and RStudio installed. 
 
 ## Software  
 
-@tidyverse
-
 ### Install R  
+
+To install R head to [https://cran.rstudio.com/](https://cran.rstudio.com/). 
 
 ### Install RStudio  
 
-### Posit Cloud   
+Next, install RStudio Desktop IDE at [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+
+### Posit Cloud      
+
+TBC
 
 ## Code  
 

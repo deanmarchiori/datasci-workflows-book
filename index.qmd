@@ -19,8 +19,10 @@ code to follow along.
 
 This book is intended as an introductory guide for R users who have experience 
 writing code and fitting models, but want to improve their practices for translating
-these models into robust code that is reliable and used to make real-world decisions. 
+these models into robust code that is reliable and used to make real-world decisions.   
 
+This was initially developed as course materials for the 
+tutorial "Turning R code into production quality software" at the 2024 *Workshop Organised by the Monash Business Analytics Team (WOMBAT)*.  
 
 ## Terminology  
 Throughout this book the terms 'data science' and 'data analysis' should be 

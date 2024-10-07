@@ -1,1 +1,443 @@
 # Case Study
+
+## About  
+
+We would like to build a predictive model to explain and predict water temperature
+at Sydney beaches. The codebase will have two branches.  
+
+1. `main`: A demonstration of a typical monolithic notebook style analysis  
+2. `production-ready`: A demonstration of a refactoring of the above to include
+elements of production-ready code.  
+
+To clone the codebase from Github: 
+
+```{r}
+#| eval: false
+usethis::create_from_github("deanmarchiori/beachwatch", fork = FALSE)
+```
+
+
+## Development Code  
+
+Ensure you are on the `main` branch.  
+
+Let's take a look at the structure of the repository. 
+
+We have out raw data in the `data` directory and a Quarto notebook called
+`model_notebook.qmd` which contains the end-to-end workflow. This notebook also
+exports our final fitted model as an `.rds` object in the `deploy` directory. 
+
+
+
+```
+.
+├── beachwatch.Rproj
+├── data
+│   └── Water quality-1727670437021.csv
+├── deploy
+│   └── beachwatch_model.rds
+└── model_notebook.qmd
+```  
+
+::: {.callout-tip}
+## Interactive Session
+
+Explore the contents of `model_notebook.qmd` locally or at [https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd](https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd)
+:::
+
+
+## Production Code  
+
+Next we will make a number of changes to the above structure to implement the 
+elements of production quality R code.  
+
+Switch to the `production-ready` branch.  
+
+Let's take a look at the structure of the repository. We will go through this step by step.  
+
+```
+.
+├── beachwatch.Rproj
+├── data
+│   └── sydney_water_temp.rda
+├── data-raw
+│   └── sydney_water_temp_raw.R
+├── DESCRIPTION
+├── Dockerfile
+├── inst
+│   ├── analysis
+│   │   └── model_notebook.qmd
+│   ├── deploy
+│   │   └── sydney-beach-gam
+│   │       ├── 20241007T015537Z-bb3f3
+│   │       │   ├── data.txt
+│   │       │   └── sydney-beach-gam.rds
+│   │       └── 20241007T021501Z-bb3f3
+│   │           ├── data.txt
+│   │           └── sydney-beach-gam.rds
+│   └── extdata
+│       └── Waterquality1727670437021.csv
+├── LICENSE
+├── LICENSE.md
+├── man
+│   ├── fit_water_temp_model.Rd
+│   └── sydney_water_temp.Rd
+├── NAMESPACE
+├── plumber.R
+├── R
+│   ├── data.R
+│   └── fit_water_temp_model.R
+├── tests
+│   ├── testthat
+│   │   └── test-gam-function.R
+│   └── testthat.R
+└── vetiver_renv.lock
+```
+
+### R Package   
+
+The most radical change was the adoption of an R Package framework. This is not
+strictly necessary, however it will help us adopt common features around how 
+we document and test our code.  
+
+To create an R package you can use the RStudio IDE (File > New Project) or use
+the `{usethis}` command below:  
+
+```{r}
+#| eval: false
+usethis::create_package(path = here::here())
+```
+
+```
+> usethis::create_package(path = here::here())
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Creating R/.
+✔ Writing DESCRIPTION.
+Package: beachwatch
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R (parsed):
+    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.0
+✔ Writing NAMESPACE.
+✔ Writing beachwatch.Rproj.
+✔ Adding "^beachwatch\\.Rproj$" to .Rbuildignore.
+✔ Adding "^\\.Rproj\\.user$" to .Rbuildignore.
+✔ Opening /home/deanmarchiori/workspace/beachwatch/ in new RStudio session.
+✔ Setting active project to "<no active project>".
+```
+
+We can see this sets up the package skeleton for us. 
+
+We can install the R package once we are in the Project by running  
+
+```{r}
+#| eval: false
+devtools::install(pkg = ".")
+```
+
+
+### Metadata     
+
+Next we should update and review the various metadata that are created.  
+
+* The DESCRIPTION file is a useful way of including details on what your does
+and who the maintainers and developers are.  
+* LICENCE provides a way to convey the licence you are releasing the software under  
+* NAMESPACE is a special file that is automatically created for us.  
+
+### Data   
+
+In the development code we had an arbitrary directory with the data stashed in
+there as a csv file. We make the handling of data more formal here. 
+
+1. The raw data is placed in `inst/extdata`. The `inst` directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.      
+2. A script to read in and clean the raw data is available in `data-raw`.  
+3. The above script ends with the code `usethis::use_data` which formally exports the 
+clean data for use by your R package.    
+
+The below helper functions can assist here: 
+
+```{r}
+#| eval: false
+usethis::use_data_raw("sydney_water_temp_raw")
+```
+
+```
+> usethis::use_data_raw("sydney_water_temp_raw")
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Creating data-raw/.
+✔ Adding "^data-raw$" to .Rbuildignore.
+✔ Writing data-raw/sydney_water_temp_raw.R.
+☐ Modify data-raw/sydney_water_temp_raw.R.
+☐ Finish writing the data preparation script in data-raw/sydney_water_temp_raw.R.
+☐ Use `usethis::use_data()` to add prepared data to package.
+```
+
+```{r}
+#| eval: false
+usethis::use_data(sydney_water_temp, overwrite = TRUE)
+```  
+
+```
+> usethis::use_data(sydney_water_temp, overwrite = TRUE)
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Adding R to Depends field in DESCRIPTION.
+✔ Setting LazyData to "true" in DESCRIPTION.
+✔ Saving "sydney_water_temp" to "data/sydney_water_temp.rda".
+☐ Document your data (see <https://r-pkgs.org/data.html>).
+```  
+Next we need to document our data set using the template seen in `R/data.R`.  
+
+```
+#' NSW Beachwatch Water Quality Data
+#'
+#' Water temperature and quality data collected under the NSW Government Beachwatch program.
+#'
+#' @format
+#' A data frame with 8947 rows and 7 columns:
+#' \describe{
+#'   \item{temp}{Water Temperature in C}
+#'   \item{beach}{Water measurement site}
+#'   \item{date}{Measurement date}
+#'   \item{time}{Measurement time}
+#'   \item{month}{Numeric label for month of measurement}
+#'   \item{hour}{Numeric label for hour of measurement}
+#'   \item{month_lab}{Factor label for month of measurement}
+#'   ...
+#' }
+#' @source <https://beachwatch.nsw.gov.au/waterMonitoring/waterQualityData>
+#' @source licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0)
+"sydney_water_temp"
+```    
+
+Once we build and install our package we can run the below code to load the 
+clean, model ready data into our R session. 
+
+```{r}
+data(sydney_water_temp)
+```
+If we want to understand more about our data, we can read the documentation by
+running `??sydney_water_temp`.  
+
+### R Functions  
+
+We can now refactor any R code in out notebook to be formal R Functions. 
+
+Each function can occupy its own R Script in the `R/` directory of the project. Properly
+documented with Roxygen tags, these will automatically generate help pages when the
+package is documented and built.   
+
+In any function, we should explicitly namespace the functions within using the `pkg::foo()` 
+standard. To capture these dependencies we can run: 
+
+```{r}
+#| eval: false
+usethis::use_package(package = "pkg")
+```
+
+### Tests  
+
+Unit tests can be written using the `{testthat}` package. 
+
+```{r}
+#| eval: false
+usethis::use_testthat()
+```  
+
+```
+> usethis::use_testthat()
+✔ Setting active project to "/home/deanmarchiori/workspace/beachwatch".
+✔ Adding testthat to Suggests field in DESCRIPTION.
+✔ Adding "3" to Config/testthat/edition.
+✔ Creating tests/testthat/.
+✔ Writing tests/testthat.R.
+☐ Call usethis::use_test() to initialize a basic test file and open it for editing.
+```
+
+### Analysis  
+
+::: {.callout-tip}
+## Interactive Session
+
+Explore the contents of `model_notebook.qmd` locally or at [https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd](https://github.com/deanmarchiori/beachwatch/blob/production-ready/inst/analysis/model_notebook.qmd)
+:::
+
+We can see the Quarto notebook containing our workflow still exists. We have
+moved it to `inst/analysis` for convenience. This is still the primary document
+that analysts will use to develop and iterate on their models. However, unlike
+before when all the functional and orchestration code was co-mingled, we now
+have the case where the key elements of our workflow have been decomposed into 
+discrete functions.  
+
+::: {.callout-note}
+It's important here to note that this isn't the only workflow choice possible. Users
+may prefer to implement a {targets} workflow for instance rather than persist with a
+notebook. This is fine, and in fact modularising the code as we have done is a common
+first step in this type of refactoring. 
+:::
+
+### Deployment artefacts
+
+At the end of the analysis we need some way to get our model off our laptop. The
+framework we are using in this example are the tools from the `{vetiver}` package.  
+
+The first step is the save our fitted model somewhere. Rather than just save a serialised
+object in a folder, it would be ideal to capture some other details:  
+
+- Model Name
+- Model Type 
+- Metadata such as
+  - Model Version
+  - Metric (e.g. AIC)  
+- Persisted versions  
+
+The use of the `{pins}` and the `{vetiver}` package can help us.  
+
+First we configure a 'board' to 'pin' our model to. In this case we will just
+register a local directory as a board (called `deploy_board`), but you can configure this to save to multiple
+locations such as Posit Connect, Azure Storage, AWS S3, Dropbox, Github etc.  
+
+```{r}
+#| eval: false
+deploy_board <- pins::board_folder(path = here("inst/deploy"), versioned = TRUE)
+```
+
+Next we save our model (called `mod_gam`) as a 'vetiver model' object.  
+
+We give it a nice name, some metadata and we can also include a sample of
+new data for testing purposes, which will be handy later.  
+
+```{r}
+#| eval: false
+v <- vetiver_model(
+  model = mod_gam,
+  model_name = "sydney-beach-gam",
+  metadata = list(aic = mod_gam$aic),
+  save_prototype = data.frame(
+    month = 12,
+    hour = 6,
+    beach = factor("Bondi Beach", levels = levels(sydney_water_temp$beach))
+  )
+)
+```
+
+This can be written to our 'pins' board 
+
+```{r}
+#| eval: false
+vetiver_pin_write(board = deploy_board, vetiver_model = v)
+```
+
+We can see this is saved a versioned object in `inst/deploy`
+
+```
+├── inst
+│   ├── analysis
+│   │   └── model_notebook.qmd
+│   ├── deploy
+│   │   └── sydney-beach-gam
+│   │       ├── 20241007T015537Z-bb3f3
+│   │       │   ├── data.txt
+│   │       │   └── sydney-beach-gam.rds
+│   │       └── 20241007T021501Z-bb3f3
+│   │           ├── data.txt
+│   │           └── sydney-beach-gam.rds
+
+```  
+
+```
+file: sydney-beach-gam.rds
+file_size: 416173
+pin_hash: bb3f3af062cceea5
+type: rds
+title: 'sydney-beach-gam: a pinned list'
+description: A generalized additive model (gaussian family, identity link)
+tags: ~
+urls: ~
+created: 20241007T015537Z
+api_version: 1
+user:
+  aic: 29114.71767
+  required_pkgs: mgcv
+  renv_lock: ~
+```  
+
+We can also use various functions to read our `pins` boards  
+
+```{r}
+#| eval: false
+pins::pin_list(board = deploy_board)
+vetiver::vetiver_pin_read(board = deploy_board, name = "sydney-beach-gam")
+```
+
+### Deploy  
+
+Now we have saved and versioned our model appropriately, we need a way to deploy it as an API
+endpoint that users can supply new data to and get a model prediction.
+
+While there are other pathways (particularly for users of Posit Connect) we will 
+focus on using Docker.  
+
+`veriver` also has helper functions to create the deployment artifacts we need. 
+
+Firstly, to test our deployment locally we can use  
+
+```{r}
+#| eval: false
+pr() %>%
+  vetiver_api(v) |> 
+  pr_run(port = 8080)
+```
+
+This takes our 'vetiver model' object and uses the `plumber` package to rig 
+up an API endpoint and documentation. It also helpfully creates other endpoints
+for health-checks and metadata.  
+
+To deploy as a Docker container we need to define a docker file and identify the
+system and package dependencies we need. You can do this manually, or we can rely on the
+helful function:  
+
+```{r}
+#| eval: false
+vetiver_prepare_docker(board = deploy_board, 
+                       name = "sydney-beach-gam", 
+                       docker_args = list(port = 8080), 
+                       path = here::here())
+
+```
+
+This will create three files: 
+
+1. Dockerfile
+2. renv lockfile  
+3. plumber.R  
+
+
+::: {.callout-warning}
+## Tip with Title
+
+If you have saved your model to a local folder, instead of a remote pin you will
+need to edit the Dockerfile to copy across this folder. It is generally recommended
+to remotely save your model object. Use e.g. `COPY inst/deploy /opt/ml/inst/deploy`
+:::
+
+To build you docker image: 
+
+```
+docker build -t beach .
+```
+
+and to run it: 
+
+```
+docker run -p 8080:8080 beach
+```
+
+The endpoint should now be live at `http://127.0.0.1:8080`
+
