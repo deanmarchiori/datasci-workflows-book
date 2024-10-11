@@ -2,3 +2,13 @@
 
 Link to github
 analysis flow
+
+https://research-compendium.science/
+
+https://r-pkgs.org/  
+
+https://packagemanager.posit.co/client/#/
+
+https://www.docker.com/get-started/
+
+https://git-scm.com/

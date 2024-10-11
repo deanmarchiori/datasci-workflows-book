@@ -19,13 +19,13 @@ graph TB
 
 ### Monolithic Markdown
 
-Commonly adopted tools to promote more [literate programming](https://en.wikipedia.org/wiki/Literate_programming) 
-are notebooks such as RMarkdown or more recently [quarto](https://quarto.org/). These tools allow users
-to write plain english commentary in markdown or a visual editor and splice in
+Commonly adopted tools to promote more literate programming^[https://en.wikipedia.org/wiki/Literate_programming] 
+are notebooks such as RMarkdown or more recently Quarto^[https://quarto.org/]. These tools allow users
+to write plain English commentary in markdown or a visual editor and splice in
 'code-chunks'. Typically this notebook style document is then sequentially
 rendered in order and knitted into some for of output like HTML, PDF or Word etc.  
 
-This is a great way to make code more readble and self-contained while managing 
+This is a great way to make code more readable and self-contained while managing 
 complexity. Obvious drawbacks exist around the inflexible execution order, control flow and
 caching. These can also get very long!  
 
@@ -58,7 +58,7 @@ state and data flows between scripts, often by manually 'caching' results. The
 scripts are often not self-contained and this can quickly be a recipe for 
 disaster for more complex projects. 
 
-[projecttemplate]
+An example of this is the ProjectTemplate^[http://projecttemplate.net/index.html] framework. 
 
 
 ```{mermaid}
@@ -74,11 +74,11 @@ graph TB
 
 ### {targets}    
 
-[`{targets}`](https://github.com/ropensci/targets) is an R package that allows
-users to adopt a make-like pipeline philosophy for their R code. This has the
+`{targets}`^[https://github.com/ropensci/targets] is an R package that allows
+users to adopt a make-like^[https://www.gnu.org/software/make/] pipeline philosophy for their R code. This has the
 advantage of more sophisticated handling of computationally-intensive workflows
 and provides a more opinionated structure to follow. With this are the drawbacks 
-or forcing your collaborators to adopt the same framework and dealing with the initial 
+of forcing your collaborators to adopt the same framework and dealing with the initial 
 learning curve.  
 
 ```{mermaid}
@@ -97,11 +97,10 @@ An R Package is the canonical way to organise and 'package' R code for use
 and sharing. It provides easy means to share, install, document, test and run code.  
 
 Given it is *the* adopted standard for packaging R code, many users have adapted
-the structure to run analysis projects and research compendia [MARWICK]. This is
+the structure to run analysis projects and research compendia^[https://research-compendium.science/]. This is
 possible, however the structure is most commonly applied when building tools 
 or algorithms rather than analysis workflows.  
 
-[MARWICK]
 
 ```{mermaid}
 graph TB
@@ -147,7 +146,8 @@ out into their own R package!
 ### Repro-retro  
 
 I talked a little about how you might want to weight and prioritise the elements
-of reproducibility in an rtudio::global talk in 2019. Feel free to conduct
-your own reproducibility-retrospective (repro-retro).  
+of reproducibility in an rstudio::global talk in 2019. I used to concept of a 
+reproducibility retrospective (repro-retro). Feel free to conduct
+your own repro-retro.  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4T8gz9AmNOA?si=8rGopHO-9r0iwh_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

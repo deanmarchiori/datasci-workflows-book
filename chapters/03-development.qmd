@@ -5,17 +5,17 @@ When data science projects start, often the outcome is unknown. The work is inhe
 
 ## Definition  
 
-*development* is a way of working, but it is also a technical term for a hardware and software environment. In many data science organisations, development is usually a logical (and physical) separation of tools, hardware and software that allow analysts to perform work that is not to be directly relied upon for real-world decision making. This type of environment is prone to running experimental workloads, tests and day-to-day development of projects and ideas by a data science team.  
+*Development* is a way of working, but it is also a technical term for a hardware and software environment. In many data science organisations, development is usually a logical (and physical) separation of tools, hardware and software that allow analysts to perform work that is not to be directly relied upon for real-world decision making. This type of environment is prone to running experimental workloads, tests and day-to-day development of projects and ideas by a data science team.  
 
-A key defining feature of development code is the colocation of 'what' the code 
-does and 'how' the code is run. That is, the functional elements of the code and 
+A key defining feature of development code is the colocation of *what* the code 
+does and *how* the code is run. That is, the functional elements of the code and 
 the orchestration of those elements are not separated. 
 
 ## Roles    
 
-We can assess the various roles that take place in the development workflow cross sectionally, but looking at the full life cycle from raw data through to a production deployed system.  
+We can assess the various roles that take place in the development workflow cross sectionally by looking at the full life cycle from raw data through to a production deployed system.  
 
-In most organisations, not all roles will be present. In some organisations, there may even be more specialized roles. For example an ML Ops engineer may handle the deployment of machine learning workloads, while a data engineer May focus entirely on data operations. In addition a data scientist may or may not be present entirely.
+In most organisations, not all roles will be present. In some organisations, there may even be more specialized roles. For example an MLOps engineer may handle the deployment of machine learning workloads, while a data engineer May focus entirely on data operations. In addition a data scientist may or may not be present entirely.
 
 ### Customer  
 A customer (end-user) is a key role. Customers should be involved throughout the entire process but in particular are active in projects at the raw data and production stage to contextualize, understand and provide understanding of the raw data in addition to being the end user of production systems.  

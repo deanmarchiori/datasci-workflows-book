@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -184,17 +204,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#working-with-it-teams" id="toc-working-with-it-teams" class="nav-link active" data-scroll-target="#working-with-it-teams"><span class="header-section-number">7.1</span> Working with IT teams</a></li>
-  <li><a href="#open-source-vs-commerical-software" id="toc-open-source-vs-commerical-software" class="nav-link" data-scroll-target="#open-source-vs-commerical-software"><span class="header-section-number">7.2</span> Open Source vs Commerical Software</a></li>
-  <li><a href="#network-security" id="toc-network-security" class="nav-link" data-scroll-target="#network-security"><span class="header-section-number">7.3</span> Network Security</a></li>
-  <li><a href="#authentication" id="toc-authentication" class="nav-link" data-scroll-target="#authentication"><span class="header-section-number">7.4</span> Authentication</a></li>
-  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes"><span class="header-section-number">7.5</span> Changes</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -218,34 +228,54 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="working-with-it-teams" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="working-with-it-teams"><span class="header-section-number">7.1</span> Working with IT teams</h2>
+<ul>
+<li>Working with IT teams
 <ul>
 <li>Install</li>
 <li>Admin</li>
 <li>Maintainence</li>
 <li>Debugging</li>
-</ul>
-</section>
-<section id="open-source-vs-commerical-software" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="open-source-vs-commerical-software"><span class="header-section-number">7.2</span> Open Source vs Commerical Software</h2>
-</section>
-<section id="network-security" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="network-security"><span class="header-section-number">7.3</span> Network Security</h2>
-</section>
-<section id="authentication" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="authentication"><span class="header-section-number">7.4</span> Authentication</h2>
-</section>
-<section id="changes" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="changes"><span class="header-section-number">7.5</span> Changes</h2>
+</ul></li>
+<li>Open Source vs Commerical Software<br>
+</li>
+<li>Network Security<br>
+</li>
+<li>Authentication</li>
+<li>Changes
 <ul>
 <li>Model drift<br>
 </li>
 <li>New features</li>
+</ul></li>
 </ul>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-mlops" class="csl-entry" role="listitem">
+Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
+</div>
+<div id="ref-plumber" class="csl-entry" role="listitem">
+Schloerke, Barret, and Jeff Allen. 2024. <em>Plumber: An API Generator for r</em>. <a href="https://www.rplumber.io">https://www.rplumber.io</a>.
+</div>
+<div id="ref-vetiver" class="csl-entry" role="listitem">
+Silge, Julia. 2023. <em>Vetiver: Version, Share, Deploy, and Monitor Models</em>. <a href="https://vetiver.rstudio.com">https://vetiver.rstudio.com</a>.
+</div>
+<div id="ref-pins" class="csl-entry" role="listitem">
+Silge, Julia, Hadley Wickham, and Javier Luraschi. 2023. <em>Pins: Pin, Discover and Share Resources</em>. <a href="https://pins.rstudio.com/">https://pins.rstudio.com/</a>.
+</div>
+<div id="ref-testthat" class="csl-entry" role="listitem">
+Wickham, Hadley. 2011. <span>“Testthat: Get Started with Testing.”</span> <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-roxygen" class="csl-entry" role="listitem">
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://roxygen2.r-lib.org/">https://roxygen2.r-lib.org/</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

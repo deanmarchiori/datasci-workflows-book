@@ -218,12 +218,13 @@ div.csl-indent {
   <li><a href="#code-dependencies" id="toc-code-dependencies" class="nav-link" data-scroll-target="#code-dependencies"><span class="header-section-number">6.3.1</span> Code dependencies</a></li>
   <li><a href="#packages-dependencies" id="toc-packages-dependencies" class="nav-link" data-scroll-target="#packages-dependencies"><span class="header-section-number">6.3.2</span> Packages dependencies</a></li>
   <li><a href="#system-dependencies" id="toc-system-dependencies" class="nav-link" data-scroll-target="#system-dependencies"><span class="header-section-number">6.3.3</span> System dependencies</a></li>
-  <li><a href="#os-dependencies" id="toc-os-dependencies" class="nav-link" data-scroll-target="#os-dependencies"><span class="header-section-number">6.3.4</span> OS dependencies</a></li>
+  <li><a href="#operating-system-dependencies" id="toc-operating-system-dependencies" class="nav-link" data-scroll-target="#operating-system-dependencies"><span class="header-section-number">6.3.4</span> Operating System dependencies</a></li>
   <li><a href="#hardware-dependencies" id="toc-hardware-dependencies" class="nav-link" data-scroll-target="#hardware-dependencies"><span class="header-section-number">6.3.5</span> Hardware dependencies</a></li>
   </ul></li>
   <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">6.4</span> Version Control</a></li>
   <li><a href="#metadata-and-documentation" id="toc-metadata-and-documentation" class="nav-link" data-scroll-target="#metadata-and-documentation"><span class="header-section-number">6.5</span> Metadata and Documentation</a></li>
   <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing"><span class="header-section-number">6.6</span> Testing</a></li>
+  <li><a href="#putting-it-into-practice" id="toc-putting-it-into-practice" class="nav-link" data-scroll-target="#putting-it-into-practice"><span class="header-section-number">6.7</span> Putting it into practice</a></li>
   </ul>
 </nav>
     </div>
@@ -266,13 +267,14 @@ The recent development of tools to support the deployment of R workloads are cha
 </ul>
 <section id="orchestration" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="orchestration"><span class="header-section-number">6.1</span> Orchestration</h2>
-<p>Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in chapter two. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.</p>
+<p>Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in <a href="02-data_analysis_workflows.html" class="quarto-xref"><span>Chapter 2</span></a>. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.</p>
 <p>As R is a functional programming language the canonical way to structure our code is to use functions. In a practical sense, functions are a convenient way to package, document, test and control the execution of code in a project.</p>
-<p>Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks (see X) such as using notebooks, an R Package, targets and more.</p>
+<p>Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks such as using notebooks, an R Package, <code>{targets}</code> and more.</p>
 </section>
 <section id="automation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="automation"><span class="header-section-number">6.2</span> Automation</h2>
-<p>Automation refers to how your project is ‘built’. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation. Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option.</p>
+<p>Automation refers to how your project is ‘built’. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation.</p>
+<p>Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -286,7 +288,7 @@ a1[Local Compute]--&gt;a2[Server]&lt;--&gt;a3[User]
 </div>
 </div>
 </div>
-<p>A better approach would be to stage your code using a remote version control repository. This will act as a store or source code which can be more conveniently ‘pulled’ or synchronised with the server where your analysis is hosted for users. Often, accompanying model artefacts or data will also to stored somewhere remotely for the server to access.</p>
+<p>A better approach would be to stage your code using a remote version control repository. This will act as a store for source code which can be more conveniently ‘pulled’ or synchronised with the server where your analysis is hosted for users. Often, accompanying model artefacts or data will also to stored somewhere remotely for the server to access.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -333,49 +335,83 @@ style id1 fill:lightblue;
 <h2 data-number="6.3" class="anchored" data-anchor-id="reproducibility"><span class="header-section-number">6.3</span> Reproducibility</h2>
 <section id="code-dependencies" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="code-dependencies"><span class="header-section-number">6.3.1</span> Code dependencies</h3>
-<p>We talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.</p>
-<p>Is that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.</p>
+<p>When we talk about reproducibility, there are many elements of a data science workflow that need to be considered. The first step to a reproducible pipeline is ensuring that all users have the same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.</p>
+<p>That way other collaborators can clone the code base from the remote git repository and branch or fork from the code repository in order to make their own changes. It can then be integrated back using proper version control principles.</p>
 </section>
 <section id="packages-dependencies" class="level3" data-number="6.3.2">
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="packages-dependencies"><span class="header-section-number">6.3.2</span> Packages dependencies</h3>
-<p>A key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?</p>
+<p>Another key element of reproducibility is ensuring that all users can resolve having the same R package dependencies. This includes having the correct packages, installing those packages from the correct locations and ensuring the version of those packages are equivalent. A convenient solution for these problems is the <code>{renv}</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> package. The <code>{renv}</code> package helps users by creating a locally stored environment and infrastructure to collaborate and automate this process with other users.</p>
 </section>
 <section id="system-dependencies" class="level3" data-number="6.3.3">
 <h3 data-number="6.3.3" class="anchored" data-anchor-id="system-dependencies"><span class="header-section-number">6.3.3</span> System dependencies</h3>
-<p>System dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.</p>
-<p>Another solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they’re using, for example, Windows versus Linux versus Mac OS.</p>
+<p>System dependencies describe the software that are installed on the computational environment that the project is being run on. These may include external libraries such as <code>libxml</code> or <code>GDAL</code>. Tools like Posit Public Package Manager<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> can provide some analysis of the system dependencies that are required to support R packages on various operating systems. Another solution explored in the next section is using technologies such as Docker<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 </section>
-<section id="os-dependencies" class="level3" data-number="6.3.4">
-<h3 data-number="6.3.4" class="anchored" data-anchor-id="os-dependencies"><span class="header-section-number">6.3.4</span> OS dependencies</h3>
-<p>It is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies.</p>
+<section id="operating-system-dependencies" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="operating-system-dependencies"><span class="header-section-number">6.3.4</span> Operating System dependencies</h3>
+<p>Users, even when running the same code with the same R packages may find differences in how the code performs based on the operating system they’re using. For example, Windows versus Linux versus Mac OS. It is common in a production setting to deploy code to an external server most likely using a Linux operating system. A way to control operating system and system dependencies is through technologies such as Docker. Docker provides a way for developers to specify the exact building blocks of a computational environment (using a Dockerfile) and instructions to run these components in the right order. Once build, it provides portability (as a container image) to be run agnostically on different hardware.</p>
 </section>
 <section id="hardware-dependencies" class="level3" data-number="6.3.5">
 <h3 data-number="6.3.5" class="anchored" data-anchor-id="hardware-dependencies"><span class="header-section-number">6.3.5</span> Hardware dependencies</h3>
-<p>Hardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.</p>
+<p>Hardware dependencies are a little trickier. There are physical hardware infrastructure constraints on how a project is run regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of hardware dependencies is outside the scope of this guide.</p>
 </section>
 </section>
 <section id="version-control" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="version-control"><span class="header-section-number">6.4</span> Version Control</h2>
-<p>Version Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.</p>
-<p>Git is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.</p>
+<p>Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> software. Git is a version control system that allows users to manage changes to software and code collaboratively.</p>
+<p>If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the <code>{vetiver}</code> package<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.</p>
 </section>
 <section id="metadata-and-documentation" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="metadata-and-documentation"><span class="header-section-number">6.5</span> Metadata and Documentation</h2>
-<p>Metadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We’ll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.</p>
-<p>Based on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.</p>
-<p>Also how to contribute and get help? Low form documentation.</p>
+<p>It is important when deploying artefacts into a production setting, that there are appropriate metadata. Metadata refers to tags, versions, dates and other relevant information to describe what work is being deployed. We’ll explore this further in a modelling context later on using the <code>{vetiver}</code> package. In terms of metadata and documentation for the functional aspects of the code, we can rely on the internal documentation used in R packages.</p>
+<p>To achieve elegant function documentation we can use the <code>{roxygen2}</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> package. This provides a useful template for documenting, our functions using tags that are automatically generated into help documents. Another form of documentation in an R package is a README. The package README is an important artefact to tell users, what the software does how it is to be run and any other important information such as the licence or prerequisites and dependencies.</p>
 </section>
 <section id="testing" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="testing"><span class="header-section-number">6.6</span> Testing</h2>
-<p>Testing. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.</p>
-<p>Using the L Studio IDE. Testing can also be performed on a directory. Using this function.</p>
+<p>Finally we must address unit testing. Writing tests is an important element of software engineering. In terms of our code testing can be performed using the <code>{testthat}</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> R package. The <code>{testthat}</code> package provides a framework for software testing that integrates well into writing R packages, using the RStudio IDE or testing can also be performed on a directory interactively.</p>
+</section>
+<section id="putting-it-into-practice" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="putting-it-into-practice"><span class="header-section-number">6.7</span> Putting it into practice</h2>
+<p>Pulling these elements and tools into practice will be done in <a href="07-case_study.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-mlops" class="csl-entry" role="listitem">
 Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
 </div>
+<div id="ref-plumber" class="csl-entry" role="listitem">
+Schloerke, Barret, and Jeff Allen. 2024. <em>Plumber: An API Generator for r</em>. <a href="https://www.rplumber.io">https://www.rplumber.io</a>.
 </div>
+<div id="ref-vetiver" class="csl-entry" role="listitem">
+Silge, Julia. 2023. <em>Vetiver: Version, Share, Deploy, and Monitor Models</em>. <a href="https://vetiver.rstudio.com">https://vetiver.rstudio.com</a>.
+</div>
+<div id="ref-pins" class="csl-entry" role="listitem">
+Silge, Julia, Hadley Wickham, and Javier Luraschi. 2023. <em>Pins: Pin, Discover and Share Resources</em>. <a href="https://pins.rstudio.com/">https://pins.rstudio.com/</a>.
+</div>
+<div id="ref-testthat" class="csl-entry" role="listitem">
+Wickham, Hadley. 2011. <span>“Testthat: Get Started with Testing.”</span> <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-roxygen" class="csl-entry" role="listitem">
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://roxygen2.r-lib.org/">https://roxygen2.r-lib.org/</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://rstudio.github.io/renv/articles/renv.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://packagemanager.posit.co/client/#/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://www.docker.com/get-started/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://git-scm.com/<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>https://rstudio.github.io/vetiver-r/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>https://roxygen2.r-lib.org/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>https://testthat.r-lib.org/index.html<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -243,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></h1>
+<h1 class="title"><span id="sec-casestudy" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></h1>
 </div>
 
 
@@ -615,6 +635,32 @@ Tip with Title
 <p>The endpoint should now be live at <code>http://127.0.0.1:8080</code></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-mlops" class="csl-entry" role="listitem">
+Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
+</div>
+<div id="ref-plumber" class="csl-entry" role="listitem">
+Schloerke, Barret, and Jeff Allen. 2024. <em>Plumber: An API Generator for r</em>. <a href="https://www.rplumber.io">https://www.rplumber.io</a>.
+</div>
+<div id="ref-vetiver" class="csl-entry" role="listitem">
+Silge, Julia. 2023. <em>Vetiver: Version, Share, Deploy, and Monitor Models</em>. <a href="https://vetiver.rstudio.com">https://vetiver.rstudio.com</a>.
+</div>
+<div id="ref-pins" class="csl-entry" role="listitem">
+Silge, Julia, Hadley Wickham, and Javier Luraschi. 2023. <em>Pins: Pin, Discover and Share Resources</em>. <a href="https://pins.rstudio.com/">https://pins.rstudio.com/</a>.
+</div>
+<div id="ref-testthat" class="csl-entry" role="listitem">
+Wickham, Hadley. 2011. <span>“Testthat: Get Started with Testing.”</span> <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-roxygen" class="csl-entry" role="listitem">
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://roxygen2.r-lib.org/">https://roxygen2.r-lib.org/</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
+</div>
 </section>
 </section>
 

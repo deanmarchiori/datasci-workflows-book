@@ -1,14 +1,14 @@
 # Preface {.unnumbered}
 
 This book is a resource for data analysts and data scientists looking to improve
-the way the way they write R code. While R remains a popular choice for 
+the way they write R code. While R remains a popular choice for 
 statistical modelling and data analysis, its rapid development has enabled users
 to progress their work right through to being deployed into Production. However 
 the type of work done when conducting experiments and developing models is very
 different to packaging up this work so it can reliably drive decisions in an 
 organisation. This book will provide readers with an overview of contemporary
 frameworks for how data analysis is done in practice. It will cover how R projects
-are usually structures and how this can evolve based on project complexity. It will
+are usually structured and how this can evolve based on project complexity. It will
 examine what is meant by experimental vs production analysis code and which principles
 need to be adopted. Finally it will show current tools and frameworks for taking
 experimental R code and strengthening it to align with best practice for reliable

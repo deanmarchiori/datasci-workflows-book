@@ -23,6 +23,8 @@ install.packages("pins")
 install.packages("vetiver")
 install.packages("plumber")
 install.packages("here")
+install.packages("roxygen2")
+install.packages("testthat")
 ```
 
 You should be able to now run the following commands: 
@@ -35,6 +37,8 @@ library(pins)
 library(vetiver)
 library(plumber)
 library(here)
+library(roxygen2)
+library(testthat)
 ```
 
 ## Code  

@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -221,15 +241,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="definition" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">5.1</span> Definition</h2>
-<p>Production is a conceptual place where your work is being used by the intended users to make real-world decisions.</p>
+<p>Production is a conceptual place where your work is being used by the intended users to make real-world decisions. Some examples include:</p>
 <ul>
-<li>Predictive Model integrating with front line business system via API<br>
+<li>A Predictive model integrating with front line business system via an API.<br>
 </li>
-<li>Dashboard available to support user’s making decisions<br>
+<li>A Dashboard available to support users making decisions.<br>
 </li>
-<li>A monthly report that informs management meetings<br>
+<li>A monthly report that informs management meetings.<br>
 </li>
-<li>An insight from a statistical model that has changed policy</li>
+<li>An insight from a statistical model that has changed policy.</li>
 </ul>
 <p>Note how not all of the above involve a technology implementation like an API.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -242,14 +262,14 @@ Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Jenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work checklists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.</p>
-<p>This change is hardcoded in a paper form, but is still a data-science driven model in production.</p>
+<p>Jenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work check-lists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.</p>
+<p>This change is hard coded in a paper form, but is still a data-science driven model in production.</p>
 </div>
 </div>
 </section>
 <section id="principles" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="principles"><span class="header-section-number">5.2</span> Principles</h2>
-<p>For a data science project to be successully relied upon in production it should follow some key characteristics.</p>
+<p>For a data science project to be successfully relied upon in production it should follow some key characteristics.</p>
 <ul>
 <li>Available to end users directly<br>
 </li>
@@ -276,7 +296,7 @@ Example
 </section>
 <section id="patterns-for-r-code" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">5.3</span> Patterns for R Code</h2>
-<p>In terms of R specific outputs, what does a data science output look like from an R perspective.</p>
+<p>In terms of R specific outputs, what does a data science output look like from an R perspective?</p>
 <ul>
 <li>An R script that is run on a server on a schedule<br>
 </li>
@@ -297,7 +317,7 @@ Example
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR 
-A[Developer PC]--&gt;B[Remote Server]--&gt;C[User]
+A[Developer PC]--&gt;B[Remote Server]&lt;--&gt;C[User]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -307,6 +327,32 @@ A[Developer PC]--&gt;B[Remote Server]--&gt;C[User]
 <p>We will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-mlops" class="csl-entry" role="listitem">
+Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
+</div>
+<div id="ref-plumber" class="csl-entry" role="listitem">
+Schloerke, Barret, and Jeff Allen. 2024. <em>Plumber: An API Generator for r</em>. <a href="https://www.rplumber.io">https://www.rplumber.io</a>.
+</div>
+<div id="ref-vetiver" class="csl-entry" role="listitem">
+Silge, Julia. 2023. <em>Vetiver: Version, Share, Deploy, and Monitor Models</em>. <a href="https://vetiver.rstudio.com">https://vetiver.rstudio.com</a>.
+</div>
+<div id="ref-pins" class="csl-entry" role="listitem">
+Silge, Julia, Hadley Wickham, and Javier Luraschi. 2023. <em>Pins: Pin, Discover and Share Resources</em>. <a href="https://pins.rstudio.com/">https://pins.rstudio.com/</a>.
+</div>
+<div id="ref-testthat" class="csl-entry" role="listitem">
+Wickham, Hadley. 2011. <span>“Testthat: Get Started with Testing.”</span> <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-roxygen" class="csl-entry" role="listitem">
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://roxygen2.r-lib.org/">https://roxygen2.r-lib.org/</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

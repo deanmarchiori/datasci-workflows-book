@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -247,8 +267,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="monolithic-markdown" class="level3" data-number="3.0.2">
 <h3 data-number="3.0.2" class="anchored" data-anchor-id="monolithic-markdown"><span class="header-section-number">3.0.2</span> Monolithic Markdown</h3>
-<p>Commonly adopted tools to promote more <a href="https://en.wikipedia.org/wiki/Literate_programming">literate programming</a> are notebooks such as RMarkdown or more recently <a href="https://quarto.org/">quarto</a>. These tools allow users to write plain english commentary in markdown or a visual editor and splice in ‘code-chunks’. Typically this notebook style document is then sequentially rendered in order and knitted into some for of output like HTML, PDF or Word etc.</p>
-<p>This is a great way to make code more readble and self-contained while managing complexity. Obvious drawbacks exist around the inflexible execution order, control flow and caching. These can also get very long!</p>
+<p>Commonly adopted tools to promote more literate programming<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> are notebooks such as RMarkdown or more recently Quarto<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. These tools allow users to write plain English commentary in markdown or a visual editor and splice in ‘code-chunks’. Typically this notebook style document is then sequentially rendered in order and knitted into some for of output like HTML, PDF or Word etc.</p>
+<p>This is a great way to make code more readable and self-contained while managing complexity. Obvious drawbacks exist around the inflexible execution order, control flow and caching. These can also get very long!</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -277,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Analysts who prefer a more scripted workflow will often attempt to break down the complexity of their project into smaller chunks, often placing parts of the analysis into their own R script.</p>
 <p>The next question is, how do we orchestrate the running of all these R scripts? This is usually solved with a ‘control’ or ‘run’ script, which <code>source()</code>’s the relevant scripts in the right order.</p>
 <p>This is a step in the right direction, but requires lots of overhead in managing state and data flows between scripts, often by manually ‘caching’ results. The scripts are often not self-contained and this can quickly be a recipe for disaster for more complex projects.</p>
-<p>[projecttemplate]</p>
+<p>An example of this is the ProjectTemplate<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> framework.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -300,7 +320,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="targets" class="level3" data-number="3.0.4">
 <h3 data-number="3.0.4" class="anchored" data-anchor-id="targets"><span class="header-section-number">3.0.4</span> {targets}</h3>
-<p><a href="https://github.com/ropensci/targets"><code>{targets}</code></a> is an R package that allows users to adopt a make-like pipeline philosophy for their R code. This has the advantage of more sophisticated handling of computationally-intensive workflows and provides a more opinionated structure to follow. With this are the drawbacks or forcing your collaborators to adopt the same framework and dealing with the initial learning curve.</p>
+<p><code>{targets}</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is an R package that allows users to adopt a make-like<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> pipeline philosophy for their R code. This has the advantage of more sophisticated handling of computationally-intensive workflows and provides a more opinionated structure to follow. With this are the drawbacks of forcing your collaborators to adopt the same framework and dealing with the initial learning curve.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -322,8 +342,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="r-package" class="level3" data-number="3.0.5">
 <h3 data-number="3.0.5" class="anchored" data-anchor-id="r-package"><span class="header-section-number">3.0.5</span> R Package</h3>
 <p>An R Package is the canonical way to organise and ‘package’ R code for use and sharing. It provides easy means to share, install, document, test and run code.</p>
-<p>Given it is <em>the</em> adopted standard for packaging R code, many users have adapted the structure to run analysis projects and research compendia [MARWICK]. This is possible, however the structure is most commonly applied when building tools or algorithms rather than analysis workflows.</p>
-<p>[MARWICK]</p>
+<p>Given it is <em>the</em> adopted standard for packaging R code, many users have adapted the structure to run analysis projects and research compendia<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. This is possible, however the structure is most commonly applied when building tools or algorithms rather than analysis workflows.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -361,12 +380,49 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="repro-retro" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="repro-retro"><span class="header-section-number">3.1.2</span> Repro-retro</h3>
-<p>I talked a little about how you might want to weight and prioritise the elements of reproducibility in an rtudio::global talk in 2019. Feel free to conduct your own reproducibility-retrospective (repro-retro).</p>
+<p>I talked a little about how you might want to weight and prioritise the elements of reproducibility in an rstudio::global talk in 2019. I used to concept of a reproducibility retrospective (repro-retro). Feel free to conduct your own repro-retro.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4T8gz9AmNOA?si=8rGopHO-9r0iwh_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-mlops" class="csl-entry" role="listitem">
+Kreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. <span>“Machine Learning Operations (MLOps): Overview, Definition, and Architecture.”</span> <em>IEEE Access</em> 11: 31866–79. <a href="https://doi.org/10.1109/ACCESS.2023.3262138">https://doi.org/10.1109/ACCESS.2023.3262138</a>.
+</div>
+<div id="ref-plumber" class="csl-entry" role="listitem">
+Schloerke, Barret, and Jeff Allen. 2024. <em>Plumber: An API Generator for r</em>. <a href="https://www.rplumber.io">https://www.rplumber.io</a>.
+</div>
+<div id="ref-vetiver" class="csl-entry" role="listitem">
+Silge, Julia. 2023. <em>Vetiver: Version, Share, Deploy, and Monitor Models</em>. <a href="https://vetiver.rstudio.com">https://vetiver.rstudio.com</a>.
+</div>
+<div id="ref-pins" class="csl-entry" role="listitem">
+Silge, Julia, Hadley Wickham, and Javier Luraschi. 2023. <em>Pins: Pin, Discover and Share Resources</em>. <a href="https://pins.rstudio.com/">https://pins.rstudio.com/</a>.
+</div>
+<div id="ref-testthat" class="csl-entry" role="listitem">
+Wickham, Hadley. 2011. <span>“Testthat: Get Started with Testing.”</span> <em>The R Journal</em> 3: 5–10. <a href="https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf">https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-roxygen" class="csl-entry" role="listitem">
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://roxygen2.r-lib.org/">https://roxygen2.r-lib.org/</a>.
+</div>
+<div id="ref-mgcv" class="csl-entry" role="listitem">
+Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
+</div>
+</div>
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://en.wikipedia.org/wiki/Literate_programming<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://quarto.org/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>http://projecttemplate.net/index.html<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://github.com/ropensci/targets<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>https://www.gnu.org/software/make/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>https://research-compendium.science/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

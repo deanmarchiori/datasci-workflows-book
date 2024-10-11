@@ -15,17 +15,19 @@ worklow adapted from @mlops.
 
 ## Orchestration    
 
-Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in chapter two. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.  
+Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in @sec-ch2. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.  
 
 As R is a functional programming language the canonical way to structure our code is to use functions. In a practical
 sense, functions are a convenient way to package, document, test and control the execution of code in a project. 
 
-Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks (see X) such as using notebooks, an R Package, targets 
+Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks such as using notebooks, an R Package, `{targets}` 
 and more. 
 
 ## Automation   
 
-Automation refers to how your project is 'built'. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation. Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option. 
+Automation refers to how your project is 'built'. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation.   
+
+Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option. 
 
 ```{mermaid}
 graph LR
@@ -33,7 +35,7 @@ a1[Local Compute]-->a2[Server]<-->a3[User]
 ```
 
 A better approach would be to stage your code using a remote version control repository. This
-will act as a store or source code which can be more conveniently 'pulled' or synchronised with
+will act as a store for source code which can be more conveniently 'pulled' or synchronised with
 the server where your analysis is hosted for users. Often, accompanying model artefacts or data will
 also to stored somewhere remotely for the server to access.  
 
@@ -68,49 +70,46 @@ style id1 fill:lightblue;
 
 ### Code dependencies  
 
-We talk about reproducibility, there are many elements of a data science workflow that need to be considered Code dependencies. The first step to a reproducible pipeline is ensuring that all users have. The same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.
+When we talk about reproducibility, there are many elements of a data science workflow that need to be considered. The first step to a reproducible pipeline is ensuring that all users have the same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.
 
-Is that why other collaborators can clone the code base from the remote git repository? And, Branch. Or Fork from the code repository in order to make their own changes, it can then be integrated back. Using proper Version Control principles. Two users running the same code may not have the same R packages installed on this system.
+That way other collaborators can clone the code base from the remote git repository and branch or fork from the code repository in order to make their own changes. It can then be integrated back using proper version control principles. 
 
 
 ### Packages dependencies  
 
-A key element of reproducibility is ensuring that all users. Can resolve. Our package dependencies this includes having the correct packages. Installing those packages from the correct locations. And ensuring the version of those packages is equivalent. A convenient solution for these problems is the RN package. The RN package does this?
+Another key element of reproducibility is ensuring that all users can resolve having the same R package dependencies. This includes having the correct packages, installing those packages from the correct locations and ensuring the version of those packages are equivalent. A convenient solution for these problems is the `{renv}`^[https://rstudio.github.io/renv/articles/renv.html] package. The `{renv}` package helps users by creating a locally stored environment and infrastructure to collaborate and automate this process with other users.  
 
 
 ### System dependencies
 
-System dependencies. System dependencies describe software, that is installed on. The computational environment that the project is being run on. These may include. External libraries. Such as Example. Tools like deposit, public package manager can provide some analysis of the system dependencies. That are required to support our packages on various operating systems.
-
-Another solution explored in the next section. Is using Technologies, such as Docker. Operating system dependencies. Users, even when running the same code with the same, Our packages may find differences in how The code performs based on the operating system they're using, for example, Windows versus Linux versus Mac OS.
+System dependencies describe the software that are installed on the computational environment that the project is being run on. These may include external libraries such as `libxml` or `GDAL`. Tools like Posit Public Package Manager^[https://packagemanager.posit.co/client/#/] can provide some analysis of the system dependencies that are required to support R packages on various operating systems. Another solution explored in the next section is using technologies such as Docker^[https://www.docker.com/get-started/]. 
 
 
-### OS dependencies  
+### Operating System dependencies  
 
-It is common in a production setting to deploy code. To an external server using. A Linux operating system. A way to control operating system and system dependencies. Is. Use Technologies such as Docker, Docker does this. A basic Docker file is shown below. Finally. The dependencies. 
+Users, even when running the same code with the same R packages may find differences in how the code performs based on the operating system they're using. For example, Windows versus Linux versus Mac OS.
+It is common in a production setting to deploy code to an external server most likely using a Linux operating system. A way to control operating system and system dependencies is through technologies such as Docker. Docker provides a way for developers to specify the exact building blocks of a computational environment (using a Dockerfile) and instructions to run these components in the right order. Once build, it provides portability (as a container image) to be run agnostically on different hardware.  
 
 ### Hardware dependencies  
 
-Hardware dependencies are a little trickier. These are physical Hardware infrastructure constraints on how a project is run. Regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of Hardware dependencies is outside. The scope of this guide.
+Hardware dependencies are a little trickier. There are physical hardware infrastructure constraints on how a project is run regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of hardware dependencies is outside the scope of this guide.
 
 ## Version Control  
 
-Version Control. Version Control is a critical aspect. To ensure. Reproducibility instability in production deployed data, science Solutions. Version control includes. Not only Version Control for code, but also Version Control for data and models. Version control for code is commonly achieved using the get Tool.
+Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git^[https://git-scm.com/] software. Git is a version control system that allows users to manage changes to software and code collaboratively.   
 
-Git is a version control system that allows users to Do this. If the data science project results in a Statistical and machine learning model being fit. It is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model B also versioned. Again, there are many solutions for this. However, a recent development in, the r ecosystem is the vetivert package. A bit of a package, does this? The exploration of Version Control with data is beyond the scope of this book. However, It is recommended. That data is also versioned and stored appropriately in a secured data store, such as a data Lake or data warehouse.
+If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the `{vetiver}` package^[https://rstudio.github.io/vetiver-r/]. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.  
 
 ## Metadata and Documentation   
 
-Metadata and documentation. It is important. When deploying artefacts into a production setting, that there is appropriate metadata. Metadata refers to. Tags versions dates and other relevant information to describe what work is being deployed. We'll explore this further. In a modelling context, using the bit of a package. In terms of metadata and documentation for the functional aspects of the code, We can rely on the Internal documentation used in our packages.
+It is important when deploying artefacts into a production setting, that there are appropriate metadata. Metadata refers to tags, versions, dates and other relevant information to describe what work is being deployed. We'll explore this further in a modelling context later on using the `{vetiver}` package. In terms of metadata and documentation for the functional aspects of the code, we can rely on the internal documentation used in R packages.
 
-Based on the oxygen package. This provides a useful template for documenting, our functions using oxygen tags. That are automatically generated into help documents. Another form of documentation in an R package is a readme. The package readme is an important artefact to tell users, what? Software does how it is to be run in any other important information such as the licence or prerequisites or dependencies.
-
-Also how to contribute and get help? Low form documentation.
-
+To achieve elegant function documentation we can use the `{roxygen2}`^[https://roxygen2.r-lib.org/] package. This provides a useful template for documenting, our functions using tags that are automatically generated into help documents. Another form of documentation in an R package is a README. The package README is an important artefact to tell users, what the software does how it is to be run and any other important information such as the licence or prerequisites and dependencies.
  
 ## Testing  
 
+Finally we must address unit testing. Writing tests is an important element of software engineering. In terms of our code testing can be performed using the `{testthat}`^[https://testthat.r-lib.org/index.html] R package. The `{testthat}` package provides a framework for software testing that integrates well into writing R packages, using the RStudio IDE or testing can also be performed on a directory interactively. 
 
-Testing. Finally. Test unit testing is important. Element of software engineering. In terms of our code. Testing, can be performed using the test that package. The test that package does this. And here is an example of it. Conveniently the test. That package is integrated into the build process for our packages.
+## Putting it into practice  
 
-Using the L Studio IDE. Testing can also be performed on a directory. Using this function.
+Pulling these elements and tools into practice will be done in @sec-casestudy. 

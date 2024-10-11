@@ -5,7 +5,7 @@ book:
   title: "Data Science Worklows in R"
   subtitle: "An introduction to deploying production quality R code"
   author: "Dean Marchiori"
-  date: "2024"
+  date: today
   cover-image: img/cover.png
   chapters:
     - index.qmd
@@ -33,3 +33,5 @@ format:
 
 editor: source
 
+nocite: |
+  @*
