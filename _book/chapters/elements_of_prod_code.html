@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 4&nbsp; Development</title>
+<title>Data Science Worklows in R - 6&nbsp; Elements of Production Deployed R Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/04-what_is_production.html" rel="next">
-<link href="../chapters/03-r_code_workflows.html" rel="prev">
+<link href="../chapters/practical_considerations.html" rel="next">
+<link href="../chapters/what_is_production.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -88,6 +88,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -101,7 +104,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/03-development.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/elements_of_prod_code.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -134,49 +137,49 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-r_code_workflows.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/r_code_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/development.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what_is_production.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/elements_of_prod_code.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/practical_considerations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/case_study.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
@@ -208,15 +211,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">4.1</span> Definition</a></li>
-  <li><a href="#roles" id="toc-roles" class="nav-link" data-scroll-target="#roles"><span class="header-section-number">4.2</span> Roles</a>
+  <li><a href="#orchestration" id="toc-orchestration" class="nav-link active" data-scroll-target="#orchestration"><span class="header-section-number">6.1</span> Orchestration</a></li>
+  <li><a href="#automation" id="toc-automation" class="nav-link" data-scroll-target="#automation"><span class="header-section-number">6.2</span> Automation</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility"><span class="header-section-number">6.3</span> Reproducibility</a>
   <ul class="collapse">
-  <li><a href="#customer" id="toc-customer" class="nav-link" data-scroll-target="#customer"><span class="header-section-number">4.2.1</span> Customer</a></li>
-  <li><a href="#data-engineer" id="toc-data-engineer" class="nav-link" data-scroll-target="#data-engineer"><span class="header-section-number">4.2.2</span> Data Engineer</a></li>
-  <li><a href="#data-analyst" id="toc-data-analyst" class="nav-link" data-scroll-target="#data-analyst"><span class="header-section-number">4.2.3</span> Data Analyst</a></li>
-  <li><a href="#data-scientist" id="toc-data-scientist" class="nav-link" data-scroll-target="#data-scientist"><span class="header-section-number">4.2.4</span> Data Scientist</a></li>
+  <li><a href="#code-dependencies" id="toc-code-dependencies" class="nav-link" data-scroll-target="#code-dependencies"><span class="header-section-number">6.3.1</span> Code dependencies</a></li>
+  <li><a href="#packages-dependencies" id="toc-packages-dependencies" class="nav-link" data-scroll-target="#packages-dependencies"><span class="header-section-number">6.3.2</span> Packages dependencies</a></li>
+  <li><a href="#system-dependencies" id="toc-system-dependencies" class="nav-link" data-scroll-target="#system-dependencies"><span class="header-section-number">6.3.3</span> System dependencies</a></li>
+  <li><a href="#operating-system-dependencies" id="toc-operating-system-dependencies" class="nav-link" data-scroll-target="#operating-system-dependencies"><span class="header-section-number">6.3.4</span> Operating System dependencies</a></li>
+  <li><a href="#hardware-dependencies" id="toc-hardware-dependencies" class="nav-link" data-scroll-target="#hardware-dependencies"><span class="header-section-number">6.3.5</span> Hardware dependencies</a></li>
   </ul></li>
-  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools"><span class="header-section-number">4.3</span> Tools</a></li>
+  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control"><span class="header-section-number">6.4</span> Version Control</a></li>
+  <li><a href="#metadata-and-documentation" id="toc-metadata-and-documentation" class="nav-link" data-scroll-target="#metadata-and-documentation"><span class="header-section-number">6.5</span> Metadata and Documentation</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing"><span class="header-section-number">6.6</span> Testing</a></li>
+  <li><a href="#putting-it-into-practice" id="toc-putting-it-into-practice" class="nav-link" data-scroll-target="#putting-it-into-practice"><span class="header-section-number">6.7</span> Putting it into practice</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +233,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></h1>
 </div>
 
 
@@ -242,43 +250,128 @@ div.csl-indent {
 </header>
 
 
-<p>When data science projects start, often the outcome is unknown. The work is inherently exploratory and experimental. In many cases this results in a more informal way of working. Frameworks and workflow choices to support this work also need to be designed differently.</p>
-<section id="definition" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">4.1</span> Definition</h2>
-<p><em>Development</em> is a way of working, but it is also a technical term for a hardware and software environment. In many data science organisations, development is usually a logical (and physical) separation of tools, hardware and software that allow analysts to perform work that is not to be directly relied upon for real-world decision making. This type of environment is prone to running experimental workloads, tests and day-to-day development of projects and ideas by a data science team.</p>
-<p>A key defining feature of development code is the colocation of <em>what</em> the code does and <em>how</em> the code is run. That is, the functional elements of the code and the orchestration of those elements are not separated.</p>
+<p>R has a tricky historical reputation as a programming language. With its origins in academia it is often argued that it is not fit for production deployment.<br>
+The recent development of tools to support the deployment of R workloads are changing this. Below we will explore some key technical elements that should be included into any stable deployment of a data science worklow adapted from <span class="citation" data-cites="mlops">Kreuzberger, Kühl, and Hirschl (<a href="references.html#ref-mlops" role="doc-biblioref">2023</a>)</span>.</p>
+<ul>
+<li>Orchestration<br>
+</li>
+<li>Automation<br>
+</li>
+<li>Reproducibility<br>
+</li>
+<li>Version Control<br>
+</li>
+<li>Metadata and Documentation<br>
+</li>
+<li>Testing &amp; Monitoring</li>
+</ul>
+<section id="orchestration" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="orchestration"><span class="header-section-number">6.1</span> Orchestration</h2>
+<p>Orchestration refers to how your code is structured and run. We explored various ways of structuring our code for data science workflows in <a href="data_analysis_workflows.html" class="quarto-xref"><span>Chapter 2</span></a>. There are two key facets to code orchestration. The first is separating the functional components of your project, and the orchestration of those functional components to do some task.</p>
+<p>As R is a functional programming language the canonical way to structure our code is to use functions. In a practical sense, functions are a convenient way to package, document, test and control the execution of code in a project.</p>
+<p>Once the functional elements of your project are stored, documented and tested appropriately they need to be run in the correct order. This can be achieved using a number of frameworks such as using notebooks, an R Package, <code>{targets}</code> and more.</p>
 </section>
-<section id="roles" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="roles"><span class="header-section-number">4.2</span> Roles</h2>
-<p>We can assess the various roles that take place in the development workflow cross sectionally by looking at the full life cycle from raw data through to a production deployed system.</p>
-<p>In most organisations, not all roles will be present. In some organisations, there may even be more specialized roles. For example an MLOps engineer may handle the deployment of machine learning workloads, while a data engineer May focus entirely on data operations. In addition a data scientist may or may not be present entirely.</p>
-<section id="customer" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="customer"><span class="header-section-number">4.2.1</span> Customer</h3>
-<p>A customer (end-user) is a key role. Customers should be involved throughout the entire process but in particular are active in projects at the raw data and production stage to contextualize, understand and provide understanding of the raw data in addition to being the end user of production systems.</p>
-</section>
-<section id="data-engineer" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="data-engineer"><span class="header-section-number">4.2.2</span> Data Engineer</h3>
-<p>In many organisations an enrichment process from raw data into some kind of data warehouse environment is conducted by data engineers. A data engineer may also be responsible for provisioning infrastructure and assisting with production deployments.</p>
-</section>
-<section id="data-analyst" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="data-analyst"><span class="header-section-number">4.2.3</span> Data Analyst</h3>
-<p>Once data is landed in a place where it is outside of front-end systems, analysts can typically use this data to perform analysis, Business intelligence (BI), report generation and dashboard building.</p>
-</section>
-<section id="data-scientist" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="data-scientist"><span class="header-section-number">4.2.4</span> Data Scientist</h3>
-<p>The role of the data scientist can take many shapes. Typically, it is viewed as being of most value in the stage after basic data analysis when more advanced modelling statistical analysis and AI/ML applications are required. In reality, it is advisable for data scientists to be involved in the raw data stage with the customer. This aligns with earlier data analysis frameworks mentioned such as CRISM-DM where an iterative and collaborative approach is required from across all stages of the process.</p>
-<p><img src="../img/roles.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="tools" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="tools"><span class="header-section-number">4.3</span> Tools</h2>
-<p>Technical tools to support development workloads usually exist on the analysts local workstation. Most users will have an Integrated Development Environment (IDE) such as RStudio, VSCode or Positron. Some analysts prefer to have a Graphical User Interface (GUI) tool for analysis however this is not recommended when the intention is for the work to be relied upon for reasons we will explore later.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../img/rstudio.png" class="img-fluid figure-img"></p>
-<figcaption>By cdhowe - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=101293607</figcaption>
-</figure>
+<section id="automation" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="automation"><span class="header-section-number">6.2</span> Automation</h2>
+<p>Automation refers to how your project is ‘built’. In other words how it is pushed and pulled from your local development environment into a remote environment where other users can access the results. Again, many options exist and there are varying levels of automation.</p>
+<p>Manual approaches such as click button deployment from your IDE or manually copying files across to a remote server are one option.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+a1[Local Compute]--&gt;a2[Server]&lt;--&gt;a3[User]
+</pre>
 </div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>A better approach would be to stage your code using a remote version control repository. This will act as a store for source code which can be more conveniently ‘pulled’ or synchronised with the server where your analysis is hosted for users. Often, accompanying model artefacts or data will also to stored somewhere remotely for the server to access.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+a1[Local Compute]--&gt;a2[Code Repo]
+a1[Local Compute]--&gt;a3[(Data Store)]
+a2[Code Repo]--&gt;a4[Server]
+a3[(Data Store)]--&gt;a4[Server]
+a4[Server]&lt;--&gt;a5[User]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>More contemporary approaches involve Continuous Integration and Continuous Deployment (CI/CD) practices. This is a DevOps style workflow that will automatically build, test and deploy code that has been pushed to a remote version control repository. A thorough exploration of CI/CD Solutions is beyond the scope of this book and is now a clearly defined sub specialty known as MLOps.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+a1[Local Compute]--&gt;a2[Code Repo]
+ subgraph id1 [DevOps Pipeline]
+  a2[[Code Repo]]--&gt;b1[[Build]]
+  b1[[Build]]--&gt;b2[[Test]]
+  b2[[Test]]--&gt;b3[[Deploy to Container Registry]]
+  end
+a1[Local Compute]--&gt;a3[(Data Store)]
+b3[[Deploy to Container Registry]]--&gt;a4[Server/Serverless App]
+a3[(Data Store)]--&gt;a4[Server]
+a4[Server]&lt;--&gt;a5[User]
+style id1 fill:lightblue;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="reproducibility" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="reproducibility"><span class="header-section-number">6.3</span> Reproducibility</h2>
+<section id="code-dependencies" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="code-dependencies"><span class="header-section-number">6.3.1</span> Code dependencies</h3>
+<p>When we talk about reproducibility, there are many elements of a data science workflow that need to be considered. The first step to a reproducible pipeline is ensuring that all users have the same code that is being used to run the project. The recommended approach here is to ensure that all code is checked in to a remote version control repository, using a version control system such as git.</p>
+<p>That way other collaborators can clone the code base from the remote git repository and branch or fork from the code repository in order to make their own changes. It can then be integrated back using proper version control principles.</p>
+</section>
+<section id="packages-dependencies" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="packages-dependencies"><span class="header-section-number">6.3.2</span> Packages dependencies</h3>
+<p>Another key element of reproducibility is ensuring that all users can resolve having the same R package dependencies. This includes having the correct packages, installing those packages from the correct locations and ensuring the version of those packages are equivalent. A convenient solution for these problems is the <code>{renv}</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> package. The <code>{renv}</code> package helps users by creating a locally stored environment and infrastructure to collaborate and automate this process with other users.</p>
+</section>
+<section id="system-dependencies" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="system-dependencies"><span class="header-section-number">6.3.3</span> System dependencies</h3>
+<p>System dependencies describe the software that are installed on the computational environment that the project is being run on. These may include external libraries such as <code>libxml</code> or <code>GDAL</code>. Tools like Posit Public Package Manager<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> can provide some analysis of the system dependencies that are required to support R packages on various operating systems. Another solution explored in the next section is using technologies such as Docker<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+</section>
+<section id="operating-system-dependencies" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="operating-system-dependencies"><span class="header-section-number">6.3.4</span> Operating System dependencies</h3>
+<p>Users, even when running the same code with the same R packages may find differences in how the code performs based on the operating system they’re using. For example, Windows versus Linux versus Mac OS. It is common in a production setting to deploy code to an external server most likely using a Linux operating system. A way to control operating system and system dependencies is through technologies such as Docker. Docker provides a way for developers to specify the exact building blocks of a computational environment (using a Dockerfile) and instructions to run these components in the right order. Once build, it provides portability (as a container image) to be run agnostically on different hardware.</p>
+</section>
+<section id="hardware-dependencies" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="hardware-dependencies"><span class="header-section-number">6.3.5</span> Hardware dependencies</h3>
+<p>Hardware dependencies are a little trickier. There are physical hardware infrastructure constraints on how a project is run regardless of the operating system and software that is running on it. For example, this is commonly seen with the use of CPU versus GPU Technologies and different types of processor chips. A thorough exploration of hardware dependencies is outside the scope of this guide.</p>
+</section>
+</section>
+<section id="version-control" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="version-control"><span class="header-section-number">6.4</span> Version Control</h2>
+<p>Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> software. Git is a version control system that allows users to manage changes to software and code collaboratively.</p>
+<p>If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the <code>{vetiver}</code> package<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.</p>
+</section>
+<section id="metadata-and-documentation" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="metadata-and-documentation"><span class="header-section-number">6.5</span> Metadata and Documentation</h2>
+<p>It is important when deploying artefacts into a production setting, that there are appropriate metadata. Metadata refers to tags, versions, dates and other relevant information to describe what work is being deployed. We’ll explore this further in a modelling context later on using the <code>{vetiver}</code> package. In terms of metadata and documentation for the functional aspects of the code, we can rely on the internal documentation used in R packages.</p>
+<p>To achieve elegant function documentation we can use the <code>{roxygen2}</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> package. This provides a useful template for documenting, our functions using tags that are automatically generated into help documents. Another form of documentation in an R package is a README. The package README is an important artefact to tell users, what the software does how it is to be run and any other important information such as the licence or prerequisites and dependencies.</p>
+</section>
+<section id="testing" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="testing"><span class="header-section-number">6.6</span> Testing</h2>
+<p>Finally we must address unit testing. Writing tests is an important element of software engineering. In terms of our code testing can be performed using the <code>{testthat}</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> R package. The <code>{testthat}</code> package provides a framework for software testing that integrates well into writing R packages, using the RStudio IDE or testing can also be performed on a directory interactively.</p>
+</section>
+<section id="putting-it-into-practice" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="putting-it-into-practice"><span class="header-section-number">6.7</span> Putting it into practice</h2>
+<p>Pulling these elements and tools into practice will be done in <a href="case_study.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -307,6 +400,18 @@ Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>
 Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>https://rstudio.github.io/renv/articles/renv.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://packagemanager.posit.co/client/#/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://www.docker.com/get-started/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://git-scm.com/<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>https://rstudio.github.io/vetiver-r/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>https://roxygen2.r-lib.org/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>https://testthat.r-lib.org/index.html<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -721,13 +826,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/03-r_code_workflows.html" class="pagination-link" aria-label="R Code Workflows">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span>
+      <a href="../chapters/what_is_production.html" class="pagination-link" aria-label="Production">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/04-what_is_production.html" class="pagination-link" aria-label="Production">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/practical_considerations.html" class="pagination-link" aria-label="Practical Considerations">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -47,10 +47,10 @@ library(testthat)
 
 Materials for the case study can be cloned by using the following command from the `usethis` package:
 
-Alternatively visit: [https://github.com/deanmarchiori/beachwatch](https://github.com/deanmarchiori/beachwatch)
-
 ```{r}
 #| eval: false
 usethis::create_from_github("deanmarchiori/beachwatch", fork = FALSE)
 ```
 
+Alternatively visit: [https://github.com/deanmarchiori/beachwatch](https://github.com/deanmarchiori/beachwatch) to download
+the code as a zip file. 

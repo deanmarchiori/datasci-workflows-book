@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 2&nbsp; Data Science Frameworks</title>
+<title>Data Science Worklows in R - 7&nbsp; Practical Considerations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,8 +50,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/03-r_code_workflows.html" rel="next">
-<link href="../chapters/01-setup.html" rel="prev">
+<link href="../chapters/case_study.html" rel="next">
+<link href="../chapters/elements_of_prod_code.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,7 +101,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/02-data_analysis_workflows.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/practical_considerations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -134,49 +134,49 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-r_code_workflows.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/r_code_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/development.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what_is_production.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/practical_considerations.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/case_study.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
@@ -204,25 +204,14 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#popular-frameworks" id="toc-popular-frameworks" class="nav-link active" data-scroll-target="#popular-frameworks"><span class="header-section-number">2.1</span> Popular Frameworks</a>
-  <ul class="collapse">
-  <li><a href="#crisp-dm" id="toc-crisp-dm" class="nav-link" data-scroll-target="#crisp-dm"><span class="header-section-number">2.1.1</span> CRISP-DM</a></li>
-  <li><a href="#inner-loop-vs-outer-loop" id="toc-inner-loop-vs-outer-loop" class="nav-link" data-scroll-target="#inner-loop-vs-outer-loop"><span class="header-section-number">2.1.2</span> Inner Loop vs Outer Loop</a></li>
-  </ul></li>
-  <li><a href="#development-vs-production" id="toc-development-vs-production" class="nav-link" data-scroll-target="#development-vs-production"><span class="header-section-number">2.2</span> Development vs Production</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ch2" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></h1>
 </div>
 
 
@@ -239,77 +228,26 @@ div.csl-indent {
 </header>
 
 
-<p>There are many approaches to tackling a data science project. Following a framework is important to ensuring successful delivery and management of a project. The key benefits of using a dedicated data science workflow are not only ensuring the work gets done right, but that it also provides a useful means for engaging stakeholders, providing project management updates and ensuring everyone is focused in the right areas.</p>
-<section id="popular-frameworks" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="popular-frameworks"><span class="header-section-number">2.1</span> Popular Frameworks</h2>
-<section id="crisp-dm" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="crisp-dm"><span class="header-section-number">2.1.1</span> CRISP-DM</h3>
-<p>The <em>Cross Industry Standard Practice for Data Mining</em> (CRISP-DM)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is a traditional framework for approaching data mining/data science/analytics projects. Developed in the 1990’s it has stood the test of time and remains a popular choice today for several reasons.</p>
-<p>Firstly, it has a strong focus on understanding the business problem and guiding the exploration of the data with subject matter experts.Secondly, the framework provides for strict evaluation of solutions with business experts before deployment effort. Finally, the ethos of iterative, continual improvement is built in which aligns well with modern agile philosophies.</p>
-<p>The key components of CRISP-DM are:</p>
 <ul>
-<li>Business Understanding</li>
-<li>Data Understanding</li>
-<li>Data Preparation</li>
-<li>Modelling</li>
-<li>Evaluation</li>
-<li>Deployment</li>
-</ul>
-<p>A drawback of this framework is the way in which deployment is handled in modern use-cases. The need to manage the provision, hosting and monitoring of cloud or server resources has resulted in extensions to CRISP-DM.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../img/crispdm.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Kenneth Jensen, CC BY-SA 3.0, via Wikimedia Commons</figcaption>
-</figure>
-</div>
-</section>
-<section id="inner-loop-vs-outer-loop" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="inner-loop-vs-outer-loop"><span class="header-section-number">2.1.2</span> Inner Loop vs Outer Loop</h3>
-<p>If we ignore the <em>Deployment</em> step in the CRISP-DM framework we have a nice workflow for completing ‘experimental’ development and modelling work.</p>
-<p>At some point the analyst will want to deploy their work. A useful abstraction that separates the analytical work and the engineering tasks associated with deployment is through the inner loop vs outer loop concept.</p>
-<p>The <strong>inner loop</strong> is the above mentioned CRISP-DM framework right up until deployment.</p>
-<p>The <strong>outer loop</strong> involves the provision of computing infrastructure for model inference, model registration and versioning, deployment and endpoint provisioning, and finally monitoring and evaluation of the deployed model.</p>
-<p>While this framework is commonly applied to deploying predictive models, adaptations can be made in the case of a dashboard, web-app or dynamic report output.</p>
+<li>Working with IT teams
 <ul>
-<li><strong>Outer Loop</strong><br>
-</li>
-<li>Infrastructure Deployment
-<ul>
-<li><p><strong>Inner Loop</strong></p>
-<ul>
-<li>Business Understanding<br>
-</li>
-<li>Data Understanding<br>
-</li>
-<li>Data Preparation<br>
-</li>
-<li>Modelling<br>
-</li>
-<li>Evaluation</li>
+<li>Install</li>
+<li>Admin</li>
+<li>Maintainence</li>
+<li>Debugging</li>
 </ul></li>
-</ul></li>
-<li>Model Registration and Deployment<br>
+<li>Open Source vs Commerical Software<br>
 </li>
-<li>Monitoring</li>
+<li>Network Security<br>
+</li>
+<li>Authentication</li>
+<li>Changes
+<ul>
+<li>Model drift<br>
+</li>
+<li>New features</li>
+</ul></li>
 </ul>
-</section>
-</section>
-<section id="development-vs-production" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="development-vs-production"><span class="header-section-number">2.2</span> Development vs Production</h2>
-<p>A key distinction introduced above is the separation of <em>development</em> practices from <em>production</em> practices. The typical project will primarily involve development practices outlined in the ‘Inner Loop’. When we refer to production work, it typically refers to work to support the deployment of development work in a context where it used to facilitate decision making. We will explore this concept further and analyse the key elements of ‘production’ code.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The use of the terms <em>development</em> and <em>production</em> here represent the intent of the workflow and not specifically a computing environment. In many organisations there are dedicated computing and infrastructure environemnts (often called ‘development’, ‘dev’, ‘test’, ‘sandbox’, ‘prod’, uat’ etc.) to support the physical separation of these workflow paradigms. This will be explored later.</p>
-</div>
-</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -338,13 +276,6 @@ Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>
 Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
 </div>
 </div>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -758,13 +689,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/01-setup.html" class="pagination-link" aria-label="Setup">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span>
+      <a href="../chapters/elements_of_prod_code.html" class="pagination-link" aria-label="Elements of Production Deployed R Code">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/03-r_code_workflows.html" class="pagination-link" aria-label="R Code Workflows">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/case_study.html" class="pagination-link" aria-label="Case Study">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

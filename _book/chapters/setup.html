@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science Worklows in R - 5&nbsp; Production</title>
+<title>Data Science Worklows in R - 1&nbsp; Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -50,8 +84,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/05-elements_of_prod_code.html" rel="next">
-<link href="../chapters/03-development.html" rel="prev">
+<link href="../chapters/data_analysis_workflows.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -88,9 +122,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -104,7 +135,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-what_is_production.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -137,49 +168,49 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/01-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/02-data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/data_analysis_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-r_code_workflows.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/r_code_workflows.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Code Workflows</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/03-development.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/development.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-what_is_production.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/what_is_production.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/elements_of_prod_code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-practical_considerations.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/practical_considerations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Practical Considerations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-case_study.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/case_study.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Case Study</span></span></a>
   </div>
 </li>
@@ -211,9 +242,16 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#definition" id="toc-definition" class="nav-link active" data-scroll-target="#definition"><span class="header-section-number">5.1</span> Definition</a></li>
-  <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles"><span class="header-section-number">5.2</span> Principles</a></li>
-  <li><a href="#patterns-for-r-code" id="toc-patterns-for-r-code" class="nav-link" data-scroll-target="#patterns-for-r-code"><span class="header-section-number">5.3</span> Patterns for R Code</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link active" data-scroll-target="#software"><span class="header-section-number">1.1</span> Software</a>
+  <ul class="collapse">
+  <li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r"><span class="header-section-number">1.1.1</span> Install R</a></li>
+  <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio"><span class="header-section-number">1.1.2</span> Install RStudio</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">1.1.3</span> Packages</a></li>
+  </ul></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="header-section-number">1.2</span> Code</a>
+  <ul class="collapse">
+  <li><a href="#download-from-github" id="toc-download-from-github" class="nav-link" data-scroll-target="#download-from-github"><span class="header-section-number">1.2.1</span> Download from Github</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +260,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Production</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></h1>
 </div>
 
 
@@ -239,92 +277,52 @@ div.csl-indent {
 </header>
 
 
-<section id="definition" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">5.1</span> Definition</h2>
-<p>Production is a conceptual place where your work is being used by the intended users to make real-world decisions. Some examples include:</p>
-<ul>
-<li>A Predictive model integrating with front line business system via an API.<br>
-</li>
-<li>A Dashboard available to support users making decisions.<br>
-</li>
-<li>A monthly report that informs management meetings.<br>
-</li>
-<li>An insight from a statistical model that has changed policy.</li>
-</ul>
-<p>Note how not all of the above involve a technology implementation like an API.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>To get started, ensure you have a recent verison or R and RStudio installed.</p>
+<section id="software" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="software"><span class="header-section-number">1.1</span> Software</h2>
+<section id="install-r" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="install-r"><span class="header-section-number">1.1.1</span> Install R</h3>
+<p>To install R head to <a href="https://cran.rstudio.com/">https://cran.rstudio.com/</a>.</p>
+</section>
+<section id="install-rstudio" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="install-rstudio"><span class="header-section-number">1.1.2</span> Install RStudio</h3>
+<p>Next, install RStudio Desktop IDE at <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a></p>
+</section>
+<section id="packages" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="packages"><span class="header-section-number">1.1.3</span> Packages</h3>
+<p>To install the required packages, run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"mgcv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pins"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"vetiver"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"plumber"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"here"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"roxygen2"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"testthat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Example
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Jenny trained a statistical model to help predict safety related incidents at worksites for her employer. One of the key factors that influenced and increase in safety incidents was significant rainfall in the previous 24 hours. The safety team has now adjusted their Safe Work check-lists to include a check item for the amount of recent rainfall at that site. If its &gt;50mm then a mandatory inspection is performed.</p>
-<p>This change is hard coded in a paper form, but is still a data-science driven model in production.</p>
-</div>
+<p>You should be able to now run the following commands:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pins)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vetiver)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plumber)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roxygen2)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="principles" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="principles"><span class="header-section-number">5.2</span> Principles</h2>
-<p>For a data science project to be successfully relied upon in production it should follow some key characteristics.</p>
-<ul>
-<li>Available to end users directly<br>
-</li>
-<li>Running on stable infrastructure<br>
-</li>
-<li>Used to make real-world decisions<br>
-</li>
-<li>Can be replicated<br>
-</li>
-<li>Can be reproduced safely</li>
-<li>Is documented sufficiently<br>
-</li>
-<li>Can be maintained by others</li>
-</ul>
-<p>In the NYR10 Conference Hadley Wickham summarises his views as:</p>
-<ul>
-<li>Not just once</li>
-<li>Not just my computer<br>
-</li>
-<li>Not just me</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BQk2-3inViM?si=kb1e7D7kwrdJCBnq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
 </section>
-<section id="patterns-for-r-code" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="patterns-for-r-code"><span class="header-section-number">5.3</span> Patterns for R Code</h2>
-<p>In terms of R specific outputs, what does a data science output look like from an R perspective?</p>
-<ul>
-<li>An R script that is run on a server on a schedule<br>
-</li>
-<li>A <code>{shiny}</code> app hosted using on a server<br>
-</li>
-<li>A <code>{plumber}</code> API service serving model predictions<br>
-</li>
-<li>A hosted <code>{quarto}</code> dashboard<br>
-</li>
-<li>An <code>{rmarkdown}</code> report<br>
-</li>
-<li>An R package on CRAN or Github</li>
-</ul>
-<p>Regardless of the solution, the fundamental concept is to get it off the developers laptop and have it be reliably available to an end user.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR 
-A[Developer PC]--&gt;B[Remote Server]&lt;--&gt;C[User]
-</pre>
+<section id="code" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="code"><span class="header-section-number">1.2</span> Code</h2>
+<section id="download-from-github" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="download-from-github"><span class="header-section-number">1.2.1</span> Download from Github</h3>
+<p>Materials for the case study can be cloned by using the following command from the <code>usethis</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_from_github</span>(<span class="st">"deanmarchiori/beachwatch"</span>, <span class="at">fork =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>We will build this image up further in the next chapter when we examine more closely the elements of production deployed R code.</p>
+<p>Alternatively visit: <a href="https://github.com/deanmarchiori/beachwatch">https://github.com/deanmarchiori/beachwatch</a> to download the code as a zip file.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -353,6 +351,7 @@ Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. <em>
 Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 2nd ed. Chapman; Hall/CRC.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -767,13 +766,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/03-development.html" class="pagination-link" aria-label="Development">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Development</span></span>
+      <a href="../index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/05-elements_of_prod_code.html" class="pagination-link" aria-label="Elements of Production Deployed R Code">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Elements of Production Deployed R Code</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/data_analysis_workflows.html" class="pagination-link" aria-label="Data Science Frameworks">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data Science Frameworks</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

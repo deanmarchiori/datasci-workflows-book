@@ -3,7 +3,9 @@
 ## About  
 
 We would like to build a predictive model to explain and predict water temperature
-at Sydney beaches. The codebase will have two branches.  
+at Sydney beaches.   
+
+The codebase will have two branches.  
 
 1. `main`: A demonstration of a typical monolithic notebook style analysis  
 2. `production-ready`: A demonstration of a refactoring of the above to include
@@ -23,11 +25,9 @@ Ensure you are on the `main` branch.
 
 Let's take a look at the structure of the repository. 
 
-We have out raw data in the `data` directory and a Quarto notebook called
+We have our raw data in the `data` directory and a Quarto notebook called
 `model_notebook.qmd` which contains the end-to-end workflow. This notebook also
 exports our final fitted model as an `.rds` object in the `deploy` directory. 
-
-
 
 ```
 .
@@ -45,6 +45,24 @@ exports our final fitted model as an `.rds` object in the `deploy` directory.
 Explore the contents of `model_notebook.qmd` locally or at [https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd](https://github.com/deanmarchiori/beachwatch/blob/main/model_notebook.qmd)
 :::
 
+### Questions  
+
+- What benefits does this workflow have?   
+- What are the key drawbacks?  
+- What happens when we improve the model?   
+- How do we compare or roll back changes?
+
+### Elements of Production Code  
+
+Element | Present?  
+--------------------|------  
+Orchestration | 
+Automation | 
+Reproducibility | 
+Version Control | 
+Metadata and Documentation | 
+Testing & Monitoring | 
+
 
 ## Production Code  
 
@@ -61,22 +79,21 @@ Let's take a look at the structure of the repository. We will go through this st
 ├── data
 │   └── sydney_water_temp.rda
 ├── data-raw
-│   └── sydney_water_temp_raw.R
+│   ├── sydney_water_temp_raw.R
+│   └── Waterquality1727670437021.csv
 ├── DESCRIPTION
 ├── Dockerfile
 ├── inst
 │   ├── analysis
 │   │   └── model_notebook.qmd
-│   ├── deploy
-│   │   └── sydney-beach-gam
-│   │       ├── 20241007T015537Z-bb3f3
-│   │       │   ├── data.txt
-│   │       │   └── sydney-beach-gam.rds
-│   │       └── 20241007T021501Z-bb3f3
-│   │           ├── data.txt
-│   │           └── sydney-beach-gam.rds
-│   └── extdata
-│       └── Waterquality1727670437021.csv
+│   └── deploy
+│       └── sydney-beach-gam
+│           ├── 20241007T015537Z-bb3f3
+│           │   ├── data.txt
+│           │   └── sydney-beach-gam.rds
+│           └── 20241007T021501Z-bb3f3
+│               ├── data.txt
+│               └── sydney-beach-gam.rds
 ├── LICENSE
 ├── LICENSE.md
 ├── man
@@ -105,7 +122,7 @@ the `{usethis}` command below:
 
 ```{r}
 #| eval: false
-usethis::create_package(path = here::here())
+usethis::create_package(path = here::here("mypkg"))
 ```
 
 ```
@@ -156,7 +173,7 @@ and who the maintainers and developers are.
 In the development code we had an arbitrary directory with the data stashed in
 there as a csv file. We make the handling of data more formal here. 
 
-1. The raw data is placed in `inst/extdata`. The `inst` directory is a place for arbitrary files in an R package. We will use this for our raw data and our analysis and deployment artifacts.      
+1. The raw data is placed in `data-raw/`.      
 2. A script to read in and clean the raw data is available in `data-raw`.  
 3. The above script ends with the code `usethis::use_data` which formally exports the 
 clean data for use by your R package.    
@@ -408,7 +425,8 @@ helful function:
 vetiver_prepare_docker(board = deploy_board, 
                        name = "sydney-beach-gam", 
                        docker_args = list(port = 8080), 
-                       path = here::here())
+                       path = here::here(), 
+                       version = "20241012T004145Z-be322")
 
 ```
 
@@ -429,15 +447,34 @@ to remotely save your model object. Use e.g. `COPY inst/deploy /opt/ml/inst/depl
 
 To build you docker image: 
 
-```
+```{sh}
+#| eval: false
 docker build -t beach .
 ```
 
 and to run it: 
 
-```
+```{sh}
+#| eval: false
 docker run -p 8080:8080 beach
 ```
 
 The endpoint should now be live at `http://127.0.0.1:8080`
 
+### Questions  
+
+- What benefits does this workflow have?   
+- What are the key drawbacks?  
+- What happens when we improve the model?   
+- How do we compare or roll back changes?
+
+### Elements of Production Code  
+
+Element | Present?  
+--------------------|------  
+Orchestration | 
+Automation | 
+Reproducibility | 
+Version Control | 
+Metadata and Documentation | 
+Testing & Monitoring | 
