@@ -1,14 +1,15 @@
 # Resources  
 
-Link to github
-analysis flow
+The following links are useful and contemporary resources mentioned in this guide. 
 
-https://research-compendium.science/
+[Data Analysis Workflows & Reproducibility Learning Resources - analysis-flow Github Repository](https://github.com/deanmarchiori/analysis-flow)
 
-https://r-pkgs.org/  
+[Research Compendium](https://research-compendium.science/)
 
-https://packagemanager.posit.co/client/#/
+[R Packages (2e)](https://r-pkgs.org/)
 
-https://www.docker.com/get-started/
+[Posit Public Package Manager](https://packagemanager.posit.co/client/#/)
 
-https://git-scm.com/
+[Getting Started with Docker](https://www.docker.com/get-started/)
+
+[Git](https://git-scm.com/)

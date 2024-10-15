@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "",
-    "text": "Preface\nThis book is a resource for data analysts and data scientists looking to improve the way they write R code. While R remains a popular choice for statistical modelling and data analysis, its rapid development has enabled users to progress their work right through to being deployed into Production. However the type of work done when conducting experiments and developing models is very different to packaging up this work so it can reliably drive decisions in an organisation. This book will provide readers with an overview of contemporary frameworks for how data analysis is done in practice. It will cover how R projects are usually structured and how this can evolve based on project complexity. It will examine what is meant by experimental vs production analysis code and which principles need to be adopted. Finally it will show current tools and frameworks for taking experimental R code and strengthening it to align with best practice for reliable production grade software. Readers can step through a case study and download code to follow along.",
+    "text": "Preface\nThis guide is a resource for data analysts and data scientists looking to improve the way they write R code. While R remains a popular choice for statistical modelling and data analysis, its rapid development has enabled users to progress their work right through to being deployed into Production. However the type of work done when conducting experiments and developing models is very different to packaging up this work so it can reliably drive decisions in an organisation. This book will provide readers with an overview of contemporary frameworks for how data analysis is done in practice. It will cover how R projects are usually structured and how this can evolve based on project complexity. It will examine what is meant by experimental vs production analysis code and which principles need to be adopted. Finally it will show current tools and frameworks for taking experimental R code and strengthening it to align with best practice for reliable production grade software. Readers can step through a case study and download code to follow along.",
     "crumbs": [
       "Preface"
     ]
@@ -12,9 +12,9 @@
   {
     "objectID": "index.html#who-is-this-for",
     "href": "index.html#who-is-this-for",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "Who is this for?",
-    "text": "Who is this for?\nThis book is intended as an introductory guide for R users who have experience writing code and fitting models, but want to improve their practices for translating these models into robust code that is reliable and used to make real-world decisions.\nThis was initially developed as course materials for the tutorial “Turning R code into production quality software” at the 2024 Workshop Organised by the Monash Business Analytics Team (WOMBAT).",
+    "text": "Who is this for?\nThis book is intended as an introductory guide for R users who have experience writing code and fitting models, but want to improve their practices for translating these models into robust code that is reliable and used to make real-world decisions.\nThis was initially developed as course materials for various workshops on R code development and MLOps and it’s primary purpose was to function as companion materials to workshop delivery.\n\n\n\n\n\n\nWarning\n\n\n\nThis is a work in progress and is considered in DRAFT form. The contents (hopefully) will change and evolve over time. I would welcome any early feedback on the content or new interesting additions.",
     "crumbs": [
       "Preface"
     ]
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#terminology",
     "href": "index.html#terminology",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "Terminology",
     "text": "Terminology\nThroughout this book the terms ‘data science’ and ‘data analysis’ should be considered interchangable and represent the application of advanced data analysis and statistical techniques to data to achieve an outcome. The word ‘analyst’ will be adopted as the primary role for someone completing these tasks.",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#contact-me",
     "href": "index.html#contact-me",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "Contact Me",
     "text": "Contact Me\nIf you would like to get in touch head over to deanmarchiori.com",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "index.html#contributing",
     "href": "index.html#contributing",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "Contributing",
     "text": "Contributing\nContributions to this work are welcomed via Issues on the Github page.\nPlease note that this project uses a Contributor Code of Conduct. By contributing to this book, you agree to abide by its terms.",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "index.html#licence",
     "href": "index.html#licence",
-    "title": "Data Science Worklows in R",
+    "title": "Data Science Workflows in R",
     "section": "Licence",
     "text": "Licence\nThis work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.\n\n\nSchloerke, Barret, and Jeff Allen. 2024. Plumber: An API Generator for r. https://www.rplumber.io.\n\n\nSilge, Julia. 2023. Vetiver: Version, Share, Deploy, and Monitor Models. https://vetiver.rstudio.com.\n\n\nSilge, Julia, Hadley Wickham, and Javier Luraschi. 2023. Pins: Pin, Discover and Share Resources. https://pins.rstudio.com/.\n\n\nWickham, Hadley. 2011. “Testthat: Get Started with Testing.” The R Journal 3: 5–10. https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. Roxygen2: In-Line Documentation for r. https://roxygen2.r-lib.org/.\n\n\nWood, S. N. 2017. Generalized Additive Models: An Introduction with r. 2nd ed. Chapman; Hall/CRC.",
     "crumbs": [
@@ -364,7 +364,7 @@
     "href": "chapters/resources.html",
     "title": "9  Resources",
     "section": "",
-    "text": "Link to github analysis flow\nhttps://research-compendium.science/\nhttps://r-pkgs.org/\nhttps://packagemanager.posit.co/client/#/\nhttps://www.docker.com/get-started/\nhttps://git-scm.com/\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.\n\n\nSchloerke, Barret, and Jeff Allen. 2024. Plumber: An API Generator for r. https://www.rplumber.io.\n\n\nSilge, Julia. 2023. Vetiver: Version, Share, Deploy, and Monitor Models. https://vetiver.rstudio.com.\n\n\nSilge, Julia, Hadley Wickham, and Javier Luraschi. 2023. Pins: Pin, Discover and Share Resources. https://pins.rstudio.com/.\n\n\nWickham, Hadley. 2011. “Testthat: Get Started with Testing.” The R Journal 3: 5–10. https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. Roxygen2: In-Line Documentation for r. https://roxygen2.r-lib.org/.\n\n\nWood, S. N. 2017. Generalized Additive Models: An Introduction with r. 2nd ed. Chapman; Hall/CRC.",
+    "text": "The following links are useful and contemporary resources mentioned in this guide.\nData Analysis Workflows & Reproducibility Learning Resources - analysis-flow Github Repository\nResearch Compendium\nR Packages (2e)\nPosit Public Package Manager\nGetting Started with Docker\nGit\n\n\n\n\nKreuzberger, Dominik, Niklas Kühl, and Sebastian Hirschl. 2023. “Machine Learning Operations (MLOps): Overview, Definition, and Architecture.” IEEE Access 11: 31866–79. https://doi.org/10.1109/ACCESS.2023.3262138.\n\n\nSchloerke, Barret, and Jeff Allen. 2024. Plumber: An API Generator for r. https://www.rplumber.io.\n\n\nSilge, Julia. 2023. Vetiver: Version, Share, Deploy, and Monitor Models. https://vetiver.rstudio.com.\n\n\nSilge, Julia, Hadley Wickham, and Javier Luraschi. 2023. Pins: Pin, Discover and Share Resources. https://pins.rstudio.com/.\n\n\nWickham, Hadley. 2011. “Testthat: Get Started with Testing.” The R Journal 3: 5–10. https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2024. Roxygen2: In-Line Documentation for r. https://roxygen2.r-lib.org/.\n\n\nWood, S. N. 2017. Generalized Additive Models: An Introduction with r. 2nd ed. Chapman; Hall/CRC.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Resources</span>"
     ]

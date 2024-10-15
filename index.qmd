@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-This book is a resource for data analysts and data scientists looking to improve
+This guide is a resource for data analysts and data scientists looking to improve
 the way they write R code. While R remains a popular choice for 
 statistical modelling and data analysis, its rapid development has enabled users
 to progress their work right through to being deployed into Production. However 
@@ -21,8 +21,15 @@ This book is intended as an introductory guide for R users who have experience
 writing code and fitting models, but want to improve their practices for translating
 these models into robust code that is reliable and used to make real-world decisions.   
 
-This was initially developed as course materials for the 
-tutorial "Turning R code into production quality software" at the 2024 *Workshop Organised by the Monash Business Analytics Team (WOMBAT)*.  
+This was initially developed as course materials for various workshops on R code
+development and MLOps and it's primary purpose was to function as companion materials
+to workshop delivery.  
+
+::: {.callout-warning}
+**This is a work in progress and is considered in DRAFT form.** The contents (hopefully)
+will change and evolve over time. I would welcome any early feedback on the content
+or new interesting additions. 
+:::
 
 ## Terminology  
 Throughout this book the terms 'data science' and 'data analysis' should be 

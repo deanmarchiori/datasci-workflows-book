@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Data Science Worklows in R"
+  title: "Data Science Workflows in R"
   subtitle: "An introduction to deploying production quality R code"
   author: "Dean Marchiori"
   date: today
