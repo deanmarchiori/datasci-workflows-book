@@ -10,11 +10,11 @@ project management updates and ensuring everyone is focused in the right areas.
 
 ### CRISP-DM   
 
-The *Cross Industry Standard Practice for Data Mining* (CRISP-DM)^[https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining] is a traditional framework for approaching data mining/data science/analytics projects. Developed 
+The *Cross Industry Standard Practice for Data Mining* (CRISP-DM)^[<https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining>] is a traditional framework for approaching data mining/data science/analytics projects. Developed 
 in the 1990's it has stood the test of time and remains a popular choice today for several reasons.  
 
 Firstly, it has a strong focus on understanding the business problem and guiding the
-exploration of the data with subject matter experts.Secondly, the framework provides for strict evaluation of solutions with business experts before deployment effort. Finally, the ethos of iterative, continual improvement is built in which aligns
+exploration of the data with subject matter experts. Secondly, the framework provides for strict evaluation of solutions with business experts before deployment effort. Finally, the ethos of iterative, continual improvement is built in which aligns
 well with modern agile philosophies.  
 
 The key components of CRISP-DM are:
@@ -76,7 +76,7 @@ further and analyse the key elements of 'production' code.
 ::: {.callout-note}
 The use of the terms *development* and *production* here represent the intent
 of the workflow and not specifically a computing environment. In many organisations
-there are dedicated computing and infrastructure environemnts (often called 'development',
-'dev', 'test', 'sandbox', 'prod', uat' etc.) to support the physical separation 
+there are dedicated computing and infrastructure environments (often called 'development',
+'dev', 'test', 'sandbox', 'prod', 'uat' etc.) to support the physical separation 
 of these workflow paradigms. This will be explored later. 
 :::  
