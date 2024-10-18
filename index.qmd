@@ -22,7 +22,7 @@ writing code and fitting models, but want to improve their practices for transla
 these models into robust code that is reliable and used to make real-world decisions.   
 
 This was initially developed as course materials for various workshops on R code
-development and MLOps and it's primary purpose was to function as companion materials
+development and MLOps and its primary purpose was to function as companion materials
 to workshop delivery.  
 
 ::: {.callout-warning}
@@ -33,7 +33,7 @@ or new interesting additions.
 
 ## Terminology  
 Throughout this book the terms 'data science' and 'data analysis' should be 
-considered interchangable and represent the application of advanced data analysis
+considered interchangeable and represent the application of advanced data analysis
 and statistical techniques to data to achieve an outcome. The word 'analyst' will 
 be adopted as the primary role for someone completing these tasks. 
 
