@@ -1,6 +1,6 @@
 # Setup
 
-To get started, ensure you have a recent verison or R and RStudio installed. 
+To get started, ensure you have a recent version or R and RStudio installed. 
 
 ## Software  
 
@@ -10,7 +10,7 @@ To install R head to [https://cran.rstudio.com/](https://cran.rstudio.com/).
 
 ### Install RStudio  
 
-Next, install RStudio Desktop IDE at [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+Next, install RStudio Desktop IDE at [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/).
 
 ### Packages  
 
@@ -52,5 +52,4 @@ Materials for the case study can be cloned by using the following command from t
 usethis::create_from_github("deanmarchiori/beachwatch", fork = FALSE)
 ```
 
-Alternatively visit: [https://github.com/deanmarchiori/beachwatch](https://github.com/deanmarchiori/beachwatch) to download
-the code as a zip file. 
+Alternatively visit: [https://github.com/deanmarchiori/beachwatch](https://github.com/deanmarchiori/beachwatch) to download the code as a zip file. 
