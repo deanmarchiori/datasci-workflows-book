@@ -237,6 +237,7 @@ Once we build and install our package we can run the below code to load the
 clean, model ready data into our R session. 
 
 ```{r}
+#| eval: false
 data(sydney_water_temp)
 ```
 If we want to understand more about our data, we can read the documentation by
@@ -445,7 +446,7 @@ need to edit the Dockerfile to copy across this folder. It is generally recommen
 to remotely save your model object. Use e.g. `COPY inst/deploy /opt/ml/inst/deploy`
 :::
 
-To build you docker image: 
+To build your docker image: 
 
 ```{sh}
 #| eval: false
