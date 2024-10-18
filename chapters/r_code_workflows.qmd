@@ -126,7 +126,7 @@ So which workflow should you use?
 
 Unfortunately this is not a straightforward decision. For quick experimental
 code you are unlikely to create a new R package. For a complex production
-deployed model, you really dont want all your code in one giant R script.  
+deployed model, you really don't want all your code in one giant R script.  
 
 Picking the correct workflow needs to align the project goals and scope. Often this
 choice can evolve throughout the project.  
