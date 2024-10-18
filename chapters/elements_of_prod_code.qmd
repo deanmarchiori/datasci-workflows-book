@@ -1,10 +1,9 @@
 # Elements of Production Deployed R Code  
 
 R has a tricky historical reputation as a programming language. With its origins
-in academia it is often argued that it is not fit for production deployment.  
-The recent development of tools to support the deployment of R workloads are changing this. 
+in academia it is often argued that it is not fit for production deployment. The recent development of tools to support the deployment of R workloads are changing this. 
 Below we will explore some key technical elements that should be included into any stable deployment of a data science
-worklow adapted from @mlops. 
+workflow adapted from @mlops. 
 
 - Orchestration  
 - Automation  
@@ -98,7 +97,7 @@ Hardware dependencies are a little trickier. There are physical hardware infrast
 
 Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git^[https://git-scm.com/] software. Git is a version control system that allows users to manage changes to software and code collaboratively.   
 
-If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the `{vetiver}` package^[https://rstudio.github.io/vetiver-r/]. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.  
+If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the `{vetiver}` package^[https://rstudio.github.io/vetiver-r/]. This package brings in practices of MLOps to the R ecosystem. The exploration of version control with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.  
 
 ## Metadata and Documentation   
 

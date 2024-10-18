@@ -15,10 +15,10 @@ the orchestration of those elements are not separated.
 
 We can assess the various roles that take place in the development workflow cross sectionally by looking at the full life cycle from raw data through to a production deployed system.  
 
-In most organisations, not all roles will be present. In some organisations, there may even be more specialized roles. For example an MLOps engineer may handle the deployment of machine learning workloads, while a data engineer May focus entirely on data operations. In addition a data scientist may or may not be present entirely.
+In most organisations, not all roles will be present. In some organisations, there may even be more specialised roles. For example an MLOps engineer may handle the deployment of machine learning workloads, while a data engineer may focus entirely on data operations. In addition a data scientist may or may not be present entirely.
 
 ### Customer  
-A customer (end-user) is a key role. Customers should be involved throughout the entire process but in particular are active in projects at the raw data and production stage to contextualize, understand and provide understanding of the raw data in addition to being the end user of production systems.  
+A customer (end-user) is a key role. Customers should be involved throughout the entire process but in particular are active in projects at the raw data and production stage to contextualize, understand and provide understanding of the raw data in addition to being the end-user of production systems.  
 
 ### Data Engineer  
 In many organisations an enrichment process from raw data into some kind of data warehouse environment is conducted by data engineers. A data engineer may also be responsible for provisioning infrastructure and assisting with production deployments.
