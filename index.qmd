@@ -43,7 +43,7 @@ If you would like to get in touch head over to [deanmarchiori.com](https://www.d
 
 ## Contributing  
 
-Contributions to this work are welcomed via Issues on the Github page.  
+Contributions to this work are welcomed via [Issues](https://github.com/deanmarchiori/datasci-workflows-book/issues) on the Github page.  
 
 Please note that this project uses a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/). By contributing to this book, you agree to abide by its terms.  
 
