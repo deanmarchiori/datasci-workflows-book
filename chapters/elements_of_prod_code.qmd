@@ -1,10 +1,9 @@
 # Elements of Production Deployed R Code  
 
 R has a tricky historical reputation as a programming language. With its origins
-in academia it is often argued that it is not fit for production deployment.  
-The recent development of tools to support the deployment of R workloads are changing this. 
+in academia it is often argued that it is not fit for production deployment. The recent development of tools to support the deployment of R workloads are changing this. 
 Below we will explore some key technical elements that should be included into any stable deployment of a data science
-worklow adapted from @mlops. 
+workflow adapted from @mlops. 
 
 - Orchestration  
 - Automation  
@@ -77,12 +76,12 @@ That way other collaborators can clone the code base from the remote git reposit
 
 ### Packages dependencies  
 
-Another key element of reproducibility is ensuring that all users can resolve having the same R package dependencies. This includes having the correct packages, installing those packages from the correct locations and ensuring the version of those packages are equivalent. A convenient solution for these problems is the `{renv}`^[https://rstudio.github.io/renv/articles/renv.html] package. The `{renv}` package helps users by creating a locally stored environment and infrastructure to collaborate and automate this process with other users.  
+Another key element of reproducibility is ensuring that all users can resolve having the same R package dependencies. This includes having the correct packages, installing those packages from the correct locations and ensuring the version of those packages are equivalent. A convenient solution for these problems is the `{renv}`^[<https://rstudio.github.io/renv/articles/renv.html>] package. The `{renv}` package helps users by creating a locally stored environment and infrastructure to collaborate and automate this process with other users.  
 
 
 ### System dependencies
 
-System dependencies describe the software that are installed on the computational environment that the project is being run on. These may include external libraries such as `libxml` or `GDAL`. Tools like Posit Public Package Manager^[https://packagemanager.posit.co/client/#/] can provide some analysis of the system dependencies that are required to support R packages on various operating systems. Another solution explored in the next section is using technologies such as Docker^[https://www.docker.com/get-started/]. 
+System dependencies describe the software that are installed on the computational environment that the project is being run on. These may include external libraries such as `libxml` or `GDAL`. Tools like Posit Public Package Manager^[<https://packagemanager.posit.co/client/#/>] can provide some analysis of the system dependencies that are required to support R packages on various operating systems. Another solution explored in the next section is using technologies such as Docker^[<https://www.docker.com/get-started/>]. 
 
 
 ### Operating System dependencies  
@@ -96,19 +95,19 @@ Hardware dependencies are a little trickier. There are physical hardware infrast
 
 ## Version Control  
 
-Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git^[https://git-scm.com/] software. Git is a version control system that allows users to manage changes to software and code collaboratively.   
+Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git^[<https://git-scm.com/>] software. Git is a version control system that allows users to manage changes to software and code collaboratively.   
 
-If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the `{vetiver}` package^[https://rstudio.github.io/vetiver-r/]. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.  
+If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the `{vetiver}` package^[<https://rstudio.github.io/vetiver-r/>]. This package brings in practices of MLOps to the R ecosystem. The exploration of version control with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.  
 
 ## Metadata and Documentation   
 
 It is important when deploying artefacts into a production setting, that there are appropriate metadata. Metadata refers to tags, versions, dates and other relevant information to describe what work is being deployed. We'll explore this further in a modelling context later on using the `{vetiver}` package. In terms of metadata and documentation for the functional aspects of the code, we can rely on the internal documentation used in R packages.
 
-To achieve elegant function documentation we can use the `{roxygen2}`^[https://roxygen2.r-lib.org/] package. This provides a useful template for documenting, our functions using tags that are automatically generated into help documents. Another form of documentation in an R package is a README. The package README is an important artefact to tell users, what the software does how it is to be run and any other important information such as the licence or prerequisites and dependencies.
+To achieve elegant function documentation we can use the `{roxygen2}`^[<https://roxygen2.r-lib.org/>] package. This provides a useful template for documenting, our functions using tags that are automatically generated into help documents. Another form of documentation in an R package is a README. The package README is an important artefact to tell users, what the software does how it is to be run and any other important information such as the licence or prerequisites and dependencies.
  
 ## Testing  
 
-Finally we must address unit testing. Writing tests is an important element of software engineering. In terms of our code testing can be performed using the `{testthat}`^[https://testthat.r-lib.org/index.html] R package. The `{testthat}` package provides a framework for software testing that integrates well into writing R packages, using the RStudio IDE or testing can also be performed on a directory interactively. 
+Finally we must address unit testing. Writing tests is an important element of software engineering. In terms of our code testing can be performed using the `{testthat}`^[<https://testthat.r-lib.org/index.html>] R package. The `{testthat}` package provides a framework for software testing that integrates well into writing R packages, using the RStudio IDE or testing can also be performed on a directory interactively. 
 
 ## Putting it into practice  
 

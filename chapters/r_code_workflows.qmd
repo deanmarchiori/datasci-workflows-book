@@ -19,8 +19,8 @@ graph TB
 
 ### Monolithic Markdown
 
-Commonly adopted tools to promote more literate programming^[https://en.wikipedia.org/wiki/Literate_programming] 
-are notebooks such as RMarkdown or more recently Quarto^[https://quarto.org/]. These tools allow users
+Commonly adopted tools to promote more literate programming^[<https://en.wikipedia.org/wiki/Literate_programming>] 
+are notebooks such as RMarkdown or more recently Quarto^[<https://quarto.org/>]. These tools allow users
 to write plain English commentary in markdown or a visual editor and splice in
 'code-chunks'. Typically this notebook style document is then sequentially
 rendered in order and knitted into some for of output like HTML, PDF or Word etc.  
@@ -58,7 +58,7 @@ state and data flows between scripts, often by manually 'caching' results. The
 scripts are often not self-contained and this can quickly be a recipe for 
 disaster for more complex projects. 
 
-An example of this is the ProjectTemplate^[http://projecttemplate.net/index.html] framework. 
+An example of this is the ProjectTemplate^[<http://projecttemplate.net/index.html>] framework. 
 
 
 ```{mermaid}
@@ -74,8 +74,8 @@ graph TB
 
 ### {targets}    
 
-`{targets}`^[https://github.com/ropensci/targets] is an R package that allows
-users to adopt a make-like^[https://www.gnu.org/software/make/] pipeline philosophy for their R code. This has the
+`{targets}`^[<https://github.com/ropensci/targets>] is an R package that allows
+users to adopt a make-like^[<https://www.gnu.org/software/make/>] pipeline philosophy for their R code. This has the
 advantage of more sophisticated handling of computationally-intensive workflows
 and provides a more opinionated structure to follow. With this are the drawbacks 
 of forcing your collaborators to adopt the same framework and dealing with the initial 
@@ -97,7 +97,7 @@ An R Package is the canonical way to organise and 'package' R code for use
 and sharing. It provides easy means to share, install, document, test and run code.  
 
 Given it is *the* adopted standard for packaging R code, many users have adapted
-the structure to run analysis projects and research compendia^[https://research-compendium.science/]. This is
+the structure to run analysis projects and research compendia^[<https://research-compendium.science/>]. This is
 possible, however the structure is most commonly applied when building tools 
 or algorithms rather than analysis workflows.  
 
@@ -126,7 +126,7 @@ So which workflow should you use?
 
 Unfortunately this is not a straightforward decision. For quick experimental
 code you are unlikely to create a new R package. For a complex production
-deployed model, you really dont want all your code in one giant R script.  
+deployed model, you really don't want all your code in one giant R script.  
 
 Picking the correct workflow needs to align the project goals and scope. Often this
 choice can evolve throughout the project.  
