@@ -250,8 +250,7 @@ div.csl-indent {
 </header>
 
 
-<p>R has a tricky historical reputation as a programming language. With its origins in academia it is often argued that it is not fit for production deployment.<br>
-The recent development of tools to support the deployment of R workloads are changing this. Below we will explore some key technical elements that should be included into any stable deployment of a data science worklow adapted from <span class="citation" data-cites="mlops">Kreuzberger, Kühl, and Hirschl (<a href="references.html#ref-mlops" role="doc-biblioref">2023</a>)</span>.</p>
+<p>R has a tricky historical reputation as a programming language. With its origins in academia it is often argued that it is not fit for production deployment. The recent development of tools to support the deployment of R workloads are changing this. Below we will explore some key technical elements that should be included into any stable deployment of a data science workflow adapted from <span class="citation" data-cites="mlops">Kreuzberger, Kühl, and Hirschl (<a href="references.html#ref-mlops" role="doc-biblioref">2023</a>)</span>.</p>
 <ul>
 <li>Orchestration<br>
 </li>
@@ -358,7 +357,7 @@ style id1 fill:lightblue;
 <section id="version-control" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="version-control"><span class="header-section-number">6.4</span> Version Control</h2>
 <p>Version Control is a critical aspect to ensure reproducibility in production deployed data science solutions. Version control includes not only Version Control for code but also version control for data and models. Version control for code is commonly achieved using the git<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> software. Git is a version control system that allows users to manage changes to software and code collaboratively.</p>
-<p>If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the <code>{vetiver}</code> package<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This package brings in practices of MLOps to the R ecosystem. The exploration of version vontrol with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.</p>
+<p>If the data science project results in a statistical or machine learning model being fit, it is the model itself that will be the deployed artefact in order for inference to be performed. Therefore it is critical that this model is also versioned. Again, there are many solutions for this. A recent development in the R ecosystem is the <code>{vetiver}</code> package<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This package brings in practices of MLOps to the R ecosystem. The exploration of version control with data is beyond the scope of this book however it is recommended that data are also versioned and stored appropriately in a secured data store, such as a data lake or data warehouse.</p>
 </section>
 <section id="metadata-and-documentation" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="metadata-and-documentation"><span class="header-section-number">6.5</span> Metadata and Documentation</h2>
@@ -404,13 +403,13 @@ Wood, S. N. 2017. <em>Generalized Additive Models: An Introduction with r</em>. 
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>https://rstudio.github.io/renv/articles/renv.html<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://packagemanager.posit.co/client/#/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>https://www.docker.com/get-started/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>https://git-scm.com/<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>https://rstudio.github.io/vetiver-r/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>https://roxygen2.r-lib.org/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>https://testthat.r-lib.org/index.html<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://rstudio.github.io/renv/articles/renv.html" class="uri">https://rstudio.github.io/renv/articles/renv.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://packagemanager.posit.co/client/#/" class="uri">https://packagemanager.posit.co/client/#/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.docker.com/get-started/" class="uri">https://www.docker.com/get-started/</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://git-scm.com/" class="uri">https://git-scm.com/</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://rstudio.github.io/vetiver-r/" class="uri">https://rstudio.github.io/vetiver-r/</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://roxygen2.r-lib.org/" class="uri">https://roxygen2.r-lib.org/</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://testthat.r-lib.org/index.html" class="uri">https://testthat.r-lib.org/index.html</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
